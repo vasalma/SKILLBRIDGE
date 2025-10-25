@@ -27,170 +27,170 @@ public class signup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel20 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        starMini = new javax.swing.JLabel();
+        registrarTxt = new javax.swing.JLabel();
+        registrarBtn = new javax.swing.JLabel();
+        passTxt = new javax.swing.JTextField();
+        arrow = new javax.swing.JLabel();
+        passTitle = new javax.swing.JLabel();
+        phraseStart = new javax.swing.JLabel();
+        gradHatsmall = new javax.swing.JLabel();
+        gradHatbig = new javax.swing.JLabel();
+        woman2 = new javax.swing.JLabel();
+        woman1 = new javax.swing.JLabel();
+        manGrad = new javax.swing.JLabel();
+        starBig = new javax.swing.JLabel();
+        passAgaintxt = new javax.swing.JTextField();
+        passAgaintitle = new javax.swing.JLabel();
+        phoneTxt = new javax.swing.JTextField();
+        phoneTitle = new javax.swing.JLabel();
+        IDTxt = new javax.swing.JTextField();
+        IDTitle = new javax.swing.JLabel();
+        emailTxt = new javax.swing.JTextField();
+        emailTitle = new javax.swing.JLabel();
+        lastnameTxt = new javax.swing.JTextField();
+        lastnameTitle = new javax.swing.JLabel();
+        nameTxt = new javax.swing.JTextField();
+        nameTitle = new javax.swing.JLabel();
         aTitle = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        logoBlack = new javax.swing.JLabel();
-        aTitle1 = new javax.swing.JLabel();
-        ienvenidoTitle = new javax.swing.JLabel();
+        logoWhite = new javax.swing.JLabel();
+        appName = new javax.swing.JLabel();
+        blackMarker = new javax.swing.JLabel();
+        bienvenidoTitle = new javax.swing.JLabel();
         loginBtn = new javax.swing.JLabel();
         signupBtn = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         skillbridgeName = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        greenBoard = new javax.swing.JLabel();
         whiteBoard = new javax.swing.JLabel();
         bc = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star3.png"))); // NOI18N
-        jLabel20.setText("jLabel20");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 57, 56));
+        starMini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star3.png"))); // NOI18N
+        starMini.setText("jLabel20");
+        getContentPane().add(starMini, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 57, 56));
 
-        jLabel6.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Registrar");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 570, 60, -1));
+        registrarTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
+        registrarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        registrarTxt.setText("Registrar");
+        getContentPane().add(registrarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 570, 60, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 560, 210, 40));
+        registrarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
+        getContentPane().add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 560, 210, 40));
 
-        jTextField6.setBackground(new java.awt.Color(247, 247, 247));
-        jTextField6.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        passTxt.setBackground(new java.awt.Color(247, 247, 247));
+        passTxt.setForeground(new java.awt.Color(102, 102, 102));
+        passTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                passTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 270, 33));
+        getContentPane().add(passTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 270, 33));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 540, 96, 60));
+        arrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
+        getContentPane().add(arrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 540, 96, 60));
 
-        jLabel10.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("Contraseña");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, -1, -1));
+        passTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        passTitle.setForeground(new java.awt.Color(102, 102, 102));
+        passTitle.setText("Contraseña");
+        getContentPane().add(passTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, -1, -1));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/phrase.png"))); // NOI18N
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 210, 86));
+        phraseStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/phrase.png"))); // NOI18N
+        getContentPane().add(phraseStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 210, 86));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hat2.png"))); // NOI18N
-        jLabel17.setText("jLabel17");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 123, 195));
+        gradHatsmall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hat2.png"))); // NOI18N
+        gradHatsmall.setText("jLabel17");
+        getContentPane().add(gradHatsmall, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 123, 195));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hat1.png"))); // NOI18N
-        jLabel16.setText("jLabel16");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 218, 344));
+        gradHatbig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hat1.png"))); // NOI18N
+        gradHatbig.setText("jLabel16");
+        getContentPane().add(gradHatbig, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 218, 344));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/w1.png"))); // NOI18N
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 124, 125, 150));
+        woman2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/w1.png"))); // NOI18N
+        getContentPane().add(woman2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 124, 125, 150));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/w2.png"))); // NOI18N
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 134, 120, 139));
+        woman1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/w2.png"))); // NOI18N
+        getContentPane().add(woman1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 134, 120, 139));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/manGrad.png"))); // NOI18N
-        jLabel12.setText("jLabel12");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 330, 309, 380));
+        manGrad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/manGrad.png"))); // NOI18N
+        manGrad.setText("jLabel12");
+        getContentPane().add(manGrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 330, 309, 380));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star2.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1004, 380, 100, 100));
+        starBig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star2.png"))); // NOI18N
+        getContentPane().add(starBig, new org.netbeans.lib.awtextra.AbsoluteConstraints(1004, 380, 100, 100));
 
-        jTextField7.setBackground(new java.awt.Color(247, 247, 247));
-        jTextField7.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        passAgaintxt.setBackground(new java.awt.Color(247, 247, 247));
+        passAgaintxt.setForeground(new java.awt.Color(102, 102, 102));
+        passAgaintxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                passAgaintxtActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 270, 33));
+        getContentPane().add(passAgaintxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 270, 33));
 
-        jLabel11.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Repetir contraseña");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, -1, 20));
+        passAgaintitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        passAgaintitle.setForeground(new java.awt.Color(102, 102, 102));
+        passAgaintitle.setText("Repetir contraseña");
+        getContentPane().add(passAgaintitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, -1, 20));
 
-        jTextField5.setBackground(new java.awt.Color(247, 247, 247));
-        jTextField5.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        phoneTxt.setBackground(new java.awt.Color(247, 247, 247));
+        phoneTxt.setForeground(new java.awt.Color(102, 102, 102));
+        phoneTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                phoneTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, 210, 33));
+        getContentPane().add(phoneTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, 210, 33));
 
-        jLabel9.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Celular");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, -1, -1));
+        phoneTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        phoneTitle.setForeground(new java.awt.Color(102, 102, 102));
+        phoneTitle.setText("Celular");
+        getContentPane().add(phoneTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, -1, -1));
 
-        jTextField4.setBackground(new java.awt.Color(247, 247, 247));
-        jTextField4.setForeground(new java.awt.Color(102, 102, 102));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 210, 33));
+        IDTxt.setBackground(new java.awt.Color(247, 247, 247));
+        IDTxt.setForeground(new java.awt.Color(102, 102, 102));
+        getContentPane().add(IDTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 210, 33));
 
-        jLabel8.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("ID Estudiantil");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, -1, -1));
+        IDTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        IDTitle.setForeground(new java.awt.Color(102, 102, 102));
+        IDTitle.setText("ID Estudiantil");
+        getContentPane().add(IDTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, -1, -1));
 
-        jTextField3.setBackground(new java.awt.Color(247, 247, 247));
-        jTextField3.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        emailTxt.setBackground(new java.awt.Color(247, 247, 247));
+        emailTxt.setForeground(new java.awt.Color(102, 102, 102));
+        emailTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                emailTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 780, 33));
+        getContentPane().add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 780, 33));
 
-        jLabel7.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("E-mail");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
+        emailTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        emailTitle.setForeground(new java.awt.Color(102, 102, 102));
+        emailTitle.setText("E-mail");
+        getContentPane().add(emailTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
 
-        jTextField2.setBackground(new java.awt.Color(247, 247, 247));
-        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 310, 33));
+        lastnameTxt.setBackground(new java.awt.Color(247, 247, 247));
+        lastnameTxt.setForeground(new java.awt.Color(102, 102, 102));
+        getContentPane().add(lastnameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 310, 33));
 
-        jLabel3.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Apellidos");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 70, -1));
+        lastnameTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        lastnameTitle.setForeground(new java.awt.Color(102, 102, 102));
+        lastnameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lastnameTitle.setText("Apellidos");
+        getContentPane().add(lastnameTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 70, -1));
 
-        jTextField1.setBackground(new java.awt.Color(247, 247, 247));
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 330, 33));
+        nameTxt.setBackground(new java.awt.Color(247, 247, 247));
+        nameTxt.setForeground(new java.awt.Color(102, 102, 102));
+        getContentPane().add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 330, 33));
 
-        jLabel2.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Nombres");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 70, -1));
+        nameTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        nameTitle.setForeground(new java.awt.Color(102, 102, 102));
+        nameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameTitle.setText("Nombres");
+        getContentPane().add(nameTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 70, -1));
 
         aTitle.setFont(new java.awt.Font("Questrial", 0, 51)); // NOI18N
         aTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,22 +198,22 @@ public class signup extends javax.swing.JFrame {
         aTitle.setText("a");
         getContentPane().add(aTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 40, -1));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blackMarker.png"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(834, 256, -1, -1));
+        logoWhite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whiteLogo.png"))); // NOI18N
+        getContentPane().add(logoWhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 140, 120, 80));
 
-        logoBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/whiteLogo.png"))); // NOI18N
-        getContentPane().add(logoBlack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 140, 120, 80));
+        appName.setFont(new java.awt.Font("Questrial", 1, 66)); // NOI18N
+        appName.setForeground(new java.awt.Color(255, 255, 255));
+        appName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        appName.setText("Skillbridge");
+        getContentPane().add(appName, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, 330, -1));
 
-        aTitle1.setFont(new java.awt.Font("Questrial", 1, 66)); // NOI18N
-        aTitle1.setForeground(new java.awt.Color(255, 255, 255));
-        aTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        aTitle1.setText("Skillbridge");
-        getContentPane().add(aTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, 330, -1));
+        blackMarker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blackMarker.png"))); // NOI18N
+        getContentPane().add(blackMarker, new org.netbeans.lib.awtextra.AbsoluteConstraints(834, 256, -1, -1));
 
-        ienvenidoTitle.setFont(new java.awt.Font("Questrial", 0, 66)); // NOI18N
-        ienvenidoTitle.setForeground(new java.awt.Color(255, 255, 255));
-        ienvenidoTitle.setText("Bienvenido");
-        getContentPane().add(ienvenidoTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 340, 90));
+        bienvenidoTitle.setFont(new java.awt.Font("Questrial", 0, 66)); // NOI18N
+        bienvenidoTitle.setForeground(new java.awt.Color(255, 255, 255));
+        bienvenidoTitle.setText("Bienvenido");
+        getContentPane().add(bienvenidoTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 340, 90));
 
         loginBtn.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,8 +234,8 @@ public class signup extends javax.swing.JFrame {
         skillbridgeName.setText("SkillBridge");
         getContentPane().add(skillbridgeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 180, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenLargeBoard.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 60, 1116, 214));
+        greenBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenLargeBoard.png"))); // NOI18N
+        getContentPane().add(greenBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 60, 1116, 214));
 
         whiteBoard.setBackground(new java.awt.Color(204, 204, 204));
         whiteBoard.setForeground(new java.awt.Color(102, 102, 102));
@@ -248,21 +248,21 @@ public class signup extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void passAgaintxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passAgaintxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_passAgaintxtActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void phoneTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_phoneTxtActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_emailTxtActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void passTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_passTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,42 +301,42 @@ public class signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IDTitle;
+    private javax.swing.JTextField IDTxt;
     private javax.swing.JLabel aTitle;
-    private javax.swing.JLabel aTitle1;
+    private javax.swing.JLabel appName;
+    private javax.swing.JLabel arrow;
     private javax.swing.JLabel bc;
-    private javax.swing.JLabel ienvenidoTitle;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel bienvenidoTitle;
+    private javax.swing.JLabel blackMarker;
+    private javax.swing.JLabel emailTitle;
+    private javax.swing.JTextField emailTxt;
+    private javax.swing.JLabel gradHatbig;
+    private javax.swing.JLabel gradHatsmall;
+    private javax.swing.JLabel greenBoard;
+    private javax.swing.JLabel lastnameTitle;
+    private javax.swing.JTextField lastnameTxt;
     private javax.swing.JLabel loginBtn;
     private javax.swing.JLabel logo;
-    private javax.swing.JLabel logoBlack;
+    private javax.swing.JLabel logoWhite;
+    private javax.swing.JLabel manGrad;
+    private javax.swing.JLabel nameTitle;
+    private javax.swing.JTextField nameTxt;
+    private javax.swing.JLabel passAgaintitle;
+    private javax.swing.JTextField passAgaintxt;
+    private javax.swing.JLabel passTitle;
+    private javax.swing.JTextField passTxt;
+    private javax.swing.JLabel phoneTitle;
+    private javax.swing.JTextField phoneTxt;
+    private javax.swing.JLabel phraseStart;
+    private javax.swing.JLabel registrarBtn;
+    private javax.swing.JLabel registrarTxt;
     private javax.swing.JLabel signupBtn;
     private javax.swing.JLabel skillbridgeName;
+    private javax.swing.JLabel starBig;
+    private javax.swing.JLabel starMini;
     private javax.swing.JLabel whiteBoard;
+    private javax.swing.JLabel woman1;
+    private javax.swing.JLabel woman2;
     // End of variables declaration//GEN-END:variables
 }

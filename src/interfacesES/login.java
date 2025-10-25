@@ -27,26 +27,26 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel15 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        lockIcon = new javax.swing.JLabel();
+        IDIcon = new javax.swing.JLabel();
         aTitle = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        blackMarker = new javax.swing.JLabel();
+        starSmall = new javax.swing.JLabel();
+        starBig = new javax.swing.JLabel();
+        womanPic = new javax.swing.JLabel();
+        manPic = new javax.swing.JLabel();
+        shadow2 = new javax.swing.JLabel();
+        shadow1 = new javax.swing.JLabel();
+        registrarTxt = new javax.swing.JLabel();
+        accederTxt = new javax.swing.JLabel();
+        registrarBtn = new javax.swing.JLabel();
+        accederBtn = new javax.swing.JLabel();
+        passLine = new javax.swing.JSeparator();
+        passTxt = new javax.swing.JPasswordField();
+        IDLine = new javax.swing.JSeparator();
+        IDTxt = new javax.swing.JTextField();
         logoBlack = new javax.swing.JLabel();
-        aTitle1 = new javax.swing.JLabel();
+        appName = new javax.swing.JLabel();
         bTitle = new javax.swing.JLabel();
         ienvenidoTitle = new javax.swing.JLabel();
         loginBtn = new javax.swing.JLabel();
@@ -60,11 +60,11 @@ public class login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lockIcon.png"))); // NOI18N
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 30, 30));
+        lockIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lockIcon.png"))); // NOI18N
+        getContentPane().add(lockIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 30, 30));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/idIcon.png"))); // NOI18N
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 30, 30));
+        IDIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/idIcon.png"))); // NOI18N
+        getContentPane().add(IDIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 30, 30));
 
         aTitle.setFont(new java.awt.Font("Questrial", 0, 51)); // NOI18N
         aTitle.setForeground(new java.awt.Color(0, 0, 0));
@@ -72,78 +72,83 @@ public class login extends javax.swing.JFrame {
         aTitle.setText("a");
         getContentPane().add(aTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 40, -1));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blackMarker.png"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(834, 256, -1, -1));
+        blackMarker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blackMarker.png"))); // NOI18N
+        getContentPane().add(blackMarker, new org.netbeans.lib.awtextra.AbsoluteConstraints(834, 256, -1, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starSmall.png"))); // NOI18N
-        jLabel12.setText("jLabel12");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 64, 63));
+        starSmall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starSmall.png"))); // NOI18N
+        starSmall.setText("jLabel12");
+        getContentPane().add(starSmall, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 64, 63));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starBig.png"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 141, 138));
+        starBig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starBig.png"))); // NOI18N
+        getContentPane().add(starBig, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 141, 138));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woman.png"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 398, 337));
+        womanPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woman.png"))); // NOI18N
+        womanPic.setText("jLabel7");
+        getContentPane().add(womanPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 398, 337));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 256, 308));
+        manPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/man.png"))); // NOI18N
+        getContentPane().add(manPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 256, 308));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenShadow2.png"))); // NOI18N
-        jLabel10.setText("jLabel10");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, 271, 110));
+        shadow2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenShadow2.png"))); // NOI18N
+        shadow2.setText("jLabel10");
+        getContentPane().add(shadow2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, 271, 110));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenShadow.png"))); // NOI18N
-        jLabel9.setText("jLabel9");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 158, 64));
+        shadow1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenShadow.png"))); // NOI18N
+        shadow1.setText("jLabel9");
+        getContentPane().add(shadow1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 158, 64));
 
-        jLabel6.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Registrar");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 584, 60, -1));
+        registrarTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
+        registrarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        registrarTxt.setText("Registrar");
+        getContentPane().add(registrarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 584, 60, -1));
 
-        jLabel5.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Acceder");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 524, -1, -1));
+        accederTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
+        accederTxt.setForeground(new java.awt.Color(255, 255, 255));
+        accederTxt.setText("Acceder");
+        getContentPane().add(accederTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 524, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 570, 210, 40));
+        registrarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
+        getContentPane().add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 570, 210, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 510, 210, 40));
-
-        jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 450, 210, 10));
-
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
-        jPasswordField1.setText("Password");
-        jPasswordField1.setBorder(null);
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 428, 180, -1));
-
-        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 360, 210, 10));
-
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("ID");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        accederBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
+        accederBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                accederBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 338, 180, -1));
+        getContentPane().add(accederBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 510, 210, 40));
+
+        passLine.setForeground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(passLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 450, 210, 10));
+
+        passTxt.setBackground(new java.awt.Color(255, 255, 255));
+        passTxt.setForeground(new java.awt.Color(153, 153, 153));
+        passTxt.setText("Password");
+        passTxt.setBorder(null);
+        getContentPane().add(passTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 428, 180, -1));
+
+        IDLine.setForeground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(IDLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 360, 210, 10));
+
+        IDTxt.setBackground(new java.awt.Color(255, 255, 255));
+        IDTxt.setForeground(new java.awt.Color(153, 153, 153));
+        IDTxt.setText("ID");
+        IDTxt.setBorder(null);
+        IDTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDTxtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(IDTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 338, 180, -1));
 
         logoBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoBlack.png"))); // NOI18N
         getContentPane().add(logoBlack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 140, 120, 80));
 
-        aTitle1.setFont(new java.awt.Font("Questrial", 1, 66)); // NOI18N
-        aTitle1.setForeground(new java.awt.Color(0, 0, 0));
-        aTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        aTitle1.setText("Skillbridge");
-        getContentPane().add(aTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, 330, -1));
+        appName.setFont(new java.awt.Font("Questrial", 1, 66)); // NOI18N
+        appName.setForeground(new java.awt.Color(0, 0, 0));
+        appName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        appName.setText("Skillbridge");
+        getContentPane().add(appName, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, 330, -1));
 
         bTitle.setFont(new java.awt.Font("Questrial", 0, 66)); // NOI18N
         bTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,9 +193,13 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void IDTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_IDTxtActionPerformed
+
+    private void accederBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accederBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accederBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -228,34 +237,34 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IDIcon;
+    private javax.swing.JSeparator IDLine;
+    private javax.swing.JTextField IDTxt;
     private javax.swing.JLabel aTitle;
-    private javax.swing.JLabel aTitle1;
+    private javax.swing.JLabel accederBtn;
+    private javax.swing.JLabel accederTxt;
+    private javax.swing.JLabel appName;
     private javax.swing.JLabel bTitle;
     private javax.swing.JLabel bc;
+    private javax.swing.JLabel blackMarker;
     private javax.swing.JLabel greenBoard;
     private javax.swing.JLabel ienvenidoTitle;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lockIcon;
     private javax.swing.JLabel loginBtn;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel logoBlack;
+    private javax.swing.JLabel manPic;
+    private javax.swing.JSeparator passLine;
+    private javax.swing.JPasswordField passTxt;
+    private javax.swing.JLabel registrarBtn;
+    private javax.swing.JLabel registrarTxt;
+    private javax.swing.JLabel shadow1;
+    private javax.swing.JLabel shadow2;
     private javax.swing.JLabel signupBtn;
     private javax.swing.JLabel skillbridgeName;
+    private javax.swing.JLabel starBig;
+    private javax.swing.JLabel starSmall;
     private javax.swing.JLabel whiteBoard;
+    private javax.swing.JLabel womanPic;
     // End of variables declaration//GEN-END:variables
 }
