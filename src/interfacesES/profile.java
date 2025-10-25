@@ -30,30 +30,30 @@ public class profile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        mainCont = new javax.swing.JPanel();
+        deleteBtn = new javax.swing.JLabel();
+        saveTxt = new javax.swing.JLabel();
+        saveBtn = new javax.swing.JLabel();
+        phoneTxt = new javax.swing.JTextField();
+        phoneTitle = new javax.swing.JLabel();
+        IDTxt = new javax.swing.JTextField();
+        IDTitle = new javax.swing.JLabel();
+        emailTxt = new javax.swing.JTextField();
+        emailTitle = new javax.swing.JLabel();
+        lastnameTxt = new javax.swing.JTextField();
+        lastnameTitle = new javax.swing.JLabel();
+        nameTxt = new javax.swing.JTextField();
+        nameTitle = new javax.swing.JLabel();
+        mainShadow = new javax.swing.JLabel();
+        menuBar = new javax.swing.JPanel();
+        appName = new javax.swing.JLabel();
+        infoBtn = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        logoutBtn = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        profileData = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -61,132 +61,132 @@ public class profile extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        header = new javax.swing.JPanel();
+        headerTitle = new javax.swing.JLabel();
+        headerShadow = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainCont.setBackground(new java.awt.Color(255, 255, 255));
+        mainCont.setForeground(new java.awt.Color(204, 204, 204));
+        mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deleteChanges.png"))); // NOI18N
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 239, 49));
+        deleteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deleteChanges.png"))); // NOI18N
+        mainCont.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 239, 49));
 
-        jLabel18.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Guardar cambios");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 425, -1, -1));
+        saveTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
+        saveTxt.setForeground(new java.awt.Color(255, 255, 255));
+        saveTxt.setText("Guardar cambios");
+        mainCont.add(saveTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 425, -1, -1));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saveChanges.png"))); // NOI18N
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 239, 49));
+        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saveChanges.png"))); // NOI18N
+        mainCont.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 239, 49));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        phoneTxt.setBackground(new java.awt.Color(255, 255, 255));
+        phoneTxt.setForeground(new java.awt.Color(102, 102, 102));
+        phoneTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                phoneTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 210, 33));
+        mainCont.add(phoneTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 210, 33));
 
-        jLabel16.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Celular");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+        phoneTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        phoneTitle.setForeground(new java.awt.Color(0, 0, 0));
+        phoneTitle.setText("Celular");
+        mainCont.add(phoneTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        IDTxt.setBackground(new java.awt.Color(255, 255, 255));
+        IDTxt.setForeground(new java.awt.Color(102, 102, 102));
+        IDTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                IDTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 33));
+        mainCont.add(IDTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 33));
 
-        jLabel15.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("ID Estudiantil");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 20));
+        IDTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        IDTitle.setForeground(new java.awt.Color(0, 0, 0));
+        IDTitle.setText("ID Estudiantil");
+        mainCont.add(IDTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 20));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        emailTxt.setBackground(new java.awt.Color(255, 255, 255));
+        emailTxt.setForeground(new java.awt.Color(102, 102, 102));
+        emailTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                emailTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 790, 33));
+        mainCont.add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 790, 33));
 
-        jLabel14.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("E-mail");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        emailTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        emailTitle.setForeground(new java.awt.Color(0, 0, 0));
+        emailTitle.setText("E-mail");
+        mainCont.add(emailTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 310, 33));
+        lastnameTxt.setBackground(new java.awt.Color(255, 255, 255));
+        lastnameTxt.setForeground(new java.awt.Color(102, 102, 102));
+        mainCont.add(lastnameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 310, 33));
 
-        jLabel13.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Apellidos");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 70, -1));
+        lastnameTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        lastnameTitle.setForeground(new java.awt.Color(0, 0, 0));
+        lastnameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lastnameTitle.setText("Apellidos");
+        mainCont.add(lastnameTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 70, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 330, 33));
+        nameTxt.setBackground(new java.awt.Color(255, 255, 255));
+        nameTxt.setForeground(new java.awt.Color(102, 102, 102));
+        mainCont.add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 330, 33));
 
-        jLabel12.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Nombres");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        nameTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        nameTitle.setForeground(new java.awt.Color(0, 0, 0));
+        nameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nameTitle.setText("Nombres");
+        mainCont.add(nameTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bodyInfo.png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 996, 537));
+        mainShadow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bodyInfo.png"))); // NOI18N
+        mainCont.add(mainShadow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 996, 537));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 1010, 600));
+        getContentPane().add(mainCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 1010, 600));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuBar.setBackground(new java.awt.Color(255, 255, 255));
+        menuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Questrial", 0, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Skillbridge");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        appName.setFont(new java.awt.Font("Questrial", 0, 30)); // NOI18N
+        appName.setForeground(new java.awt.Color(0, 0, 0));
+        appName.setText("Skillbridge");
+        menuBar.add(appName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        infoBtn.setBackground(new java.awt.Color(255, 255, 255));
+        infoBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(64, 174, 178));
         jLabel8.setText("Información");
-        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 10, -1, -1));
+        infoBtn.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 10, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowInfo.png"))); // NOI18N
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+        infoBtn.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 260, 40));
+        menuBar.add(infoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 260, 40));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Log out");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, -1, -1));
+        logoutBtn.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoutIcon.png"))); // NOI18N
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+        logoutBtn.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 260, 40));
+        menuBar.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 260, 40));
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        profileData.setBackground(new java.awt.Color(255, 255, 255));
+        profileData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,55 +199,55 @@ public class profile extends javax.swing.JFrame {
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backIcon.png"))); // NOI18N
         jPanel8.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 30));
 
-        jPanel9.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 0, 150, 30));
+        profileData.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 0, 150, 30));
 
         jLabel5.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(145, 145, 145));
         jLabel5.setText("Estudiante");
-        jPanel9.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 193, -1, -1));
+        profileData.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 193, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editPic.png"))); // NOI18N
-        jPanel9.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 40, 40));
+        profileData.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 40, 40));
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profilePic.png"))); // NOI18N
-        jPanel9.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 123, 123));
+        profileData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 123, 123));
 
         jLabel4.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Martín Berrío");
-        jPanel9.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
+        profileData.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
 
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 260, 250));
+        menuBar.add(profileData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 260, 250));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 710));
+        getContentPane().add(menuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 710));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.setBackground(new java.awt.Color(255, 255, 255));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Información personal");
-        jPanel7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 440, -1));
+        headerTitle.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
+        headerTitle.setForeground(new java.awt.Color(0, 0, 0));
+        headerTitle.setText("Información personal");
+        header.add(headerTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 440, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/headerInfo.png"))); // NOI18N
-        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 996, 70));
+        headerShadow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/headerInfo.png"))); // NOI18N
+        header.add(headerShadow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 996, 70));
 
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 110));
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_emailTxtActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void IDTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_IDTxtActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void phoneTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_phoneTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -410,17 +410,16 @@ public class profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel IDTitle;
+    private javax.swing.JTextField IDTxt;
+    private javax.swing.JLabel appName;
+    private javax.swing.JLabel deleteBtn;
+    private javax.swing.JLabel emailTitle;
+    private javax.swing.JTextField emailTxt;
+    private javax.swing.JPanel header;
+    private javax.swing.JLabel headerShadow;
+    private javax.swing.JLabel headerTitle;
+    private javax.swing.JPanel infoBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -431,18 +430,19 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel lastnameTitle;
+    private javax.swing.JTextField lastnameTxt;
+    private javax.swing.JPanel logoutBtn;
+    private javax.swing.JPanel mainCont;
+    private javax.swing.JLabel mainShadow;
+    private javax.swing.JPanel menuBar;
+    private javax.swing.JLabel nameTitle;
+    private javax.swing.JTextField nameTxt;
+    private javax.swing.JLabel phoneTitle;
+    private javax.swing.JTextField phoneTxt;
+    private javax.swing.JPanel profileData;
+    private javax.swing.JLabel saveBtn;
+    private javax.swing.JLabel saveTxt;
     // End of variables declaration//GEN-END:variables
 }

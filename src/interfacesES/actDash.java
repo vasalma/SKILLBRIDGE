@@ -30,215 +30,215 @@ public class actDash extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
-        jTabbedPane5 = new javax.swing.JTabbedPane();
-        jTabbedPane6 = new javax.swing.JTabbedPane();
-        jTabbedPane7 = new javax.swing.JTabbedPane();
+        sectionName = new javax.swing.JPanel();
+        completeTxt = new javax.swing.JLabel();
+        activesTxt = new javax.swing.JLabel();
+        allTxt = new javax.swing.JLabel();
+        actsTitle = new javax.swing.JLabel();
+        filterIcon = new javax.swing.JLabel();
+        listIcon = new javax.swing.JLabel();
+        allBtn = new javax.swing.JLabel();
+        activesBtn = new javax.swing.JLabel();
+        completeBtn = new javax.swing.JLabel();
+        menuBar = new javax.swing.JPanel();
+        appName = new javax.swing.JLabel();
+        dashBtn = new javax.swing.JPanel();
+        dashTxt = new javax.swing.JLabel();
+        dashIcon = new javax.swing.JLabel();
+        coursesBtn = new javax.swing.JPanel();
+        coursesTxt = new javax.swing.JLabel();
+        coursesIcon = new javax.swing.JLabel();
+        actsBtn = new javax.swing.JPanel();
+        actsTxt = new javax.swing.JLabel();
+        actsIcon = new javax.swing.JLabel();
+        logoutBtn = new javax.swing.JPanel();
+        logoutTxt = new javax.swing.JLabel();
+        logoutIcon = new javax.swing.JLabel();
+        header = new javax.swing.JPanel();
+        searchIcon = new javax.swing.JButton();
+        searchBar = new javax.swing.JTextField();
+        profilePic = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
+        configArrow = new javax.swing.JLabel();
+        mainCont = new javax.swing.JPanel();
+        tabbed = new javax.swing.JTabbedPane();
+        allTab = new javax.swing.JTabbedPane();
+        activesTab = new javax.swing.JTabbedPane();
+        completeTab = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        sectionName.setBackground(new java.awt.Color(153, 153, 153));
+        sectionName.setForeground(new java.awt.Color(204, 204, 204));
+        sectionName.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel21.setFont(new java.awt.Font("Open Sans", 0, 9)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Terminadas");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 90, 20));
+        completeTxt.setFont(new java.awt.Font("Open Sans", 0, 9)); // NOI18N
+        completeTxt.setForeground(new java.awt.Color(0, 0, 0));
+        completeTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        completeTxt.setText("Terminadas");
+        sectionName.add(completeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 90, 20));
 
-        jLabel20.setFont(new java.awt.Font("Open Sans", 0, 9)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("Activas");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 40, 20));
+        activesTxt.setFont(new java.awt.Font("Open Sans", 0, 9)); // NOI18N
+        activesTxt.setForeground(new java.awt.Color(0, 0, 0));
+        activesTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        activesTxt.setText("Activas");
+        sectionName.add(activesTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 40, 20));
 
-        jLabel10.setFont(new java.awt.Font("Open Sans", 1, 9)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Todas");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 50, 40, 20));
+        allTxt.setFont(new java.awt.Font("Open Sans", 1, 9)); // NOI18N
+        allTxt.setForeground(new java.awt.Color(255, 255, 255));
+        allTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        allTxt.setText("Todas");
+        sectionName.add(allTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 50, 40, 20));
 
-        jLabel11.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Mis actividades");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        actsTitle.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
+        actsTitle.setForeground(new java.awt.Color(0, 0, 0));
+        actsTitle.setText("Mis actividades");
+        sectionName.add(actsTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filter.png"))); // NOI18N
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 40, 40));
+        filterIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filter.png"))); // NOI18N
+        sectionName.add(filterIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 40, 40));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.png"))); // NOI18N
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 40, 40));
+        listIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.png"))); // NOI18N
+        sectionName.add(listIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 40, 40));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filterGreen.png"))); // NOI18N
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
+        allBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filterGreen.png"))); // NOI18N
+        sectionName.add(allBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filterGray.png"))); // NOI18N
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, 20));
+        activesBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filterGray.png"))); // NOI18N
+        sectionName.add(activesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, 20));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filterGraybigger.png"))); // NOI18N
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 89, 20));
+        completeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filterGraybigger.png"))); // NOI18N
+        sectionName.add(completeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 89, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 1010, 80));
+        getContentPane().add(sectionName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 1010, 80));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuBar.setBackground(new java.awt.Color(255, 255, 255));
+        menuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Questrial", 0, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Skillbridge");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        appName.setFont(new java.awt.Font("Questrial", 0, 30)); // NOI18N
+        appName.setForeground(new java.awt.Color(0, 0, 0));
+        appName.setText("Skillbridge");
+        menuBar.add(appName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dashBtn.setBackground(new java.awt.Color(255, 255, 255));
+        dashBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Dashboard");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, 80, -1));
+        dashTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        dashTxt.setForeground(new java.awt.Color(0, 0, 0));
+        dashTxt.setText("Dashboard");
+        dashBtn.add(dashTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, 80, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/houseBicon.png"))); // NOI18N
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+        dashIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/houseBicon.png"))); // NOI18N
+        dashBtn.add(dashIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 260, 40));
+        menuBar.add(dashBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 260, 40));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        coursesBtn.setBackground(new java.awt.Color(255, 255, 255));
+        coursesBtn.setForeground(new java.awt.Color(0, 0, 0));
+        coursesBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Cursos");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, 50, -1));
+        coursesTxt.setBackground(new java.awt.Color(255, 255, 255));
+        coursesTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        coursesTxt.setForeground(new java.awt.Color(0, 0, 0));
+        coursesTxt.setText("Cursos");
+        coursesBtn.add(coursesTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, 50, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hatBicon.png"))); // NOI18N
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+        coursesIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hatBicon.png"))); // NOI18N
+        coursesBtn.add(coursesIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 260, 40));
+        menuBar.add(coursesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 260, 40));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        actsBtn.setBackground(new java.awt.Color(255, 255, 255));
+        actsBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(64, 174, 178));
-        jLabel8.setText("Actividades");
-        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, -1, -1));
+        actsTxt.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        actsTxt.setForeground(new java.awt.Color(64, 174, 178));
+        actsTxt.setText("Actividades");
+        actsBtn.add(actsTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, -1, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/appleGicon.png"))); // NOI18N
-        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+        actsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/appleGicon.png"))); // NOI18N
+        actsBtn.add(actsIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 260, 40));
+        menuBar.add(actsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 260, 40));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Log out");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, -1, -1));
+        logoutTxt.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        logoutTxt.setForeground(new java.awt.Color(0, 0, 0));
+        logoutTxt.setText("Log out");
+        logoutBtn.add(logoutTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoutIcon.png"))); // NOI18N
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+        logoutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoutIcon.png"))); // NOI18N
+        logoutBtn.add(logoutIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 260, 40));
+        menuBar.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 260, 40));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 710));
+        getContentPane().add(menuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 710));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.setBackground(new java.awt.Color(255, 255, 255));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(145, 145, 145));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/searchIcon.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchIcon.setBackground(new java.awt.Color(145, 145, 145));
+        searchIcon.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        searchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/searchIcon.png"))); // NOI18N
+        searchIcon.setBorder(null);
+        searchIcon.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        searchIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchIconActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 50, 26));
+        header.add(searchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 50, 26));
 
-        jTextField1.setBackground(new java.awt.Color(145, 145, 145));
-        jTextField1.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(229, 229, 229));
-        jTextField1.setText("    Search");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        searchBar.setBackground(new java.awt.Color(145, 145, 145));
+        searchBar.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        searchBar.setForeground(new java.awt.Color(229, 229, 229));
+        searchBar.setText("    Search");
+        searchBar.setBorder(null);
+        searchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchBarActionPerformed(evt);
             }
         });
-        jPanel7.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 240, 26));
+        header.add(searchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 240, 26));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/men.png"))); // NOI18N
-        jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, -1, -1));
+        profilePic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/men.png"))); // NOI18N
+        header.add(profilePic, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Questrial", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Martin Berrio");
-        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 36, -1, -1));
+        userName.setFont(new java.awt.Font("Questrial", 0, 12)); // NOI18N
+        userName.setForeground(new java.awt.Color(0, 0, 0));
+        userName.setText("Martin Berrio");
+        header.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 36, -1, -1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowProfile.png"))); // NOI18N
-        jPanel7.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 34, 40, 20));
+        configArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowProfile.png"))); // NOI18N
+        header.add(configArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 34, 40, 20));
 
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
 
-        jPanel8.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainCont.setBackground(new java.awt.Color(102, 102, 102));
+        mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane4.addTab("tab1", jTabbedPane5);
-        jTabbedPane4.addTab("tab2", jTabbedPane6);
-        jTabbedPane4.addTab("tab3", jTabbedPane7);
+        tabbed.addTab("tab1", allTab);
+        tabbed.addTab("tab2", activesTab);
+        tabbed.addTab("tab3", completeTab);
 
-        jPanel8.add(jTabbedPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 550));
+        mainCont.add(tabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 550));
 
-        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 1010, 550));
+        getContentPane().add(mainCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 1010, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchBarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searchIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIconActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_searchIconActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,40 +337,40 @@ public class actDash extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JTabbedPane jTabbedPane6;
-    private javax.swing.JTabbedPane jTabbedPane7;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel activesBtn;
+    private javax.swing.JTabbedPane activesTab;
+    private javax.swing.JLabel activesTxt;
+    private javax.swing.JPanel actsBtn;
+    private javax.swing.JLabel actsIcon;
+    private javax.swing.JLabel actsTitle;
+    private javax.swing.JLabel actsTxt;
+    private javax.swing.JLabel allBtn;
+    private javax.swing.JTabbedPane allTab;
+    private javax.swing.JLabel allTxt;
+    private javax.swing.JLabel appName;
+    private javax.swing.JLabel completeBtn;
+    private javax.swing.JTabbedPane completeTab;
+    private javax.swing.JLabel completeTxt;
+    private javax.swing.JLabel configArrow;
+    private javax.swing.JPanel coursesBtn;
+    private javax.swing.JLabel coursesIcon;
+    private javax.swing.JLabel coursesTxt;
+    private javax.swing.JPanel dashBtn;
+    private javax.swing.JLabel dashIcon;
+    private javax.swing.JLabel dashTxt;
+    private javax.swing.JLabel filterIcon;
+    private javax.swing.JPanel header;
+    private javax.swing.JLabel listIcon;
+    private javax.swing.JPanel logoutBtn;
+    private javax.swing.JLabel logoutIcon;
+    private javax.swing.JLabel logoutTxt;
+    private javax.swing.JPanel mainCont;
+    private javax.swing.JPanel menuBar;
+    private javax.swing.JLabel profilePic;
+    private javax.swing.JTextField searchBar;
+    private javax.swing.JButton searchIcon;
+    private javax.swing.JPanel sectionName;
+    private javax.swing.JTabbedPane tabbed;
+    private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables
 }
