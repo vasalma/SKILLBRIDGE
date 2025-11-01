@@ -4,6 +4,8 @@
  */
 package interfacesES;
 
+import java.awt.Color;
+
 /**
  *
  * @author Mi PC
@@ -62,6 +64,16 @@ public class login extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Registrar.setBackground(new java.awt.Color(4, 174, 178));
+        Registrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                RegistrarMouseMoved(evt);
+            }
+        });
+        Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RegistrarMouseExited(evt);
+            }
+        });
         Registrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         registrarTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
@@ -72,6 +84,16 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 550, 210, 40));
 
         Acceder.setBackground(new java.awt.Color(4, 174, 178));
+        Acceder.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                AccederMouseMoved(evt);
+            }
+        });
+        Acceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AccederMouseExited(evt);
+            }
+        });
         Acceder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         accederTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
@@ -197,6 +219,25 @@ public class login extends javax.swing.JFrame {
     private void IDTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IDTxtActionPerformed
+
+    private void AccederMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccederMouseMoved
+        Acceder.setBackground(new Color(38, 114, 116));
+    }//GEN-LAST:event_AccederMouseMoved
+
+    private void AccederMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccederMouseExited
+
+        Acceder.setBackground(new Color(4, 174, 178));
+
+    }//GEN-LAST:event_AccederMouseExited
+
+    private void RegistrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseMoved
+        Registrar.setBackground(new Color(38, 114, 116));
+
+    }//GEN-LAST:event_RegistrarMouseMoved
+
+    private void RegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseExited
+        Registrar.setBackground(new Color(4, 174, 178));
+    }//GEN-LAST:event_RegistrarMouseExited
 
     /**
      * @param args the command line arguments
