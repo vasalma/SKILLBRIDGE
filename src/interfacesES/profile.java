@@ -18,7 +18,7 @@ public class profile extends javax.swing.JFrame {
      */
     public profile() {
         initComponents();
-        
+
     }
 
     /**
@@ -392,12 +392,14 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_restablecerTxtMouseMoved
 
     private void deleteTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTxtMouseMoved
-
+        deleteBtn.setBackground(new Color(4, 174, 178));
+        deleteTxt.setForeground(new Color(255, 255, 255));
 
     }//GEN-LAST:event_deleteTxtMouseMoved
 
     private void deleteTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTxtMouseExited
-
+        deleteBtn.setBackground(new Color(247, 247, 247));
+        deleteTxt.setForeground(new Color(4, 174, 178));
 
     }//GEN-LAST:event_deleteTxtMouseExited
 
@@ -408,7 +410,7 @@ public class profile extends javax.swing.JFrame {
 
     private void deleteBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseExited
         deleteBtn.setBackground(new Color(247, 247, 247));
-        deleteTxt.setForeground(new Color(4,174,178));
+        deleteTxt.setForeground(new Color(4, 174, 178));
 
     }//GEN-LAST:event_deleteBtnMouseExited
 
