@@ -27,6 +27,10 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Registrar = new javax.swing.JPanel();
+        registrarTxt = new javax.swing.JLabel();
+        Acceder = new javax.swing.JPanel();
+        accederTxt = new javax.swing.JLabel();
         lockIcon = new javax.swing.JLabel();
         IDIcon = new javax.swing.JLabel();
         aTitle = new javax.swing.JLabel();
@@ -37,10 +41,6 @@ public class login extends javax.swing.JFrame {
         manPic = new javax.swing.JLabel();
         shadow2 = new javax.swing.JLabel();
         shadow1 = new javax.swing.JLabel();
-        registrarTxt = new javax.swing.JLabel();
-        accederTxt = new javax.swing.JLabel();
-        registrarBtn = new javax.swing.JLabel();
-        accederBtn = new javax.swing.JLabel();
         passLine = new javax.swing.JSeparator();
         passTxt = new javax.swing.JPasswordField();
         IDLine = new javax.swing.JSeparator();
@@ -56,9 +56,30 @@ public class login extends javax.swing.JFrame {
         greenBoard = new javax.swing.JLabel();
         whiteBoard = new javax.swing.JLabel();
         bc = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Registrar.setBackground(new java.awt.Color(4, 174, 178));
+        Registrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        registrarTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
+        registrarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        registrarTxt.setText("Registrar");
+        Registrar.add(registrarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 60, -1));
+
+        getContentPane().add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 550, 210, 40));
+
+        Acceder.setBackground(new java.awt.Color(4, 174, 178));
+        Acceder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        accederTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
+        accederTxt.setForeground(new java.awt.Color(255, 255, 255));
+        accederTxt.setText("Acceder");
+        Acceder.add(accederTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+
+        getContentPane().add(Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 490, 210, 40));
 
         lockIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lockIcon.png"))); // NOI18N
         getContentPane().add(lockIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 30, 30));
@@ -96,27 +117,6 @@ public class login extends javax.swing.JFrame {
         shadow1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenShadow.png"))); // NOI18N
         shadow1.setText("jLabel9");
         getContentPane().add(shadow1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 158, 64));
-
-        registrarTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
-        registrarTxt.setForeground(new java.awt.Color(255, 255, 255));
-        registrarTxt.setText("Registrar");
-        getContentPane().add(registrarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 584, 60, -1));
-
-        accederTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
-        accederTxt.setForeground(new java.awt.Color(255, 255, 255));
-        accederTxt.setText("Acceder");
-        getContentPane().add(accederTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 524, -1, -1));
-
-        registrarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
-        getContentPane().add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 570, 210, 40));
-
-        accederBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
-        accederBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                accederBtnMouseClicked(evt);
-            }
-        });
-        getContentPane().add(accederBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 510, 210, 40));
 
         passLine.setForeground(new java.awt.Color(204, 204, 204));
         getContentPane().add(passLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 450, 210, 10));
@@ -189,6 +189,7 @@ public class login extends javax.swing.JFrame {
 
         bc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bc.png"))); // NOI18N
         getContentPane().add(bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 0, 1290, 710));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -196,10 +197,6 @@ public class login extends javax.swing.JFrame {
     private void IDTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IDTxtActionPerformed
-
-    private void accederBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accederBtnMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accederBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -237,11 +234,12 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Acceder;
     private javax.swing.JLabel IDIcon;
     private javax.swing.JSeparator IDLine;
     private javax.swing.JTextField IDTxt;
+    private javax.swing.JPanel Registrar;
     private javax.swing.JLabel aTitle;
-    private javax.swing.JLabel accederBtn;
     private javax.swing.JLabel accederTxt;
     private javax.swing.JLabel appName;
     private javax.swing.JLabel bTitle;
@@ -249,6 +247,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel blackMarker;
     private javax.swing.JLabel greenBoard;
     private javax.swing.JLabel ienvenidoTitle;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lockIcon;
     private javax.swing.JLabel loginBtn;
     private javax.swing.JLabel logo;
@@ -256,7 +255,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel manPic;
     private javax.swing.JSeparator passLine;
     private javax.swing.JPasswordField passTxt;
-    private javax.swing.JLabel registrarBtn;
     private javax.swing.JLabel registrarTxt;
     private javax.swing.JLabel shadow1;
     private javax.swing.JLabel shadow2;
