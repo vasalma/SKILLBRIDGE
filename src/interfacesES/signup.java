@@ -30,7 +30,7 @@ public class signup extends javax.swing.JFrame {
     private void initComponents() {
 
         starMini = new javax.swing.JLabel();
-        passTxt = new javax.swing.JTextField();
+        passTxt = new javax.swing.JPasswordField();
         registrarBtn = new javax.swing.JPanel();
         registrarTxt = new javax.swing.JLabel();
         arrow = new javax.swing.JLabel();
@@ -42,7 +42,7 @@ public class signup extends javax.swing.JFrame {
         woman1 = new javax.swing.JLabel();
         manGrad = new javax.swing.JLabel();
         starBig = new javax.swing.JLabel();
-        passAgaintxt = new javax.swing.JTextField();
+        passAgaintxt = new javax.swing.JPasswordField();
         passAgaintitle = new javax.swing.JLabel();
         phoneTxt = new javax.swing.JTextField();
         phoneTitle = new javax.swing.JLabel();
@@ -75,13 +75,14 @@ public class signup extends javax.swing.JFrame {
         getContentPane().add(starMini, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 57, 56));
 
         passTxt.setBackground(new java.awt.Color(247, 247, 247));
-        passTxt.setForeground(new java.awt.Color(102, 102, 102));
-        passTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passTxtActionPerformed(evt);
+        passTxt.setForeground(new java.awt.Color(153, 153, 153));
+        passTxt.setText("Password");
+        passTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passTxtMousePressed(evt);
             }
         });
-        getContentPane().add(passTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 270, 33));
+        getContentPane().add(passTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 270, 30));
 
         registrarBtn.setBackground(new java.awt.Color(4, 174, 178));
         registrarBtn.setForeground(new java.awt.Color(4, 174, 178));
@@ -142,13 +143,14 @@ public class signup extends javax.swing.JFrame {
         getContentPane().add(starBig, new org.netbeans.lib.awtextra.AbsoluteConstraints(1004, 380, 100, 100));
 
         passAgaintxt.setBackground(new java.awt.Color(247, 247, 247));
-        passAgaintxt.setForeground(new java.awt.Color(102, 102, 102));
-        passAgaintxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passAgaintxtActionPerformed(evt);
+        passAgaintxt.setForeground(new java.awt.Color(153, 153, 153));
+        passAgaintxt.setText("Password");
+        passAgaintxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passAgaintxtMousePressed(evt);
             }
         });
-        getContentPane().add(passAgaintxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 270, 33));
+        getContentPane().add(passAgaintxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 270, 30));
 
         passAgaintitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
         passAgaintitle.setForeground(new java.awt.Color(102, 102, 102));
@@ -268,10 +270,6 @@ public class signup extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passAgaintxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passAgaintxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passAgaintxtActionPerformed
-
     private void phoneTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_phoneTxtActionPerformed
@@ -279,10 +277,6 @@ public class signup extends javax.swing.JFrame {
     private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailTxtActionPerformed
-
-    private void passTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passTxtActionPerformed
 
     private void registrarBtnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseMoved
         registrarBtn.setBackground(new Color(38, 114, 116));
@@ -301,6 +295,18 @@ public class signup extends javax.swing.JFrame {
         login nuevaventana = new login(); 
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_registrarBtnMouseClicked
+
+    private void passTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTxtMousePressed
+        if (String.valueOf(passTxt.getPassword()).equals("Password")) {
+            passTxt.setText("");
+        }
+    }//GEN-LAST:event_passTxtMousePressed
+
+    private void passAgaintxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passAgaintxtMousePressed
+        if (String.valueOf(passAgaintxt.getPassword()).equals("Password")) {
+            passAgaintxt.setText("");
+        }
+    }//GEN-LAST:event_passAgaintxtMousePressed
 
     /**
      * @param args the command line arguments
@@ -361,9 +367,9 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel nameTitle;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JLabel passAgaintitle;
-    private javax.swing.JTextField passAgaintxt;
+    private javax.swing.JPasswordField passAgaintxt;
     private javax.swing.JLabel passTitle;
-    private javax.swing.JTextField passTxt;
+    private javax.swing.JPasswordField passTxt;
     private javax.swing.JLabel phoneTitle;
     private javax.swing.JTextField phoneTxt;
     private javax.swing.JLabel phraseStart;

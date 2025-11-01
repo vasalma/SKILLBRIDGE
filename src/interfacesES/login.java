@@ -153,6 +153,11 @@ public class login extends javax.swing.JFrame {
         passTxt.setForeground(new java.awt.Color(153, 153, 153));
         passTxt.setText("Password");
         passTxt.setBorder(null);
+        passTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passTxtMousePressed(evt);
+            }
+        });
         getContentPane().add(passTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 428, 180, -1));
 
         IDLine.setForeground(new java.awt.Color(204, 204, 204));
@@ -162,6 +167,11 @@ public class login extends javax.swing.JFrame {
         IDTxt.setForeground(new java.awt.Color(153, 153, 153));
         IDTxt.setText("ID");
         IDTxt.setBorder(null);
+        IDTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                IDTxtMousePressed(evt);
+            }
+        });
         IDTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDTxtActionPerformed(evt);
@@ -260,6 +270,26 @@ public class login extends javax.swing.JFrame {
         dashboard nuevaventana = new dashboard(); 
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_AccederMouseClicked
+
+    private void IDTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDTxtMousePressed
+        if(IDTxt.getText().equals("ID")){
+            IDTxt.setText("");
+        }
+        
+        if (String.valueOf(passTxt.getPassword()).isEmpty()) {
+            passTxt.setText("Password");
+        }
+    }//GEN-LAST:event_IDTxtMousePressed
+
+    private void passTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTxtMousePressed
+        if (String.valueOf(passTxt.getPassword()).equals("Password")) {
+            passTxt.setText("");
+        }
+
+        if (IDTxt.getText().isEmpty()) {
+            IDTxt.setText("ID");
+        }
+    }//GEN-LAST:event_passTxtMousePressed
 
     /**
      * @param args the command line arguments
