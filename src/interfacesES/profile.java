@@ -94,7 +94,7 @@ public class profile extends javax.swing.JFrame {
         guardarTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
         guardarTxt.setForeground(new java.awt.Color(255, 255, 255));
         guardarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        guardarTxt.setText("Restablecer contraseña");
+        guardarTxt.setText("Guardar contraseña");
         guardarBtn.add(guardarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
 
         mainCont.add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 280, 50));
@@ -120,6 +120,11 @@ public class profile extends javax.swing.JFrame {
         restablecerTxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 restablecerTxtMouseMoved(evt);
+            }
+        });
+        restablecerTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                restablecerTxtMouseExited(evt);
             }
         });
         restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
@@ -388,7 +393,7 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_restablecerBtnMouseExited
 
     private void restablecerTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseMoved
-        // TODO add your handling code here:
+        restablecerBtn.setBackground(new Color(145, 145, 145));
     }//GEN-LAST:event_restablecerTxtMouseMoved
 
     private void deleteTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTxtMouseMoved
@@ -413,6 +418,10 @@ public class profile extends javax.swing.JFrame {
         deleteTxt.setForeground(new Color(4, 174, 178));
 
     }//GEN-LAST:event_deleteBtnMouseExited
+
+    private void restablecerTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseExited
+        restablecerBtn.setBackground(new Color(221, 224, 229));
+    }//GEN-LAST:event_restablecerTxtMouseExited
 
     /**
      * @param args the command line arguments
