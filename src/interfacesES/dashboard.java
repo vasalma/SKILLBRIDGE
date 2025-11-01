@@ -170,7 +170,7 @@ public class dashboard extends javax.swing.JFrame {
         userName.setFont(new java.awt.Font("Questrial", 0, 12)); // NOI18N
         userName.setForeground(new java.awt.Color(0, 0, 0));
         userName.setText("Martin Berrio");
-        header.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 36, -1, -1));
+        header.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 36, 70, -1));
 
         configArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowProfile.png"))); // NOI18N
         header.add(configArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 34, 40, 20));

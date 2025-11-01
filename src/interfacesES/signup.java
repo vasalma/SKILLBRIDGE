@@ -28,9 +28,9 @@ public class signup extends javax.swing.JFrame {
     private void initComponents() {
 
         starMini = new javax.swing.JLabel();
-        registrarTxt = new javax.swing.JLabel();
-        registrarBtn = new javax.swing.JLabel();
         passTxt = new javax.swing.JTextField();
+        registrarBtn = new javax.swing.JPanel();
+        registrarTxt = new javax.swing.JLabel();
         arrow = new javax.swing.JLabel();
         passTitle = new javax.swing.JLabel();
         phraseStart = new javax.swing.JLabel();
@@ -72,14 +72,6 @@ public class signup extends javax.swing.JFrame {
         starMini.setText("jLabel20");
         getContentPane().add(starMini, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 57, 56));
 
-        registrarTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
-        registrarTxt.setForeground(new java.awt.Color(255, 255, 255));
-        registrarTxt.setText("Registrar");
-        getContentPane().add(registrarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 570, 60, -1));
-
-        registrarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/greenBtn.png"))); // NOI18N
-        getContentPane().add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 560, 210, 40));
-
         passTxt.setBackground(new java.awt.Color(247, 247, 247));
         passTxt.setForeground(new java.awt.Color(102, 102, 102));
         passTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +80,19 @@ public class signup extends javax.swing.JFrame {
             }
         });
         getContentPane().add(passTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 270, 33));
+
+        registrarBtn.setBackground(new java.awt.Color(4, 174, 178));
+        registrarBtn.setForeground(new java.awt.Color(4, 174, 178));
+        registrarBtn.setAutoscrolls(true);
+        registrarBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        registrarTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
+        registrarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        registrarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registrarTxt.setText("Registrar");
+        registrarBtn.add(registrarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -5, 210, 50));
+
+        getContentPane().add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 560, 210, 40));
 
         arrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.png"))); // NOI18N
         getContentPane().add(arrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 540, 96, 60));
@@ -329,7 +334,7 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel phoneTitle;
     private javax.swing.JTextField phoneTxt;
     private javax.swing.JLabel phraseStart;
-    private javax.swing.JLabel registrarBtn;
+    private javax.swing.JPanel registrarBtn;
     private javax.swing.JLabel registrarTxt;
     private javax.swing.JLabel signupBtn;
     private javax.swing.JLabel skillbridgeName;
