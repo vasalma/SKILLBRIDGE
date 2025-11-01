@@ -70,6 +70,9 @@ public class login extends javax.swing.JFrame {
             }
         });
         Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegistrarMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 RegistrarMouseExited(evt);
             }
@@ -238,6 +241,14 @@ public class login extends javax.swing.JFrame {
     private void RegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseExited
         Registrar.setBackground(new Color(4, 174, 178));
     }//GEN-LAST:event_RegistrarMouseExited
+
+    private void RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        signup nuevaventana = new signup(); 
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_RegistrarMouseClicked
 
     /**
      * @param args the command line arguments
