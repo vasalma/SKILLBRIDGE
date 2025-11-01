@@ -90,7 +90,7 @@ public class signup extends javax.swing.JFrame {
         registrarTxt.setForeground(new java.awt.Color(255, 255, 255));
         registrarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrarTxt.setText("Registrar");
-        registrarBtn.add(registrarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -5, 210, 50));
+        registrarBtn.add(registrarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 170, 40));
 
         getContentPane().add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 560, 210, 40));
 

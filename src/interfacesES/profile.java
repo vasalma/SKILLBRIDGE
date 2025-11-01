@@ -31,9 +31,14 @@ public class profile extends javax.swing.JFrame {
     private void initComponents() {
 
         mainCont = new javax.swing.JPanel();
-        deleteBtn = new javax.swing.JLabel();
+        guardarBtn = new javax.swing.JPanel();
+        guardarTxt = new javax.swing.JLabel();
+        restablecerBtn = new javax.swing.JPanel();
+        restablecerTxt = new javax.swing.JLabel();
+        deleteBtn = new javax.swing.JPanel();
+        deleteTxt = new javax.swing.JLabel();
+        saveBtn = new javax.swing.JPanel();
         saveTxt = new javax.swing.JLabel();
-        saveBtn = new javax.swing.JLabel();
         phoneTxt = new javax.swing.JTextField();
         phoneTitle = new javax.swing.JLabel();
         IDTxt = new javax.swing.JTextField();
@@ -73,16 +78,53 @@ public class profile extends javax.swing.JFrame {
         mainCont.setForeground(new java.awt.Color(204, 204, 204));
         mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        deleteBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deleteChanges.png"))); // NOI18N
-        mainCont.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 239, 49));
+        guardarBtn.setBackground(new java.awt.Color(64, 174, 178));
+        guardarBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        guardarTxt.setBackground(new java.awt.Color(247, 247, 247));
+        guardarTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
+        guardarTxt.setForeground(new java.awt.Color(255, 255, 255));
+        guardarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        guardarTxt.setText("Restablecer contraseña");
+        guardarBtn.add(guardarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
+
+        mainCont.add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 280, 50));
+
+        restablecerBtn.setBackground(new java.awt.Color(221, 224, 229));
+        restablecerBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        restablecerTxt.setBackground(new java.awt.Color(247, 247, 247));
+        restablecerTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
+        restablecerTxt.setForeground(new java.awt.Color(255, 255, 255));
+        restablecerTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        restablecerTxt.setText("Restablecer contraseña");
+        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
+
+        mainCont.add(restablecerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 280, 50));
+
+        deleteBtn.setBackground(new java.awt.Color(247, 247, 247));
+        deleteBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(64, 174, 178), 2));
+        deleteBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        deleteTxt.setBackground(new java.awt.Color(247, 247, 247));
+        deleteTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
+        deleteTxt.setForeground(new java.awt.Color(64, 174, 178));
+        deleteTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteTxt.setText("Descartar cambios");
+        deleteBtn.add(deleteTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 200, 50));
+
+        mainCont.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 240, 50));
+
+        saveBtn.setBackground(new java.awt.Color(4, 174, 178));
+        saveBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         saveTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
         saveTxt.setForeground(new java.awt.Color(255, 255, 255));
+        saveTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         saveTxt.setText("Guardar cambios");
-        mainCont.add(saveTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 425, -1, -1));
+        saveBtn.add(saveTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, 50));
 
-        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saveChanges.png"))); // NOI18N
-        mainCont.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 239, 49));
+        mainCont.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 240, 50));
 
         phoneTxt.setBackground(new java.awt.Color(255, 255, 255));
         phoneTxt.setForeground(new java.awt.Color(102, 102, 102));
@@ -413,9 +455,12 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel IDTitle;
     private javax.swing.JTextField IDTxt;
     private javax.swing.JLabel appName;
-    private javax.swing.JLabel deleteBtn;
+    private javax.swing.JPanel deleteBtn;
+    private javax.swing.JLabel deleteTxt;
     private javax.swing.JLabel emailTitle;
     private javax.swing.JTextField emailTxt;
+    private javax.swing.JPanel guardarBtn;
+    private javax.swing.JLabel guardarTxt;
     private javax.swing.JPanel header;
     private javax.swing.JLabel headerShadow;
     private javax.swing.JLabel headerTitle;
@@ -442,7 +487,9 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel phoneTitle;
     private javax.swing.JTextField phoneTxt;
     private javax.swing.JPanel profileData;
-    private javax.swing.JLabel saveBtn;
+    private javax.swing.JPanel restablecerBtn;
+    private javax.swing.JLabel restablecerTxt;
+    private javax.swing.JPanel saveBtn;
     private javax.swing.JLabel saveTxt;
     // End of variables declaration//GEN-END:variables
 }
