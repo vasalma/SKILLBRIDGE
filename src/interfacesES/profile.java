@@ -4,8 +4,8 @@
  */
 package interfacesES;
 
+import java.awt.Color;
 import javax.swing.UIManager;
-
 
 /**
  *
@@ -55,9 +55,6 @@ public class profile extends javax.swing.JFrame {
         infoBtn = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        logoutBtn = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         profileData = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
@@ -66,6 +63,9 @@ public class profile extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        logoutBtn = new javax.swing.JPanel();
+        logoutTxt = new javax.swing.JLabel();
+        logoutIcon = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         headerTitle = new javax.swing.JLabel();
         headerShadow = new javax.swing.JLabel();
@@ -75,10 +75,19 @@ public class profile extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mainCont.setBackground(new java.awt.Color(255, 255, 255));
-        mainCont.setForeground(new java.awt.Color(204, 204, 204));
         mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         guardarBtn.setBackground(new java.awt.Color(64, 174, 178));
+        guardarBtn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                guardarBtnMouseMoved(evt);
+            }
+        });
+        guardarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                guardarBtnMouseExited(evt);
+            }
+        });
         guardarBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         guardarTxt.setBackground(new java.awt.Color(247, 247, 247));
@@ -91,6 +100,16 @@ public class profile extends javax.swing.JFrame {
         mainCont.add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 280, 50));
 
         restablecerBtn.setBackground(new java.awt.Color(221, 224, 229));
+        restablecerBtn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                restablecerBtnMouseMoved(evt);
+            }
+        });
+        restablecerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                restablecerBtnMouseExited(evt);
+            }
+        });
         restablecerBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         restablecerTxt.setBackground(new java.awt.Color(247, 247, 247));
@@ -98,12 +117,27 @@ public class profile extends javax.swing.JFrame {
         restablecerTxt.setForeground(new java.awt.Color(255, 255, 255));
         restablecerTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         restablecerTxt.setText("Restablecer contraseña");
+        restablecerTxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                restablecerTxtMouseMoved(evt);
+            }
+        });
         restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
 
         mainCont.add(restablecerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 280, 50));
 
         deleteBtn.setBackground(new java.awt.Color(247, 247, 247));
         deleteBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(64, 174, 178), 2));
+        deleteBtn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                deleteBtnMouseMoved(evt);
+            }
+        });
+        deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteBtnMouseExited(evt);
+            }
+        });
         deleteBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         deleteTxt.setBackground(new java.awt.Color(247, 247, 247));
@@ -111,11 +145,31 @@ public class profile extends javax.swing.JFrame {
         deleteTxt.setForeground(new java.awt.Color(64, 174, 178));
         deleteTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         deleteTxt.setText("Descartar cambios");
+        deleteTxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                deleteTxtMouseMoved(evt);
+            }
+        });
+        deleteTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteTxtMouseExited(evt);
+            }
+        });
         deleteBtn.add(deleteTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 200, 50));
 
         mainCont.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 240, 50));
 
         saveBtn.setBackground(new java.awt.Color(4, 174, 178));
+        saveBtn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                saveBtnMouseMoved(evt);
+            }
+        });
+        saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                saveBtnMouseExited(evt);
+            }
+        });
         saveBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         saveTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
@@ -214,19 +268,6 @@ public class profile extends javax.swing.JFrame {
 
         menuBar.add(infoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 260, 40));
 
-        logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
-        logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Log out");
-        logoutBtn.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, -1, -1));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoutIcon.png"))); // NOI18N
-        logoutBtn.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
-
-        menuBar.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 260, 40));
-
         profileData.setBackground(new java.awt.Color(255, 255, 255));
         profileData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -261,6 +302,24 @@ public class profile extends javax.swing.JFrame {
 
         menuBar.add(profileData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 260, 250));
 
+        logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+        logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logoutTxt.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        logoutTxt.setForeground(new java.awt.Color(0, 0, 0));
+        logoutTxt.setText("Log out");
+        logoutBtn.add(logoutTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, -1, -1));
+
+        logoutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoutIcon.png"))); // NOI18N
+        logoutBtn.add(logoutIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+
+        menuBar.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 260, 40));
+
         getContentPane().add(menuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 710));
 
         header.setBackground(new java.awt.Color(255, 255, 255));
@@ -290,6 +349,68 @@ public class profile extends javax.swing.JFrame {
     private void phoneTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_phoneTxtActionPerformed
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva
+        login nuevaventana = new login();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void saveBtnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseMoved
+        saveBtn.setBackground(new Color(38, 114, 116));
+    }//GEN-LAST:event_saveBtnMouseMoved
+
+    private void saveBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseExited
+        saveBtn.setBackground(new Color(4, 174, 178));
+
+    }//GEN-LAST:event_saveBtnMouseExited
+
+    private void guardarBtnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBtnMouseMoved
+        guardarBtn.setBackground(new Color(38, 114, 116));
+
+    }//GEN-LAST:event_guardarBtnMouseMoved
+
+    private void guardarBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBtnMouseExited
+        guardarBtn.setBackground(new Color(4, 174, 178));
+
+    }//GEN-LAST:event_guardarBtnMouseExited
+
+    private void restablecerBtnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseMoved
+        restablecerBtn.setBackground(new Color(145, 145, 145));
+
+    }//GEN-LAST:event_restablecerBtnMouseMoved
+
+    private void restablecerBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseExited
+        restablecerBtn.setBackground(new Color(221, 224, 229));
+
+    }//GEN-LAST:event_restablecerBtnMouseExited
+
+    private void restablecerTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restablecerTxtMouseMoved
+
+    private void deleteTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTxtMouseMoved
+
+
+    }//GEN-LAST:event_deleteTxtMouseMoved
+
+    private void deleteTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTxtMouseExited
+
+
+    }//GEN-LAST:event_deleteTxtMouseExited
+
+    private void deleteBtnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseMoved
+        deleteBtn.setBackground(new Color(4, 174, 178));
+        deleteTxt.setForeground(new Color(255, 255, 255));
+    }//GEN-LAST:event_deleteBtnMouseMoved
+
+    private void deleteBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseExited
+        deleteBtn.setBackground(new Color(247, 247, 247));
+        deleteTxt.setForeground(new Color(4,174,178));
+
+    }//GEN-LAST:event_deleteBtnMouseExited
 
     /**
      * @param args the command line arguments
@@ -465,7 +586,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel headerShadow;
     private javax.swing.JLabel headerTitle;
     private javax.swing.JPanel infoBtn;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -473,12 +593,13 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel lastnameTitle;
     private javax.swing.JTextField lastnameTxt;
     private javax.swing.JPanel logoutBtn;
+    private javax.swing.JLabel logoutIcon;
+    private javax.swing.JLabel logoutTxt;
     private javax.swing.JPanel mainCont;
     private javax.swing.JLabel mainShadow;
     private javax.swing.JPanel menuBar;
