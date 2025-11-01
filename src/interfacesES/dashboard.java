@@ -53,13 +53,13 @@ public class dashboard extends javax.swing.JFrame {
         profilePic = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
         configArrow = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mainCont.setBackground(new java.awt.Color(153, 153, 153));
-        mainCont.setForeground(new java.awt.Color(204, 204, 204));
         mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         actsHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
@@ -97,6 +97,11 @@ public class dashboard extends javax.swing.JFrame {
 
         coursesBtn.setBackground(new java.awt.Color(255, 255, 255));
         coursesBtn.setForeground(new java.awt.Color(0, 0, 0));
+        coursesBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coursesBtnMouseClicked(evt);
+            }
+        });
         coursesBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         coursesTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -110,6 +115,11 @@ public class dashboard extends javax.swing.JFrame {
         menuBar.add(coursesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 260, 40));
 
         actsBtn.setBackground(new java.awt.Color(255, 255, 255));
+        actsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actsBtnMouseClicked(evt);
+            }
+        });
         actsBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         actsTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -123,6 +133,11 @@ public class dashboard extends javax.swing.JFrame {
         menuBar.add(actsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 260, 40));
 
         logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
         logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logoutTxt.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
@@ -175,6 +190,15 @@ public class dashboard extends javax.swing.JFrame {
         configArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowProfile.png"))); // NOI18N
         header.add(configArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 34, 40, 20));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 150, 40));
+
         getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
 
         pack();
@@ -187,6 +211,37 @@ public class dashboard extends javax.swing.JFrame {
     private void searchIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIconActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchIconActionPerformed
+
+    private void coursesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coursesBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        cursosDash nuevaventana = new cursosDash(); 
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_coursesBtnMouseClicked
+
+    private void actsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actsBtnMouseClicked
+ //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        actDash nuevaventana = new actDash(); 
+        nuevaventana.setVisible(true);    }//GEN-LAST:event_actsBtnMouseClicked
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+          //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        login nuevaventana = new login();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+          //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        profile nuevaventana = new profile();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -238,6 +293,7 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel dashIcon;
     private javax.swing.JLabel dashTxt;
     private javax.swing.JPanel header;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel logoutBtn;
     private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel logoutTxt;

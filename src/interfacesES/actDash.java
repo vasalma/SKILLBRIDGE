@@ -6,7 +6,6 @@ package interfacesES;
 
 import javax.swing.UIManager;
 
-
 /**
  *
  * @author Mi PC
@@ -18,7 +17,7 @@ public class actDash extends javax.swing.JFrame {
      */
     public actDash() {
         initComponents();
-        
+
     }
 
     /**
@@ -60,6 +59,7 @@ public class actDash extends javax.swing.JFrame {
         profilePic = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
         configArrow = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         mainCont = new javax.swing.JPanel();
         tabbed = new javax.swing.JTabbedPane();
         allTab = new javax.swing.JTabbedPane();
@@ -71,7 +71,6 @@ public class actDash extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         sectionName.setBackground(new java.awt.Color(153, 153, 153));
-        sectionName.setForeground(new java.awt.Color(204, 204, 204));
         sectionName.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         completeTxt.setFont(new java.awt.Font("Open Sans", 0, 9)); // NOI18N
@@ -123,6 +122,11 @@ public class actDash extends javax.swing.JFrame {
         menuBar.add(appName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         dashBtn.setBackground(new java.awt.Color(255, 255, 255));
+        dashBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashBtnMouseClicked(evt);
+            }
+        });
         dashBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dashTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -137,6 +141,11 @@ public class actDash extends javax.swing.JFrame {
 
         coursesBtn.setBackground(new java.awt.Color(255, 255, 255));
         coursesBtn.setForeground(new java.awt.Color(0, 0, 0));
+        coursesBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coursesBtnMouseClicked(evt);
+            }
+        });
         coursesBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         coursesTxt.setBackground(new java.awt.Color(255, 255, 255));
@@ -164,6 +173,11 @@ public class actDash extends javax.swing.JFrame {
         menuBar.add(actsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 260, 40));
 
         logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
         logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logoutTxt.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
@@ -216,6 +230,15 @@ public class actDash extends javax.swing.JFrame {
         configArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowProfile.png"))); // NOI18N
         header.add(configArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 34, 40, 20));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 150, 40));
+
         getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
 
         mainCont.setBackground(new java.awt.Color(102, 102, 102));
@@ -239,6 +262,37 @@ public class actDash extends javax.swing.JFrame {
     private void searchIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIconActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchIconActionPerformed
+
+    private void coursesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coursesBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        cursosDash nuevaventana = new cursosDash();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_coursesBtnMouseClicked
+
+    private void dashBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        dashboard nuevaventana = new dashboard();
+        nuevaventana.setVisible(true);    }//GEN-LAST:event_dashBtnMouseClicked
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        login nuevaventana = new login();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva
+        profile nuevaventana = new profile();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -360,6 +414,7 @@ public class actDash extends javax.swing.JFrame {
     private javax.swing.JLabel dashTxt;
     private javax.swing.JLabel filterIcon;
     private javax.swing.JPanel header;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel listIcon;
     private javax.swing.JPanel logoutBtn;
     private javax.swing.JLabel logoutIcon;
