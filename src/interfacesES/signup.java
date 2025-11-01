@@ -4,6 +4,8 @@
  */
 package interfacesES;
 
+import java.awt.Color;
+
 /**
  *
  * @author Mi PC
@@ -84,6 +86,19 @@ public class signup extends javax.swing.JFrame {
         registrarBtn.setBackground(new java.awt.Color(4, 174, 178));
         registrarBtn.setForeground(new java.awt.Color(4, 174, 178));
         registrarBtn.setAutoscrolls(true);
+        registrarBtn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                registrarBtnMouseMoved(evt);
+            }
+        });
+        registrarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registrarBtnMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrarBtnMouseExited(evt);
+            }
+        });
         registrarBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         registrarTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
@@ -268,6 +283,24 @@ public class signup extends javax.swing.JFrame {
     private void passTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passTxtActionPerformed
+
+    private void registrarBtnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseMoved
+        registrarBtn.setBackground(new Color(38, 114, 116));
+
+    }//GEN-LAST:event_registrarBtnMouseMoved
+
+    private void registrarBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseExited
+        registrarBtn.setBackground(new Color(4, 174, 178));
+
+    }//GEN-LAST:event_registrarBtnMouseExited
+
+    private void registrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseClicked
+      //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        login nuevaventana = new login(); 
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_registrarBtnMouseClicked
 
     /**
      * @param args the command line arguments

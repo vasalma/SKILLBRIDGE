@@ -93,6 +93,9 @@ public class login extends javax.swing.JFrame {
             }
         });
         Acceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AccederMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 AccederMouseExited(evt);
             }
@@ -249,6 +252,14 @@ public class login extends javax.swing.JFrame {
         signup nuevaventana = new signup(); 
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_RegistrarMouseClicked
+
+    private void AccederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccederMouseClicked
+     //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        dashboard nuevaventana = new dashboard(); 
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_AccederMouseClicked
 
     /**
      * @param args the command line arguments
