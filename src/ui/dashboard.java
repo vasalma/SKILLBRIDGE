@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfacesES;
+package ui;
 
 import javax.swing.UIManager;
 
@@ -11,12 +11,12 @@ import javax.swing.UIManager;
  *
  * @author Mi PC
  */
-public class curso extends javax.swing.JFrame {
+public class dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public curso() {
+    public dashboard() {
         initComponents();
         
     }
@@ -31,10 +31,8 @@ public class curso extends javax.swing.JFrame {
     private void initComponents() {
 
         mainCont = new javax.swing.JPanel();
-        subjectHead = new javax.swing.JLabel();
-        backBtn = new javax.swing.JPanel();
-        backTxt = new javax.swing.JLabel();
-        backIcon = new javax.swing.JLabel();
+        actsHead = new javax.swing.JLabel();
+        videosHead = new javax.swing.JLabel();
         menuBar = new javax.swing.JPanel();
         appName = new javax.swing.JLabel();
         dashBtn = new javax.swing.JPanel();
@@ -55,32 +53,24 @@ public class curso extends javax.swing.JFrame {
         profilePic = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
         configArrow = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mainCont.setBackground(new java.awt.Color(153, 153, 153));
-        mainCont.setForeground(new java.awt.Color(204, 204, 204));
         mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        subjectHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
-        subjectHead.setForeground(new java.awt.Color(0, 0, 0));
-        subjectHead.setText("Materia");
-        mainCont.add(subjectHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        actsHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
+        actsHead.setForeground(new java.awt.Color(0, 0, 0));
+        actsHead.setText("Actividades recientes");
+        mainCont.add(actsHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
-        backBtn.setBackground(new java.awt.Color(255, 255, 255));
-        backBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        backTxt.setFont(new java.awt.Font("Open Sans", 1, 10)); // NOI18N
-        backTxt.setForeground(new java.awt.Color(0, 0, 0));
-        backTxt.setText("Retroceder");
-        backBtn.add(backTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 10));
-
-        backIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backIcon.png"))); // NOI18N
-        backBtn.add(backIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 30));
-
-        mainCont.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 30));
+        videosHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
+        videosHead.setForeground(new java.awt.Color(0, 0, 0));
+        videosHead.setText("Seguir viendo...");
+        mainCont.add(videosHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         getContentPane().add(mainCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 1010, 630));
 
@@ -95,32 +85,41 @@ public class curso extends javax.swing.JFrame {
         dashBtn.setBackground(new java.awt.Color(255, 255, 255));
         dashBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        dashTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        dashTxt.setForeground(new java.awt.Color(0, 0, 0));
+        dashTxt.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        dashTxt.setForeground(new java.awt.Color(4, 174, 178));
         dashTxt.setText("Dashboard");
         dashBtn.add(dashTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, 80, -1));
 
-        dashIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/houseBicon.png"))); // NOI18N
+        dashIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/houseGicon.png"))); // NOI18N
         dashBtn.add(dashIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
         menuBar.add(dashBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 260, 40));
 
         coursesBtn.setBackground(new java.awt.Color(255, 255, 255));
         coursesBtn.setForeground(new java.awt.Color(0, 0, 0));
+        coursesBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coursesBtnMouseClicked(evt);
+            }
+        });
         coursesBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        coursesTxt.setBackground(new java.awt.Color(255, 255, 255));
-        coursesTxt.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
-        coursesTxt.setForeground(new java.awt.Color(4, 174, 178));
+        coursesTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        coursesTxt.setForeground(new java.awt.Color(0, 0, 0));
         coursesTxt.setText("Cursos");
         coursesBtn.add(coursesTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, 50, -1));
 
-        coursesIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hatGicon.png"))); // NOI18N
+        coursesIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hatBicon.png"))); // NOI18N
         coursesBtn.add(coursesIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
         menuBar.add(coursesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 260, 40));
 
         actsBtn.setBackground(new java.awt.Color(255, 255, 255));
+        actsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actsBtnMouseClicked(evt);
+            }
+        });
         actsBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         actsTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -134,6 +133,11 @@ public class curso extends javax.swing.JFrame {
         menuBar.add(actsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 260, 40));
 
         logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
         logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logoutTxt.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
@@ -186,6 +190,15 @@ public class curso extends javax.swing.JFrame {
         configArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowProfile.png"))); // NOI18N
         header.add(configArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 34, 40, 20));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 150, 40));
+
         getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
 
         pack();
@@ -198,6 +211,37 @@ public class curso extends javax.swing.JFrame {
     private void searchIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIconActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchIconActionPerformed
+
+    private void coursesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coursesBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        cursosDash nuevaventana = new cursosDash(); 
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_coursesBtnMouseClicked
+
+    private void actsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actsBtnMouseClicked
+ //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        actDash nuevaventana = new actDash(); 
+        nuevaventana.setVisible(true);    }//GEN-LAST:event_actsBtnMouseClicked
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+          //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        login nuevaventana = new login();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+          //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        profile nuevaventana = new profile();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -216,26 +260,14 @@ public class curso extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(curso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(curso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(curso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(curso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -243,18 +275,16 @@ public class curso extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new curso().setVisible(true);
+            new dashboard().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel actsBtn;
+    private javax.swing.JLabel actsHead;
     private javax.swing.JLabel actsIcon;
     private javax.swing.JLabel actsTxt;
     private javax.swing.JLabel appName;
-    private javax.swing.JPanel backBtn;
-    private javax.swing.JLabel backIcon;
-    private javax.swing.JLabel backTxt;
     private javax.swing.JLabel configArrow;
     private javax.swing.JPanel coursesBtn;
     private javax.swing.JLabel coursesIcon;
@@ -263,6 +293,7 @@ public class curso extends javax.swing.JFrame {
     private javax.swing.JLabel dashIcon;
     private javax.swing.JLabel dashTxt;
     private javax.swing.JPanel header;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel logoutBtn;
     private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel logoutTxt;
@@ -271,7 +302,7 @@ public class curso extends javax.swing.JFrame {
     private javax.swing.JLabel profilePic;
     private javax.swing.JTextField searchBar;
     private javax.swing.JButton searchIcon;
-    private javax.swing.JLabel subjectHead;
     private javax.swing.JLabel userName;
+    private javax.swing.JLabel videosHead;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,6 @@
 package main;
 
-import interfacesES.login;
+import ui.login;
 
 public class Main {
 
@@ -10,3 +10,4 @@ public class Main {
         ms.setLocationRelativeTo(null);
     }
 }
+
