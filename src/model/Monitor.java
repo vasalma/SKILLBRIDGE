@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author Mi PC
- */
-public class Monitor {
-    
+public class Monitor extends Usuario {
+
+    public Monitor() {}
+
+    public Monitor(int id, String nombre, String correo, String contraseña) {
+        super(id, nombre, correo, contraseña, "monitor");
+    }
+
+    public Monitor(String nombre, String correo, String contraseña) {
+        super(nombre, correo, contraseña, "monitor");
+    }
+
+    // 🔹 Aquí podrías añadir métodos o atributos específicos del monitor
 }
+

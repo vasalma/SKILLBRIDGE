@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author Mi PC
- */
-public class Estudiante {
-    
+public class Estudiante extends Usuario {
+
+    public Estudiante() {
+    }
+
+    public Estudiante(int id, String nombre, String correo, String contraseña) {
+        super(id, nombre, correo, contraseña, "estudiante");
+    }
+
+    public Estudiante(String nombre, String correo, String contraseña) {
+        super(nombre, correo, contraseña, "estudiante");
+    }
+
+    // 🔹 Aquí podrías añadir métodos específicos del estudiante más adelante
 }
