@@ -8,6 +8,7 @@ public class Main {
         login ms = new login();
         ms.setVisible(true);
         ms.setLocationRelativeTo(null);
+        DBConnection.getConnection();
     }
 }
 
