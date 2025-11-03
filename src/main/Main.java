@@ -5,7 +5,7 @@ import ui.login;
 public class Main {
 
     public static void main(String[] args) {
-        login ms = new login(); //Hello
+        login ms = new login(); //Hello jiji
         ms.setVisible(true);
         ms.setLocationRelativeTo(null);
         DBConnection.getConnection();
