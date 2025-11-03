@@ -1,7 +1,7 @@
 package model;
 
 public class Monitor extends Usuario {
-    private String materiaAsignada;
+    private String materiaAsignada; // holiii
     private int horasSemanales;
 
     public Monitor() {
