@@ -1,6 +1,6 @@
 package main;
 
-import ui.login;
+import front.login;
 
 public class Main {
 
