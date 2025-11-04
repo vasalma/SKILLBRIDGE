@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frontMon;
-
+import frontMon.dashboardMon;
 import javax.swing.UIManager;
 
 
@@ -58,6 +58,7 @@ public class cursoMon extends javax.swing.JFrame {
         profilePic = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
         configArrow = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -113,6 +114,11 @@ public class cursoMon extends javax.swing.JFrame {
         menuBar.add(appName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         dashBtn.setBackground(new java.awt.Color(255, 255, 255));
+        dashBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashBtnMouseClicked(evt);
+            }
+        });
         dashBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dashTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -141,6 +147,11 @@ public class cursoMon extends javax.swing.JFrame {
         menuBar.add(coursesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 260, 40));
 
         actsBtn.setBackground(new java.awt.Color(255, 255, 255));
+        actsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actsBtnMouseClicked(evt);
+            }
+        });
         actsBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         actsTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -206,6 +217,15 @@ public class cursoMon extends javax.swing.JFrame {
         configArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowProfile.png"))); // NOI18N
         header.add(configArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 34, 40, 20));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 150, 40));
+
         getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
 
         pack();
@@ -220,8 +240,36 @@ public class cursoMon extends javax.swing.JFrame {
     }//GEN-LAST:event_searchIconActionPerformed
 
     private void docBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docBtnMouseClicked
-        // TODO add your handling code here:
+       //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva
+        docente nuevaventana = new docente();
+        nuevaventana.setVisible(true);
     }//GEN-LAST:event_docBtnMouseClicked
+
+    private void dashBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva
+        dashboardMon nuevaventana = new dashboardMon();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_dashBtnMouseClicked
+
+    private void actsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actsBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva
+        actDashMon nuevaventana = new actDashMon();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_actsBtnMouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva
+        profileMon nuevaventana = new profileMon();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -306,6 +354,7 @@ public class cursoMon extends javax.swing.JFrame {
     private javax.swing.JLabel docIcon;
     private javax.swing.JLabel docTxt;
     private javax.swing.JPanel header;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel logoutBtn;
     private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel logoutTxt;

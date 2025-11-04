@@ -5,9 +5,10 @@
 package frontMon;
 
 import front.login;
-import frontEs.profile;
-import frontEs.cursosDash;
-import frontEs.dashboard;
+import frontMon.profileMon;
+import frontMon.cursosDashMon;
+import frontMon.dashboardMon;
+import frontMon.docente;
 import javax.swing.UIManager;
 
 /**
@@ -292,7 +293,7 @@ public class actDashMon extends javax.swing.JFrame {
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        cursosDash nuevaventana = new cursosDash();
+        cursosDashMon nuevaventana = new cursosDashMon();
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_coursesBtnMouseClicked
 
@@ -300,7 +301,7 @@ public class actDashMon extends javax.swing.JFrame {
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        dashboard nuevaventana = new dashboard();
+        dashboardMon nuevaventana = new dashboardMon();
         nuevaventana.setVisible(true);    }//GEN-LAST:event_dashBtnMouseClicked
 
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
@@ -315,12 +316,16 @@ public class actDashMon extends javax.swing.JFrame {
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva
-        profile nuevaventana = new profile();
+        profileMon nuevaventana = new profileMon();
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void docBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docBtnMouseClicked
-        // TODO add your handling code here:
+       //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva
+        docente nuevaventana = new docente();
+        nuevaventana.setVisible(true);
     }//GEN-LAST:event_docBtnMouseClicked
 
     /**

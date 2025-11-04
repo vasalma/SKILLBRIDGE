@@ -239,7 +239,7 @@ public class dashboardMon extends javax.swing.JFrame {
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        cursosDash nuevaventana = new cursosDash();
+        cursosDashMon nuevaventana = new cursosDashMon();
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_coursesBtnMouseClicked
 
@@ -247,7 +247,7 @@ public class dashboardMon extends javax.swing.JFrame {
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        actDash nuevaventana = new actDash();
+        actDashMon nuevaventana = new actDashMon();
         nuevaventana.setVisible(true);    }//GEN-LAST:event_actsBtnMouseClicked
 
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
@@ -262,12 +262,16 @@ public class dashboardMon extends javax.swing.JFrame {
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        profile nuevaventana = new profile();
+        profileMon nuevaventana = new profileMon();
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void docBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docBtnMouseClicked
-        // TODO add your handling code here:
+       //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva
+        docente nuevaventana = new docente();
+        nuevaventana.setVisible(true);
     }//GEN-LAST:event_docBtnMouseClicked
 
     /**
