@@ -4,14 +4,17 @@
  */
 package front;
 
-import frontEs.dashboard;
-import back.Usuario;
+
 import java.awt.Color;
+import frontEs.dashboard;
+import frontMon.dashboardMon;
+import back.Usuario;
 
 /**
  *
  * @author Mi PC
  */
+
 public class login extends javax.swing.JFrame {
 
     /**
@@ -261,51 +264,58 @@ public class login extends javax.swing.JFrame {
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        signup nuevaventana = new signup(); 
+        signup nuevaventana = new signup();
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_RegistrarMouseClicked
 
     private void AccederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccederMouseClicked
-     //Cierra la ventana actual (login)
-      //  this.dispose();
+        //Cierra la ventana actual (login)
+        //  this.dispose();
         //Abre la ventana nueva 
         //dashboard nuevaventana = new dashboard(); 
-        //nuevaventana.setVisible(true);                                 
-    String idTexto = IDTxt.getText().trim();
-    String contraseña = String.valueOf(passTxt.getPassword()).trim();
+        //nuevaventana.setVisible(true);                                                                  
+        String idTexto = IDTxt.getText().trim();
+        String contraseña = new String(passTxt.getPassword()).trim();
 
-    // ⚠️ Validar campos vacíos
-    if (idTexto.isEmpty() || contraseña.isEmpty() ||
-        idTexto.equals("ID") || contraseña.equals("Password")) {
-        javax.swing.JOptionPane.showMessageDialog(this, "⚠️ Por favor complete todos los campos.");
-        return;
-    }
+        // Crear instancia de Usuario
+        Usuario usuario = new Usuario();
 
-    // 🔹 Crear objeto usuario
-    Usuario usuario = new Usuario();
+        // Validar login
+        if (usuario.validarLoginPorID(idTexto, contraseña)) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "✅ Bienvenido " + usuario.getNombre() + " (" + usuario.getRol() + ")");
 
-    // 🔹 Validar login con la base de datos
-    if (usuario.validarLoginPorID(idTexto, contraseña)) {
-        javax.swing.JOptionPane.showMessageDialog(this, 
-            "✅ Bienvenido " + usuario.getNombre() + " (" + usuario.getRol() + ")");
+            this.dispose(); // Cierra la ventana de login
 
-        this.dispose(); // cerrar ventana actual
-        dashboard nuevaventana = new dashboard();
-        nuevaventana.setVisible(true);
-    } else {
-        javax.swing.JOptionPane.showMessageDialog(this, 
-            "❌ Usuario o contraseña incorrectos.");
-        passTxt.setText("");
-    }
+            // Redirigir según el rol
+            String rol = usuario.getRol();
+
+            if ("estudiante".equalsIgnoreCase(rol)) {
+                frontEs.dashboard dashboardEs = new frontEs.dashboard();
+                dashboardEs.setVisible(true);
+            } else if ("monitor".equalsIgnoreCase(rol)) {
+                frontMon.dashboardMon dashboardMon = new frontMon.dashboardMon();
+                dashboardMon.setVisible(true);
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "⚠️ Rol desconocido. Contacte al administrador.");
+            }
+
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "❌ Usuario o contraseña incorrectos.");
+            passTxt.setText("");
+        }
+    
 
 
     }//GEN-LAST:event_AccederMouseClicked
 
     private void IDTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDTxtMousePressed
-        if(IDTxt.getText().equals("ID")){
+        if (IDTxt.getText().equals("ID")) {
             IDTxt.setText("");
         }
-        
+
         if (String.valueOf(passTxt.getPassword()).isEmpty()) {
             passTxt.setText("Password");
         }
@@ -325,36 +335,36 @@ public class login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new login().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new login().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Acceder;
