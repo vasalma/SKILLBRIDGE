@@ -2,21 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package front;
+package frontMon;
+
+import frontEs.actDash;
+import front.login;
+import frontEs.profile;
+import frontEs.dashboard;
+import javax.swing.UIManager;
 
 /**
  *
  * @author Mi PC
  */
-public class dashboard extends javax.swing.JFrame {
+public class cursosDashMon extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public dashboard() {
+    public cursosDashMon() {
         initComponents();
 
-}
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,8 +34,7 @@ public class dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         mainCont = new javax.swing.JPanel();
-        actsHead = new javax.swing.JLabel();
-        videosHead = new javax.swing.JLabel();
+        coursesHead = new javax.swing.JLabel();
         menuBar = new javax.swing.JPanel();
         appName = new javax.swing.JLabel();
         dashBtn = new javax.swing.JPanel();
@@ -59,15 +64,10 @@ public class dashboard extends javax.swing.JFrame {
         mainCont.setBackground(new java.awt.Color(153, 153, 153));
         mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        actsHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
-        actsHead.setForeground(new java.awt.Color(0, 0, 0));
-        actsHead.setText("Actividades recientes");
-        mainCont.add(actsHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
-
-        videosHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
-        videosHead.setForeground(new java.awt.Color(0, 0, 0));
-        videosHead.setText("Seguir viendo...");
-        mainCont.add(videosHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        coursesHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
+        coursesHead.setForeground(new java.awt.Color(0, 0, 0));
+        coursesHead.setText("Mis cursos");
+        mainCont.add(coursesHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         getContentPane().add(mainCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 1010, 630));
 
@@ -80,33 +80,34 @@ public class dashboard extends javax.swing.JFrame {
         menuBar.add(appName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         dashBtn.setBackground(new java.awt.Color(255, 255, 255));
+        dashBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashBtnMouseClicked(evt);
+            }
+        });
         dashBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        dashTxt.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
-        dashTxt.setForeground(new java.awt.Color(4, 174, 178));
+        dashTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        dashTxt.setForeground(new java.awt.Color(0, 0, 0));
         dashTxt.setText("Dashboard");
         dashBtn.add(dashTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, 80, -1));
 
-        dashIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/houseGicon.png"))); // NOI18N
+        dashIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/houseBicon.png"))); // NOI18N
         dashBtn.add(dashIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
         menuBar.add(dashBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 260, 40));
 
         coursesBtn.setBackground(new java.awt.Color(255, 255, 255));
         coursesBtn.setForeground(new java.awt.Color(0, 0, 0));
-        coursesBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                coursesBtnMouseClicked(evt);
-            }
-        });
         coursesBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        coursesTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        coursesTxt.setForeground(new java.awt.Color(0, 0, 0));
+        coursesTxt.setBackground(new java.awt.Color(255, 255, 255));
+        coursesTxt.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        coursesTxt.setForeground(new java.awt.Color(4, 174, 178));
         coursesTxt.setText("Cursos");
         coursesBtn.add(coursesTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, 50, -1));
 
-        coursesIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hatBicon.png"))); // NOI18N
+        coursesIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hatGicon.png"))); // NOI18N
         coursesBtn.add(coursesIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
         menuBar.add(coursesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 260, 40));
@@ -209,20 +210,21 @@ public class dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchIconActionPerformed
 
-    private void coursesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coursesBtnMouseClicked
+    private void dashBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBtnMouseClicked
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        cursosDash nuevaventana = new cursosDash();
+        dashboard nuevaventana = new dashboard();
         nuevaventana.setVisible(true);
-    }//GEN-LAST:event_coursesBtnMouseClicked
+    }//GEN-LAST:event_dashBtnMouseClicked
 
     private void actsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actsBtnMouseClicked
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
         actDash nuevaventana = new actDash();
-        nuevaventana.setVisible(true);    }//GEN-LAST:event_actsBtnMouseClicked
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_actsBtnMouseClicked
 
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
         //Cierra la ventana actual (login)
@@ -235,7 +237,7 @@ public class dashboard extends javax.swing.JFrame {
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         //Cierra la ventana actual (login)
         this.dispose();
-        //Abre la ventana nueva 
+        //Abre la ventana nueva
         profile nuevaventana = new profile();
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_jPanel1MouseClicked
@@ -244,46 +246,58 @@ public class dashboard extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(cursosDashMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(cursosDashMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(cursosDashMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(cursosDashMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    } catch (ClassNotFoundException ex) {
-        java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        java.util.logging.Logger.getLogger(dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(() -> {
-        new dashboard().setVisible(true);
-    });
-}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            new cursosDashMon().setVisible(true);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel actsBtn;
-    private javax.swing.JLabel actsHead;
     private javax.swing.JLabel actsIcon;
     private javax.swing.JLabel actsTxt;
     private javax.swing.JLabel appName;
     private javax.swing.JLabel configArrow;
     private javax.swing.JPanel coursesBtn;
+    private javax.swing.JLabel coursesHead;
     private javax.swing.JLabel coursesIcon;
     private javax.swing.JLabel coursesTxt;
     private javax.swing.JPanel dashBtn;
@@ -300,6 +314,5 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JTextField searchBar;
     private javax.swing.JButton searchIcon;
     private javax.swing.JLabel userName;
-    private javax.swing.JLabel videosHead;
     // End of variables declaration//GEN-END:variables
 }

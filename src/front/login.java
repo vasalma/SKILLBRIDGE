@@ -4,6 +4,7 @@
  */
 package front;
 
+import frontEs.dashboard;
 import back.Usuario;
 import java.awt.Color;
 
