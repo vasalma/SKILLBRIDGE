@@ -292,8 +292,9 @@ public class profileMon extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(145, 145, 145));
-        jLabel5.setText("Estudiante");
-        profileData.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 193, -1, -1));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Monitor");
+        profileData.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 193, 70, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editPic.png"))); // NOI18N
         profileData.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 40, 40));

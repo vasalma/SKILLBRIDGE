@@ -33,6 +33,9 @@ public class actDashMon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        docBtn = new javax.swing.JPanel();
+        docTxt = new javax.swing.JLabel();
+        docIcon = new javax.swing.JLabel();
         sectionName = new javax.swing.JPanel();
         completeTxt = new javax.swing.JLabel();
         activesTxt = new javax.swing.JLabel();
@@ -73,6 +76,24 @@ public class actDashMon extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        docBtn.setBackground(new java.awt.Color(255, 255, 255));
+        docBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                docBtnMouseClicked(evt);
+            }
+        });
+        docBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        docTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        docTxt.setForeground(new java.awt.Color(0, 0, 0));
+        docTxt.setText("Docente");
+        docBtn.add(docTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, -1, -1));
+
+        docIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caseBlack.png"))); // NOI18N
+        docBtn.add(docIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+
+        getContentPane().add(docBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 260, 40));
 
         sectionName.setBackground(new java.awt.Color(153, 153, 153));
         sectionName.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -298,6 +319,10 @@ public class actDashMon extends javax.swing.JFrame {
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_jPanel1MouseClicked
 
+    private void docBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_docBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -480,6 +505,9 @@ public class actDashMon extends javax.swing.JFrame {
     private javax.swing.JPanel dashBtn;
     private javax.swing.JLabel dashIcon;
     private javax.swing.JLabel dashTxt;
+    private javax.swing.JPanel docBtn;
+    private javax.swing.JLabel docIcon;
+    private javax.swing.JLabel docTxt;
     private javax.swing.JLabel filterIcon;
     private javax.swing.JPanel header;
     private javax.swing.JPanel jPanel1;

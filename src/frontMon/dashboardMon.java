@@ -43,6 +43,9 @@ public class dashboardMon extends javax.swing.JFrame {
         coursesBtn = new javax.swing.JPanel();
         coursesTxt = new javax.swing.JLabel();
         coursesIcon = new javax.swing.JLabel();
+        docBtn = new javax.swing.JPanel();
+        docTxt = new javax.swing.JLabel();
+        docIcon = new javax.swing.JLabel();
         actsBtn = new javax.swing.JPanel();
         actsTxt = new javax.swing.JLabel();
         actsIcon = new javax.swing.JLabel();
@@ -115,6 +118,24 @@ public class dashboardMon extends javax.swing.JFrame {
         coursesBtn.add(coursesIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
         menuBar.add(coursesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 260, 40));
+
+        docBtn.setBackground(new java.awt.Color(255, 255, 255));
+        docBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                docBtnMouseClicked(evt);
+            }
+        });
+        docBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        docTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        docTxt.setForeground(new java.awt.Color(0, 0, 0));
+        docTxt.setText("Docente");
+        docBtn.add(docTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 13, -1, -1));
+
+        docIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/caseBlack.png"))); // NOI18N
+        docBtn.add(docIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+
+        menuBar.add(docBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 260, 40));
 
         actsBtn.setBackground(new java.awt.Color(255, 255, 255));
         actsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -245,6 +266,10 @@ public class dashboardMon extends javax.swing.JFrame {
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_jPanel1MouseClicked
 
+    private void docBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_docBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -298,6 +323,9 @@ public class dashboardMon extends javax.swing.JFrame {
     private javax.swing.JPanel dashBtn;
     private javax.swing.JLabel dashIcon;
     private javax.swing.JLabel dashTxt;
+    private javax.swing.JPanel docBtn;
+    private javax.swing.JLabel docIcon;
+    private javax.swing.JLabel docTxt;
     private javax.swing.JPanel header;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel logoutBtn;
