@@ -4,7 +4,9 @@
  */
 package front;
 
+import back.Usuario;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,6 +31,8 @@ public class signup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rolTitle = new javax.swing.JLabel();
+        rolTxt = new javax.swing.JTextField();
         starMini = new javax.swing.JLabel();
         passTxt = new javax.swing.JPasswordField();
         registrarBtn = new javax.swing.JPanel();
@@ -69,6 +73,15 @@ public class signup extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rolTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
+        rolTitle.setForeground(new java.awt.Color(102, 102, 102));
+        rolTitle.setText("Rol");
+        getContentPane().add(rolTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, -1));
+
+        rolTxt.setBackground(new java.awt.Color(247, 247, 247));
+        rolTxt.setForeground(new java.awt.Color(102, 102, 102));
+        getContentPane().add(rolTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 310, 33));
 
         starMini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star3.png"))); // NOI18N
         starMini.setText("jLabel20");
@@ -187,7 +200,7 @@ public class signup extends javax.swing.JFrame {
                 emailTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 780, 33));
+        getContentPane().add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 330, 33));
 
         emailTitle.setFont(new java.awt.Font("Questrial", 0, 15)); // NOI18N
         emailTitle.setForeground(new java.awt.Color(102, 102, 102));
@@ -290,10 +303,41 @@ public class signup extends javax.swing.JFrame {
 
     private void registrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseClicked
       //Cierra la ventana actual (login)
-        this.dispose();
+        // this.dispose();
         //Abre la ventana nueva 
-        login nuevaventana = new login(); 
-        nuevaventana.setVisible(true);
+        //login nuevaventana = new login(); 
+        //nuevaventana.setVisible(true);
+        // Crear el objeto Usuario
+        Usuario usuario = new Usuario();
+
+// Tomar los datos desde los campos del formulario
+        String id = IDTxt.getText(); // Asegúrate de tener este JTextField en tu formulario
+        String nombre = nameTxt.getText();
+        String apellido = lastnameTxt.getText();
+        String correo = emailTxt.getText();
+        String contrasena = new String(passTxt.getPassword()); // si usas JPasswordField
+        String rol = rolTxt.getText();
+        String telefono = phoneTxt.getText();
+
+// Validar que ningún campo esté vacío
+        if (id.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || contrasena.isEmpty() || rol.isEmpty() || telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "⚠️ Debes completar todos los campos antes de registrar.");
+            return;
+        }
+
+// Registrar en la base de datos
+        boolean ok = usuario.registrarUsuarioSQLite(id, nombre, apellido, correo, contrasena, rol, telefono);
+
+// Verificar si se registró correctamente
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente.");
+            this.dispose(); // cerrar ventana actual
+            new login().setVisible(true); // abrir login
+        } else {
+            JOptionPane.showMessageDialog(this, "❌ Error al registrar el usuario.");
+        }
+
+
     }//GEN-LAST:event_registrarBtnMouseClicked
 
     private void passTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTxtMousePressed
@@ -375,6 +419,8 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel phraseStart;
     private javax.swing.JPanel registrarBtn;
     private javax.swing.JLabel registrarTxt;
+    private javax.swing.JLabel rolTitle;
+    private javax.swing.JTextField rolTxt;
     private javax.swing.JLabel signupBtn;
     private javax.swing.JLabel skillbridgeName;
     private javax.swing.JLabel starBig;

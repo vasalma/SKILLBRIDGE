@@ -4,6 +4,7 @@
  */
 package front;
 
+import back.Usuario;
 import java.awt.Color;
 
 /**
@@ -265,10 +266,38 @@ public class login extends javax.swing.JFrame {
 
     private void AccederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccederMouseClicked
      //Cierra la ventana actual (login)
-        this.dispose();
+      //  this.dispose();
         //Abre la ventana nueva 
-        dashboard nuevaventana = new dashboard(); 
+        //dashboard nuevaventana = new dashboard(); 
+        //nuevaventana.setVisible(true);                                 
+    String idTexto = IDTxt.getText().trim();
+    String contraseña = String.valueOf(passTxt.getPassword()).trim();
+
+    // ⚠️ Validar campos vacíos
+    if (idTexto.isEmpty() || contraseña.isEmpty() ||
+        idTexto.equals("ID") || contraseña.equals("Password")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "⚠️ Por favor complete todos los campos.");
+        return;
+    }
+
+    // 🔹 Crear objeto usuario
+    Usuario usuario = new Usuario();
+
+    // 🔹 Validar login con la base de datos
+    if (usuario.validarLoginPorID(idTexto, contraseña)) {
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "✅ Bienvenido " + usuario.getNombre() + " (" + usuario.getRol() + ")");
+
+        this.dispose(); // cerrar ventana actual
+        dashboard nuevaventana = new dashboard();
         nuevaventana.setVisible(true);
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "❌ Usuario o contraseña incorrectos.");
+        passTxt.setText("");
+    }
+
+
     }//GEN-LAST:event_AccederMouseClicked
 
     private void IDTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDTxtMousePressed
