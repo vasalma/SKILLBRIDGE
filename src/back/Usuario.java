@@ -154,13 +154,13 @@ public class Usuario {
     }
 
     // ✅ CORREGIDO — Verificación de la llave de acceso
-    public boolean verificarLlaveAcceso(String nombre, String llaveIngresada) {
+    public boolean verificarLlaveAcceso(String id, String llaveIngresada) {
 
-        String sql = "SELECT * FROM llaves_acceso WHERE nombre = ? AND llave = ?";
+        String sql = "SELECT * FROM llaves_acceso WHERE id = ? AND llave = ?";
 
         try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, nombre.trim());
+            pstmt.setString(1, id.trim());
             pstmt.setString(2, llaveIngresada.trim());
 
             ResultSet rs = pstmt.executeQuery();

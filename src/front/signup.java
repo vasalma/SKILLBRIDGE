@@ -340,8 +340,8 @@ public class signup extends javax.swing.JFrame {
                 return;
             }
 
-            // ✅ Verificar solo la llave (la búsqueda usa nombre + llave)
-            boolean llaveValida = usuario.verificarLlaveAcceso(nombre, llaveIngresada);
+            // ✅ Verificar solo la llave (la búsqueda usa id + llave)
+            boolean llaveValida = usuario.verificarLlaveAcceso(id, llaveIngresada);
 
             if (!llaveValida) {
                 JOptionPane.showMessageDialog(this, "❌ Llave incorrecta o no registrada.");

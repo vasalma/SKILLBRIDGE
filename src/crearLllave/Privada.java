@@ -1,4 +1,4 @@
-package crearLllave;
+package crearLlave;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,26 +15,29 @@ public class Privada {
     }
 
     // Método para insertar la llave en la base de datos
-    public static void insertarLlave(String id, String nombre, String llave) {
+    public static void insertarLlave(String id, String llave) {
         String sqlVerificar = "SELECT * FROM llaves_acceso WHERE id = ? OR llave = ?";
-        String sqlInsertar = "INSERT INTO llaves_acceso (id, nombre, llave) VALUES (?, ?, ?)";
+        String sqlInsertar = "INSERT INTO llaves_acceso (id, llave) VALUES (?, ?)";
 
-        try (Connection conn = conectar(); PreparedStatement verificar = conn.prepareStatement(sqlVerificar); PreparedStatement insertar = conn.prepareStatement(sqlInsertar)) {
+        try (Connection conn = conectar();
+             PreparedStatement verificar = conn.prepareStatement(sqlVerificar);
+             PreparedStatement insertar = conn.prepareStatement(sqlInsertar)) {
 
             // Verificar si ya existe el ID o la llave
             verificar.setString(1, id);
-            verificar.setString(2, nombre);
-            verificar.setString(3, llave);
+            verificar.setString(2, llave); // ✅ solo 2 parámetros, como en el SQL
+
             ResultSet rs = verificar.executeQuery();
 
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "⚠️ Ya existe una llave o ID con esos datos. Intente con otros valores.");
+                JOptionPane.showMessageDialog(null,
+                        "⚠️ Ya existe una llave o ID con esos datos. Intente con otros valores.");
                 return;
             }
 
             // Insertar si no hay duplicados
             insertar.setString(1, id);
-            insertar.setString(3, llave);
+            insertar.setString(2, llave);
 
             int filasAfectadas = insertar.executeUpdate();
             if (filasAfectadas > 0) {
@@ -56,11 +59,6 @@ public class Privada {
             return;
         }
 
-        String nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
-        if (nombre == null || nombre.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "⚠️ Nombre no puede estar vacío.");
-            return;
-        }
 
         String llave = JOptionPane.showInputDialog("Ingrese la llave de acceso:");
         if (llave == null || llave.trim().isEmpty()) {
@@ -68,6 +66,6 @@ public class Privada {
             return;
         }
 
-        insertarLlave(id, nombre, llave);
+        insertarLlave(id, llave);
     }
 }
