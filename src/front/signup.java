@@ -5,6 +5,7 @@
 package front;
 
 import back.Usuario;
+import front.login;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Mi PC
  */
+
 public class signup extends javax.swing.JFrame {
 
     /**
@@ -32,7 +34,7 @@ public class signup extends javax.swing.JFrame {
     private void initComponents() {
 
         rolTitle = new javax.swing.JLabel();
-        rolTxt = new javax.swing.JTextField();
+        rolTxt = new javax.swing.JComboBox<>();
         starMini = new javax.swing.JLabel();
         passTxt = new javax.swing.JPasswordField();
         registrarBtn = new javax.swing.JPanel();
@@ -79,9 +81,14 @@ public class signup extends javax.swing.JFrame {
         rolTitle.setText("Rol");
         getContentPane().add(rolTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, -1));
 
-        rolTxt.setBackground(new java.awt.Color(247, 247, 247));
-        rolTxt.setForeground(new java.awt.Color(102, 102, 102));
-        getContentPane().add(rolTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 310, 33));
+        rolTxt.setBackground(new java.awt.Color(255, 255, 255));
+        rolTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Monitor/tutor" }));
+        rolTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rolTxtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rolTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 310, 30));
 
         starMini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/star3.png"))); // NOI18N
         starMini.setText("jLabel20");
@@ -302,40 +309,59 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarBtnMouseExited
 
     private void registrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseClicked
-      //Cierra la ventana actual (login)
+        //Cierra la ventana actual (login)
         // this.dispose();
         //Abre la ventana nueva 
         //login nuevaventana = new login(); 
         //nuevaventana.setVisible(true);
         // Crear el objeto Usuario
+
         Usuario usuario = new Usuario();
 
-// Tomar los datos desde los campos del formulario
-        String id = IDTxt.getText(); // Asegúrate de tener este JTextField en tu formulario
+        String id = IDTxt.getText();
         String nombre = nameTxt.getText();
         String apellido = lastnameTxt.getText();
         String correo = emailTxt.getText();
-        String contrasena = new String(passTxt.getPassword()); // si usas JPasswordField
-        String rol = rolTxt.getText();
+        String contrasena = new String(passTxt.getPassword());
+        String rol = rolTxt.getSelectedItem().toString();
         String telefono = phoneTxt.getText();
 
-// Validar que ningún campo esté vacío
-        if (id.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || contrasena.isEmpty() || rol.isEmpty() || telefono.isEmpty()) {
+        if (id.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty()
+                || contrasena.isEmpty() || rol.isEmpty() || telefono.isEmpty()) {
             JOptionPane.showMessageDialog(this, "⚠️ Debes completar todos los campos antes de registrar.");
             return;
         }
 
-// Registrar en la base de datos
+        // ✅ Si es Monitor/Tutor pedimos la llave
+        if (rol.equals("Monitor/tutor")) {
+
+            String llaveIngresada = JOptionPane.showInputDialog(this, "Ingrese la llave de acceso para monitores/tutores:");
+
+            if (llaveIngresada == null || llaveIngresada.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "❌ No se ingresó ninguna llave. Registro cancelado.");
+                return;
+            }
+
+            // ✅ VERIFICACIÓN CORREGIDA
+            boolean llaveValida = usuario.verificarLlaveAcceso(nombre, llaveIngresada);
+
+            if (!llaveValida) {
+                JOptionPane.showMessageDialog(this, "❌ Llave incorrecta o no registrada.");
+                return;
+            }
+        }
+
+        // ✅ Registrar usuario
         boolean ok = usuario.registrarUsuarioSQLite(id, nombre, apellido, correo, contrasena, rol, telefono);
 
-// Verificar si se registró correctamente
         if (ok) {
             JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente.");
-            this.dispose(); // cerrar ventana actual
-            new login().setVisible(true); // abrir login
+            this.dispose();
+            new login().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "❌ Error al registrar el usuario.");
         }
+    
 
 
     }//GEN-LAST:event_registrarBtnMouseClicked
@@ -352,41 +378,45 @@ public class signup extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passAgaintxtMousePressed
 
+    private void rolTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rolTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rolTxtActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new signup().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new signup().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDTitle;
@@ -420,7 +450,7 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JPanel registrarBtn;
     private javax.swing.JLabel registrarTxt;
     private javax.swing.JLabel rolTitle;
-    private javax.swing.JTextField rolTxt;
+    private javax.swing.JComboBox<String> rolTxt;
     private javax.swing.JLabel signupBtn;
     private javax.swing.JLabel skillbridgeName;
     private javax.swing.JLabel starBig;

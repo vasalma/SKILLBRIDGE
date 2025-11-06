@@ -9,7 +9,7 @@ import main.DBConnection;
 public class Usuario {
 
     // 🔹 Atributos
-    protected String id; // 🔸 AHORA ES STRING
+    protected String id;
     protected String nombre;
     protected String apellido;
     protected String correo;
@@ -18,7 +18,8 @@ public class Usuario {
     protected String telefono;
 
     // 🔹 Constructor vacío
-    public Usuario() {}
+    public Usuario() {
+    }
 
     // 🔹 Constructor completo
     public Usuario(String id, String nombre, String apellido, String correo, String contraseña, String rol, String telefono) {
@@ -31,37 +32,71 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    // 🔹 Getters y Setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    // ✅ Getters y setters
+    public String getId() {
+        return id;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public String getContraseña() { return contraseña; }
-    public void setContraseña(String contraseña) { this.contraseña = contraseña; }
+    public String getApellido() {
+        return apellido;
+    }
 
-    public String getRol() { return rol; }
-    public void setRol(String rol) { this.rol = rol; }
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
-    public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public String getCorreo() {
+        return correo;
+    }
 
-    // 🔹 Verificar si el correo ya existe en la base
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    // ✅ Verificar si el correo ya existe
     public boolean existeCorreo(String correo) {
         String sql = "SELECT id FROM usuarios WHERE correo = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, correo);
             ResultSet rs = pstmt.executeQuery();
-            return rs.next(); // true si encuentra el correo
+            return rs.next();
 
         } catch (SQLException e) {
             System.err.println("⚠️ Error al verificar correo: " + e.getMessage());
@@ -69,13 +104,12 @@ public class Usuario {
         }
     }
 
-    // 🔹 Registrar un usuario en SQLite
+    // ✅ Registrar usuario
     public boolean registrarUsuarioSQLite(String id, String nombre, String apellido, String correo, String contraseña, String rol, String telefono) {
         String sql = "INSERT INTO usuarios (id, nombre, apellido, correo, contraseña, rol, telefono) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setString(1, id);
             pstmt.setString(2, nombre);
             pstmt.setString(3, apellido);
@@ -83,42 +117,57 @@ public class Usuario {
             pstmt.setString(5, contraseña);
             pstmt.setString(6, rol);
             pstmt.setString(7, telefono);
-            
+
             pstmt.executeUpdate();
             return true;
-            
+
         } catch (SQLException e) {
             System.out.println("❌ Error al registrar usuario: " + e.getMessage());
             return false;
         }
     }
 
-    // 🔹 Validar login usando ID y contraseña (ambos tipo TEXT)
+    // ✅ Validar login
     public boolean validarLoginPorID(String idTexto, String contraseña) {
         String sql = "SELECT * FROM usuarios WHERE id = ? AND contraseña = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, idTexto); // ✅ Ya no convertimos a número
+            pstmt.setString(1, idTexto);
             pstmt.setString(2, contraseña);
 
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                // Guardar datos del usuario logueado
                 this.id = rs.getString("id");
                 this.nombre = rs.getString("nombre");
                 this.rol = rs.getString("rol");
-                System.out.println("✅ Login exitoso: " + nombre + " (" + rol + ")");
                 return true;
             } else {
-                System.out.println("⚠️ Credenciales incorrectas (ID o contraseña)");
                 return false;
             }
 
         } catch (SQLException e) {
             System.err.println("❌ Error al validar login: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // ✅ CORREGIDO — Verificación de la llave de acceso
+    public boolean verificarLlaveAcceso(String nombre, String llaveIngresada) {
+
+        String sql = "SELECT * FROM llaves_acceso WHERE nombre = ? AND llave = ?";
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, nombre.trim());
+            pstmt.setString(2, llaveIngresada.trim());
+
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next(); // ✅ Devuelve true si coincide
+
+        } catch (SQLException e) {
+            System.err.println("❌ Error verificando llave: " + e.getMessage());
             return false;
         }
     }

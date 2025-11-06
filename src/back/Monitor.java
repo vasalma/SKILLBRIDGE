@@ -6,12 +6,12 @@ public class Monitor extends Usuario {
     // 🔹 Constructor vacío
     public Monitor() {
         super();
-        this.rol = "monitor";
+        this.rol = "Monitor/tutor";
     }
 
     // 🔹 Constructor completo (coincide con Usuario: id ahora es String)
     public Monitor(String id, String nombre, String apellido, String correo, String contraseña, String telefono, String materiaAsignada) {
-        super(id, nombre, apellido, correo, contraseña, "monitor", telefono);
+        super(id, nombre, apellido, correo, contraseña, "Monitor/tutor", telefono);
         this.materiaAsignada = materiaAsignada;
     }
 

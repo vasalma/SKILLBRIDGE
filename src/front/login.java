@@ -290,10 +290,10 @@ public class login extends javax.swing.JFrame {
             // Redirigir según el rol
             String rol = usuario.getRol();
 
-            if ("estudiante".equalsIgnoreCase(rol)) {
+            if ("Estudiante".equalsIgnoreCase(rol)) {
                 frontEs.dashboard dashboardEs = new frontEs.dashboard();
                 dashboardEs.setVisible(true);
-            } else if ("monitor".equalsIgnoreCase(rol)) {
+            } else if ("Monitor/tutor".equalsIgnoreCase(rol)) {
                 frontMon.dashboardMon dashboardMon = new frontMon.dashboardMon();
                 dashboardMon.setVisible(true);
             } else {
