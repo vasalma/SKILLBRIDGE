@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
  *
  * @author Mi PC
  */
-
 public class signup extends javax.swing.JFrame {
 
     /**
@@ -315,7 +314,6 @@ public class signup extends javax.swing.JFrame {
         //login nuevaventana = new login(); 
         //nuevaventana.setVisible(true);
         // Crear el objeto Usuario
-
         Usuario usuario = new Usuario();
 
         String id = IDTxt.getText();
@@ -332,7 +330,7 @@ public class signup extends javax.swing.JFrame {
             return;
         }
 
-        // ✅ Si es Monitor/Tutor pedimos la llave
+// ✅ Si es Monitor/Tutor pedimos la llave de acceso
         if (rol.equals("Monitor/tutor")) {
 
             String llaveIngresada = JOptionPane.showInputDialog(this, "Ingrese la llave de acceso para monitores/tutores:");
@@ -342,7 +340,7 @@ public class signup extends javax.swing.JFrame {
                 return;
             }
 
-            // ✅ VERIFICACIÓN CORREGIDA
+            // ✅ Verificar solo la llave (la búsqueda usa nombre + llave)
             boolean llaveValida = usuario.verificarLlaveAcceso(nombre, llaveIngresada);
 
             if (!llaveValida) {
@@ -351,7 +349,7 @@ public class signup extends javax.swing.JFrame {
             }
         }
 
-        // ✅ Registrar usuario
+// ✅ Registrar usuario
         boolean ok = usuario.registrarUsuarioSQLite(id, nombre, apellido, correo, contrasena, rol, telefono);
 
         if (ok) {
@@ -361,7 +359,6 @@ public class signup extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "❌ Error al registrar el usuario.");
         }
-    
 
 
     }//GEN-LAST:event_registrarBtnMouseClicked
@@ -386,37 +383,37 @@ public class signup extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    } catch (ClassNotFoundException ex) {
-        java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
-    //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new signup().setVisible(true);
-        }
-    });
-}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new signup().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDTitle;

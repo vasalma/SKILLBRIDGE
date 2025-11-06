@@ -1,7 +1,9 @@
 package crearLllave;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class Privada {
@@ -12,17 +14,29 @@ public class Privada {
         return DriverManager.getConnection(url);
     }
 
-    // Método para insertar la sllave en la base de datos
-    public static void insertarLlave(String nombre, String llave) {
-        String sql = "INSERT INTO llaves_acceso (nombre, llave) VALUES (?, ?)";
+    // Método para insertar la llave en la base de datos
+    public static void insertarLlave(String id, String nombre, String llave) {
+        String sqlVerificar = "SELECT * FROM llaves_acceso WHERE id = ? OR llave = ?";
+        String sqlInsertar = "INSERT INTO llaves_acceso (id, nombre, llave) VALUES (?, ?, ?)";
 
-        try (Connection conn = conectar();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = conectar(); PreparedStatement verificar = conn.prepareStatement(sqlVerificar); PreparedStatement insertar = conn.prepareStatement(sqlInsertar)) {
 
-            pstmt.setString(1, nombre);
-            pstmt.setString(2, llave);
+            // Verificar si ya existe el ID o la llave
+            verificar.setString(1, id);
+            verificar.setString(2, nombre);
+            verificar.setString(3, llave);
+            ResultSet rs = verificar.executeQuery();
 
-            int filasAfectadas = pstmt.executeUpdate();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "⚠️ Ya existe una llave o ID con esos datos. Intente con otros valores.");
+                return;
+            }
+
+            // Insertar si no hay duplicados
+            insertar.setString(1, id);
+            insertar.setString(3, llave);
+
+            int filasAfectadas = insertar.executeUpdate();
             if (filasAfectadas > 0) {
                 JOptionPane.showMessageDialog(null, "✅ Llave de acceso insertada correctamente.");
             } else {
@@ -36,6 +50,12 @@ public class Privada {
 
     // Método principal para solicitar datos y ejecutar la inserción
     public static void main(String[] args) {
+        String id = JOptionPane.showInputDialog("Ingrese el ID del profesor o monitor:");
+        if (id == null || id.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "⚠️ El ID no puede estar vacío.");
+            return;
+        }
+
         String nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
         if (nombre == null || nombre.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "⚠️ Nombre no puede estar vacío.");
@@ -48,7 +68,6 @@ public class Privada {
             return;
         }
 
-        insertarLlave(nombre, llave);
+        insertarLlave(id, nombre, llave);
     }
 }
-
