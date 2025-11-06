@@ -232,7 +232,7 @@ public class signup extends javax.swing.JFrame {
         nameTitle.setForeground(new java.awt.Color(102, 102, 102));
         nameTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameTitle.setText("Nombres");
-        getContentPane().add(nameTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 70, -1));
+        getContentPane().add(nameTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
 
         aTitle.setFont(new java.awt.Font("Questrial", 0, 51)); // NOI18N
         aTitle.setForeground(new java.awt.Color(255, 255, 255));
