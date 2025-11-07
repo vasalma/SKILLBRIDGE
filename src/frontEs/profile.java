@@ -4,8 +4,10 @@
  */
 package frontEs;
 
+import back.Usuario;
 import front.login;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -14,12 +16,43 @@ import javax.swing.UIManager;
  */
 public class profile extends javax.swing.JFrame {
 
+    private Usuario usuarioActual;
+
     /**
      * Creates new form login
      */
     public profile() {
         initComponents();
 
+    }
+
+    public profile(Usuario usuario) {
+        initComponents();
+        this.usuarioActual = usuario;
+        cargarDatosUsuario();
+    }
+
+    private void cargarDatosUsuario() {
+        if (usuarioActual != null) {
+            nameTxt.setText(usuarioActual.getNombre());
+            lastnameTxt.setText(usuarioActual.getApellido());
+            emailTxt.setText(usuarioActual.getCorreo());
+            IDTxt.setText(usuarioActual.getId());
+            phoneTxt.setText(usuarioActual.getTelefono());
+        }
+    }
+
+    private void restablecerCampos() {
+        cargarDatosUsuario();
+        JOptionPane.showMessageDialog(this, "🔁 Campos restablecidos.");
+    }
+
+    private void limpiarCampos() {
+        nameTxt.setText("");
+        lastnameTxt.setText("");
+        emailTxt.setText("");
+        IDTxt.setText("");
+        phoneTxt.setText("");
     }
 
     /**
@@ -85,6 +118,9 @@ public class profile extends javax.swing.JFrame {
             }
         });
         guardarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarBtnMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 guardarBtnMouseExited(evt);
             }
@@ -107,6 +143,9 @@ public class profile extends javax.swing.JFrame {
             }
         });
         restablecerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restablecerBtnMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 restablecerBtnMouseExited(evt);
             }
@@ -140,6 +179,9 @@ public class profile extends javax.swing.JFrame {
             }
         });
         deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteBtnMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 deleteBtnMouseExited(evt);
             }
@@ -172,6 +214,9 @@ public class profile extends javax.swing.JFrame {
             }
         });
         saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveBtnMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 saveBtnMouseExited(evt);
             }
@@ -423,6 +468,44 @@ public class profile extends javax.swing.JFrame {
     private void restablecerTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseExited
         restablecerBtn.setBackground(new Color(221, 224, 229));
     }//GEN-LAST:event_restablecerTxtMouseExited
+
+    private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
+        // TODO add your handling code here:
+        if (usuarioActual != null) {
+            String nuevoNombre = nameTxt.getText();
+            String nuevoApellido = lastnameTxt.getText();
+            String nuevoCorreo = emailTxt.getText();
+            String nuevoTelefono = phoneTxt.getText();
+            String id = usuarioActual.getId();
+
+            boolean exito = usuarioActual.actualizarUsuarioSQLite(id, nuevoNombre, nuevoApellido, nuevoCorreo, nuevoTelefono);
+
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "✅ Datos actualizados correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(this, "❌ No se pudo actualizar la información.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "⚠️ No hay usuario cargado.");
+        }
+
+
+    }//GEN-LAST:event_saveBtnMouseClicked
+
+    private void guardarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBtnMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "🧩 Función de cambio de contraseña aún no implementada.");
+    }//GEN-LAST:event_guardarBtnMouseClicked
+
+    private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
+        // TODO add your handling code here
+        restablecerCampos();
+    }//GEN-LAST:event_deleteBtnMouseClicked
+
+    private void restablecerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseClicked
+        limpiarCampos();
+        JOptionPane.showMessageDialog(this, "❌ Cambios descartados.");
+    }//GEN-LAST:event_restablecerBtnMouseClicked
 
     /**
      * @param args the command line arguments

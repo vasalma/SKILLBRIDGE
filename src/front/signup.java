@@ -314,25 +314,32 @@ public class signup extends javax.swing.JFrame {
         //login nuevaventana = new login(); 
         //nuevaventana.setVisible(true);
         // Crear el objeto Usuario
-        Usuario usuario = new Usuario();
+  Usuario usuario = new Usuario();
 
         String id = IDTxt.getText();
         String nombre = nameTxt.getText();
         String apellido = lastnameTxt.getText();
         String correo = emailTxt.getText();
         String contrasena = new String(passTxt.getPassword());
+        String repetir = new String(passAgaintxt.getPassword());
         String rol = rolTxt.getSelectedItem().toString();
         String telefono = phoneTxt.getText();
 
+        // Validar campos
         if (id.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty()
-                || contrasena.isEmpty() || rol.isEmpty() || telefono.isEmpty()) {
+                || contrasena.isEmpty() || repetir.isEmpty() || rol.isEmpty() || telefono.isEmpty()) {
             JOptionPane.showMessageDialog(this, "⚠️ Debes completar todos los campos antes de registrar.");
             return;
         }
 
-// ✅ Si es Monitor/Tutor pedimos la llave de acceso
-        if (rol.equals("Monitor/tutor")) {
+        // Validar contraseñas iguales
+        if (!contrasena.equals(repetir)) {
+            JOptionPane.showMessageDialog(this, "❌ Las contraseñas no coinciden.");
+            return;
+        }
 
+        // Validar llave de monitor si aplica
+        if (rol.equals("Monitor/tutor")) {
             String llaveIngresada = JOptionPane.showInputDialog(this, "Ingrese la llave de acceso para monitores/tutores:");
 
             if (llaveIngresada == null || llaveIngresada.trim().isEmpty()) {
@@ -340,26 +347,27 @@ public class signup extends javax.swing.JFrame {
                 return;
             }
 
-            // ✅ Verificar solo la llave (la búsqueda usa id + llave)
             boolean llaveValida = usuario.verificarLlaveAcceso(id, llaveIngresada);
-
             if (!llaveValida) {
                 JOptionPane.showMessageDialog(this, "❌ Llave incorrecta o no registrada.");
                 return;
             }
         }
 
-// ✅ Registrar usuario
+        // Registrar usuario
         boolean ok = usuario.registrarUsuarioSQLite(id, nombre, apellido, correo, contrasena, rol, telefono);
 
         if (ok) {
-            JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente.");
+            JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente.\nAhora puedes iniciar sesión.");
+
+            // 🔹 Redirigir al login
             this.dispose();
-            new login().setVisible(true);
+            login ventanaLogin = new login();
+            ventanaLogin.setVisible(true);
+
         } else {
             JOptionPane.showMessageDialog(this, "❌ Error al registrar el usuario.");
-        }
-
+        }     
 
     }//GEN-LAST:event_registrarBtnMouseClicked
 
