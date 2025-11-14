@@ -4,6 +4,8 @@
  */
 package frontMon;
 
+import back.Session;
+import back.Usuario;
 import front.login;
 import frontMon.profileMon;
 import frontMon.cursosDashMon;
@@ -22,6 +24,17 @@ public class actDashMon extends javax.swing.JFrame {
      */
     public actDashMon() {
         initComponents();
+        cargarUsuario(); // <-- IMPORTANTE
+    }
+
+    private void cargarUsuario() {
+        Usuario u = Session.getUsuario();
+
+        if (u != null) {
+            userName.setText(u.getNombre() + " " + u.getApellido());
+        } else {
+            userName.setText("Usuario");
+        }
 
     }
 
@@ -321,7 +334,7 @@ public class actDashMon extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void docBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docBtnMouseClicked
-       //Cierra la ventana actual (login)
+        //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva
         docente nuevaventana = new docente();

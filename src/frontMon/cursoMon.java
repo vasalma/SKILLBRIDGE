@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frontMon;
+
+import back.Session;
+import back.Usuario;
 import frontMon.dashboardMon;
 import javax.swing.UIManager;
-
 
 /**
  *
@@ -18,7 +20,18 @@ public class cursoMon extends javax.swing.JFrame {
      */
     public cursoMon() {
         initComponents();
-        
+        cargarUsuario(); // <-- IMPORTANTE
+    }
+
+    private void cargarUsuario() {
+        Usuario u = Session.getUsuario();
+
+        if (u != null) {
+            userName.setText(u.getNombre() + " " + u.getApellido());
+        } else {
+            userName.setText("Usuario");
+        }
+
     }
 
     /**
@@ -240,7 +253,7 @@ public class cursoMon extends javax.swing.JFrame {
     }//GEN-LAST:event_searchIconActionPerformed
 
     private void docBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docBtnMouseClicked
-       //Cierra la ventana actual (login)
+        //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva
         docente nuevaventana = new docente();

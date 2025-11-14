@@ -4,6 +4,8 @@
  */
 package frontEs;
 
+import back.Session;
+import back.Usuario;
 import front.login;
 import frontEs.profile;
 import frontEs.cursosDash;
@@ -21,6 +23,17 @@ public class actDash extends javax.swing.JFrame {
      */
     public actDash() {
         initComponents();
+        cargarUsuario(); // <-- IMPORTANTE
+    }
+
+    private void cargarUsuario() {
+        Usuario u = Session.getUsuario();
+
+        if (u != null) {
+            userName.setText(u.getNombre() + " " + u.getApellido());
+        } else {
+            userName.setText("Usuario");
+        }
 
     }
 

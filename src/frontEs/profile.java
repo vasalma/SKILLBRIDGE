@@ -4,6 +4,7 @@
  */
 package frontEs;
 
+import back.Manager;
 import back.Usuario;
 import front.login;
 import java.awt.Color;
@@ -18,17 +19,9 @@ public class profile extends javax.swing.JFrame {
 
     private Usuario usuarioActual;
 
-    /**
-     * Creates new form login
-     */
     public profile() {
         initComponents();
-
-    }
-
-    public profile(Usuario usuario) {
-        initComponents();
-        this.usuarioActual = usuario;
+        this.usuarioActual = Manager.getUsuarioActual();
         cargarDatosUsuario();
     }
 
@@ -39,6 +32,8 @@ public class profile extends javax.swing.JFrame {
             emailTxt.setText(usuarioActual.getCorreo());
             IDTxt.setText(usuarioActual.getId());
             phoneTxt.setText(usuarioActual.getTelefono());
+        } else {
+            JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
         }
     }
 

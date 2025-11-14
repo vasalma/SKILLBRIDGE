@@ -4,6 +4,8 @@
  */
 package frontEs;
 
+import back.Session;
+import back.Usuario;
 import javax.swing.UIManager;
 
 
@@ -18,6 +20,19 @@ public class curso extends javax.swing.JFrame {
      */
     public curso() {
         initComponents();
+          initComponents();
+        cargarUsuario(); // <-- IMPORTANTE
+    }
+
+    private void cargarUsuario() {
+        Usuario u = Session.getUsuario();
+
+        if (u != null) {
+            userName.setText(u.getNombre() + " " + u.getApellido());
+        } else {
+            userName.setText("Usuario");
+        }
+
         
     }
 

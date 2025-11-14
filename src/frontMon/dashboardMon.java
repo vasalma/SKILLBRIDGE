@@ -4,6 +4,8 @@
  */
 package frontMon;
 
+import back.Session;
+import back.Usuario;
 import frontEs.actDash;
 import frontEs.cursosDash;
 import front.login;
@@ -19,7 +21,19 @@ public class dashboardMon extends javax.swing.JFrame {
      * Creates new form login
      */
     public dashboardMon() {
-        initComponents();
+      initComponents();
+        cargarUsuario(); // <-- IMPORTANTE
+    }
+
+    private void cargarUsuario() {
+        Usuario u = Session.getUsuario();
+
+        if (u != null) {
+            userName.setText(u.getNombre() + " " + u.getApellido());
+        } else {
+            userName.setText("Usuario");
+        }
+
 
 }
 

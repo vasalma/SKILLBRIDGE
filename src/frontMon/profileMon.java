@@ -4,8 +4,11 @@
  */
 package frontMon;
 
+import back.Manager;
+import back.Usuario;
 import front.login;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -17,9 +20,24 @@ public class profileMon extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
+    private Usuario usuarioActual;
+
     public profileMon() {
         initComponents();
+        this.usuarioActual = Manager.getUsuarioActual();
+        cargarDatosUsuario();
+    }
 
+    private void cargarDatosUsuario() {
+        if (usuarioActual != null) {
+            nameTxt.setText(usuarioActual.getNombre());
+            lastnameTxt.setText(usuarioActual.getApellido());
+            emailTxt.setText(usuarioActual.getCorreo());
+            IDTxt.setText(usuarioActual.getId());
+            phoneTxt.setText(usuarioActual.getTelefono());
+        } else {
+            JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
+        }
     }
 
     /**
@@ -172,6 +190,9 @@ public class profileMon extends javax.swing.JFrame {
             }
         });
         saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveBtnMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 saveBtnMouseExited(evt);
             }
@@ -424,6 +445,28 @@ public class profileMon extends javax.swing.JFrame {
     private void restablecerTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseExited
         restablecerBtn.setBackground(new Color(221, 224, 229));
     }//GEN-LAST:event_restablecerTxtMouseExited
+
+    private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
+        // TODO add your handling code here:
+        if (usuarioActual != null) {
+            String nuevoNombre = nameTxt.getText();
+            String nuevoApellido = lastnameTxt.getText();
+            String nuevoCorreo = emailTxt.getText();
+            String nuevoTelefono = phoneTxt.getText();
+            String id = usuarioActual.getId();
+
+            boolean exito = usuarioActual.actualizarUsuarioSQLite(id, nuevoNombre, nuevoApellido, nuevoCorreo, nuevoTelefono);
+
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "✅ Datos actualizados correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(this, "❌ No se pudo actualizar la información.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "⚠️ No hay usuario cargado.");
+        }
+
+    }//GEN-LAST:event_saveBtnMouseClicked
 
     /**
      * @param args the command line arguments

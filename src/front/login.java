@@ -5,6 +5,8 @@
 package front;
 
 
+import back.Manager;
+import back.Session;
 import java.awt.Color;
 import frontEs.dashboard;
 import frontMon.dashboardMon;
@@ -280,35 +282,38 @@ public class login extends javax.swing.JFrame {
         // Crear instancia de Usuario
         Usuario usuario = new Usuario();
 
-        // Validar login
-        if (usuario.validarLoginPorID(idTexto, contraseña)) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                    "✅ Bienvenido " + usuario.getNombre() + " (" + usuario.getRol() + ")");
-
-            this.dispose(); // Cierra la ventana de login
-
-            // Redirigir según el rol
-            String rol = usuario.getRol();
-
-            if ("Estudiante".equalsIgnoreCase(rol)) {
-                frontEs.dashboard dashboardEs = new frontEs.dashboard();
-                dashboardEs.setVisible(true);
-            } else if ("Monitor/tutor".equalsIgnoreCase(rol)) {
-                frontMon.dashboardMon dashboardMon = new frontMon.dashboardMon();
-                dashboardMon.setVisible(true);
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(this,
-                        "⚠️ Rol desconocido. Contacte al administrador.");
-            }
-
-        } else {
+        // Validar datos
+        if (!usuario.validarLoginPorID(idTexto, contraseña)) {
             javax.swing.JOptionPane.showMessageDialog(this,
                     "❌ Usuario o contraseña incorrectos.");
             passTxt.setText("");
+            return;
         }
-    
 
+        // Guardar el usuario actual
+        Session.setUsuario(usuario);
 
+        Manager.setUsuarioActual(usuario);
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "✅ Bienvenido " + usuario.getNombre() + " (" + usuario.getRol() + ")");
+
+        this.dispose(); // Cerrar login
+
+        // Redirigir según el rol
+        String rol = usuario.getRol();
+
+        if ("Estudiante".equalsIgnoreCase(rol)) {
+            new dashboard().setVisible(true);
+
+        } else if ("Monitor/tutor".equalsIgnoreCase(rol)) {
+            new dashboardMon().setVisible(true);
+
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "⚠️ Rol desconocido. Contacte al administrador.");
+        }
+   
     }//GEN-LAST:event_AccederMouseClicked
 
     private void IDTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDTxtMousePressed

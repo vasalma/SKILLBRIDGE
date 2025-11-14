@@ -314,7 +314,7 @@ public class signup extends javax.swing.JFrame {
         //login nuevaventana = new login(); 
         //nuevaventana.setVisible(true);
         // Crear el objeto Usuario
-  Usuario usuario = new Usuario();
+        Usuario usuario = new Usuario();
 
         String id = IDTxt.getText();
         String nombre = nameTxt.getText();
@@ -325,23 +325,20 @@ public class signup extends javax.swing.JFrame {
         String rol = rolTxt.getSelectedItem().toString();
         String telefono = phoneTxt.getText();
 
-        // Validar campos
         if (id.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty()
                 || contrasena.isEmpty() || repetir.isEmpty() || rol.isEmpty() || telefono.isEmpty()) {
             JOptionPane.showMessageDialog(this, "⚠️ Debes completar todos los campos antes de registrar.");
             return;
         }
 
-        // Validar contraseñas iguales
         if (!contrasena.equals(repetir)) {
             JOptionPane.showMessageDialog(this, "❌ Las contraseñas no coinciden.");
             return;
         }
 
-        // Validar llave de monitor si aplica
+        // Si el rol es "Monitor/tutor", pedir llave
         if (rol.equals("Monitor/tutor")) {
             String llaveIngresada = JOptionPane.showInputDialog(this, "Ingrese la llave de acceso para monitores/tutores:");
-
             if (llaveIngresada == null || llaveIngresada.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "❌ No se ingresó ninguna llave. Registro cancelado.");
                 return;
@@ -354,20 +351,19 @@ public class signup extends javax.swing.JFrame {
             }
         }
 
-        // Registrar usuario
         boolean ok = usuario.registrarUsuarioSQLite(id, nombre, apellido, correo, contrasena, rol, telefono);
 
         if (ok) {
             JOptionPane.showMessageDialog(this, "✅ Usuario registrado correctamente.\nAhora puedes iniciar sesión.");
 
-            // 🔹 Redirigir al login
+            // 🔹 Redirige al login (no abre el perfil aún)
             this.dispose();
             login ventanaLogin = new login();
             ventanaLogin.setVisible(true);
-
         } else {
             JOptionPane.showMessageDialog(this, "❌ Error al registrar el usuario.");
-        }     
+        }
+
 
     }//GEN-LAST:event_registrarBtnMouseClicked
 

@@ -4,6 +4,8 @@
  */
 package frontEs;
 
+import back.Session;
+import back.Usuario;
 import front.login;
 import frontEs.dashboard;
 import javax.swing.UIManager;
@@ -19,6 +21,17 @@ public class cursosDash extends javax.swing.JFrame {
      */
     public cursosDash() {
         initComponents();
+        cargarUsuario(); // <-- IMPORTANTE
+    }
+
+    private void cargarUsuario() {
+        Usuario u = Session.getUsuario();
+
+        if (u != null) {
+            userName.setText(u.getNombre() + " " + u.getApellido());
+        } else {
+            userName.setText("Usuario");
+        }
 
     }
 
