@@ -5,11 +5,16 @@
 package frontMon;
 
 import back.Manager;
+import back.Session;
 import back.Usuario;
+import front.Restcontra;
 import front.login;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import main.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -21,11 +26,13 @@ public class profileMon extends javax.swing.JFrame {
      * Creates new form login
      */
     private Usuario usuarioActual;
+    private Restcontra ventana;
 
     public profileMon() {
         initComponents();
         this.usuarioActual = Manager.getUsuarioActual();
         cargarDatosUsuario();
+
     }
 
     private void cargarDatosUsuario() {
@@ -117,7 +124,20 @@ public class profileMon extends javax.swing.JFrame {
         guardarTxt.setForeground(new java.awt.Color(255, 255, 255));
         guardarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         guardarTxt.setText("Guardar contraseña");
-        guardarBtn.add(guardarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
+        guardarTxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                guardarTxtMouseMoved(evt);
+            }
+        });
+        guardarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarTxtMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                guardarTxtMouseExited(evt);
+            }
+        });
+        guardarBtn.add(guardarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 50));
 
         mainCont.add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 280, 50));
 
@@ -145,11 +165,14 @@ public class profileMon extends javax.swing.JFrame {
             }
         });
         restablecerTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restablecerTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 restablecerTxtMouseExited(evt);
             }
         });
-        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
+        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 50));
 
         mainCont.add(restablecerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 280, 50));
 
@@ -480,6 +503,74 @@ public class profileMon extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_saveBtnMouseClicked
+
+    private void restablecerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseClicked
+        // TODO add your handling code here:
+        ventana = new Restcontra();  // ← GUARDA LA VENTANA AQUÍ
+        ventana.setVisible(true);
+    }//GEN-LAST:event_restablecerTxtMouseClicked
+
+    private void guardarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTxtMouseClicked
+
+        if (ventana == null) {
+            JOptionPane.showMessageDialog(this, "⚠ Primero abre la ventana de restablecer contraseña.");
+            return;
+        }
+
+        ventana.recogerDatos();
+
+        String actual = ventana.getActual();
+        String nueva = ventana.getNueva();
+        String repetir = ventana.getRepetir();
+
+        Usuario u = Session.getUsuario();
+
+        // Validar contraseña actual
+        if (!u.getContraseña().equals(actual)) {
+            JOptionPane.showMessageDialog(this, "⚠ La contraseña actual es incorrecta.");
+            return;
+        }
+
+        // Validar coincidencia
+        if (!nueva.equals(repetir)) {
+            JOptionPane.showMessageDialog(this, "⚠ Las nuevas contraseñas no coinciden.");
+            return;
+        }
+
+        // Cambiar en el objeto
+        u.setContraseña(nueva);
+
+        // Guardar en BD
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "UPDATE usuarios SET contraseña = ? WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, nueva);
+            ps.setString(2, String.valueOf(u.getId()));
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar en la base de datos: " + e.getMessage());
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Contraseña actualizada correctamente.");
+
+        ventana.dispose();
+        ventana = null;
+
+
+    }//GEN-LAST:event_guardarTxtMouseClicked
+
+    private void guardarTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTxtMouseMoved
+        guardarBtn.setBackground(new Color(38, 114, 116));
+
+    }//GEN-LAST:event_guardarTxtMouseMoved
+
+    private void guardarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTxtMouseExited
+        guardarBtn.setBackground(new Color(4, 174, 178));
+
+        
+    }//GEN-LAST:event_guardarTxtMouseExited
 
     /**
      * @param args the command line arguments

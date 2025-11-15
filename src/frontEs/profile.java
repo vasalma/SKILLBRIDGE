@@ -7,7 +7,7 @@ package frontEs;
 import back.Manager;
 import back.Usuario;
 import front.login;
-import front.contraMon;
+import front.Restcontra;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -46,13 +46,7 @@ public class profile extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "🔁 Campos restablecidos.");
     }
 
-    private void limpiarCampos() {
-        nameTxt.setText("");
-        lastnameTxt.setText("");
-        emailTxt.setText("");
-        IDTxt.setText("");
-        phoneTxt.setText("");
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -514,17 +508,15 @@ public class profile extends javax.swing.JFrame {
 
     private void restablecerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseClicked
 
-        contraMon nuevaventana = new contraMon(550, 200);
-        nuevaventana.setVisible(true);
-        limpiarCampos();
+        //Restcontra nuevaventana = new Restcontra(550, 200);
+        //nuevaventana.setVisible(true);
     
     }//GEN-LAST:event_restablecerBtnMouseClicked
 
     private void restablecerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseClicked
         // TODO add your handling code here
-        contraMon nuevaventana = new contraMon(550, 200);
-        nuevaventana.setVisible(true);
-        limpiarCampos();
+        //Restcontra nuevaventana = new Restcontra(550, 200);
+       // nuevaventana.setVisible(true);
         
     }//GEN-LAST:event_restablecerTxtMouseClicked
 

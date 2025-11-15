@@ -4,22 +4,42 @@
  */
 package front;
 
+import back.Session;
+import back.Usuario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import main.DBConnection;
+
 /**
  *
  * @author PC
  */
-public class contraMon extends javax.swing.JFrame {
 
-    /**
-     * Creates new form contraMon
-     */
-    public contraMon() {
+public class Restcontra extends javax.swing.JFrame {
+
+    private String actual;
+    private String nueva;
+    private String repetir;
+    private boolean listo = false;
+
+    public Restcontra() {
         initComponents();
     }
 
-    public contraMon(int x, int y) {
-        initComponents();
-        setLocation(x, y); // Posición personalizada
+
+    // Métodos para que PROFILE lea los datos
+    public String getActual() {
+        return new String(passActualTxt.getPassword());
+    }
+
+    public String getNueva() {
+        return new String(passNewTxt.getPassword());
+    }
+
+    public String getRepetir() {
+        return new String(passAgainTxt.getPassword());
     }
 
     /**
@@ -157,40 +177,53 @@ public class contraMon extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passAgainTxtMousePressed
 
+    public void recogerDatos() {
+    actual = new String(passActualTxt.getPassword());
+    nueva = new String(passNewTxt.getPassword());
+    repetir = new String(passAgainTxt.getPassword());
+
+    // NO validar aquí
+    // NO cerrar la ventana
+    // NO mostrar mensajes
+    listo = true;
+}
+
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(contraMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(contraMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(contraMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(contraMon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new contraMon().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(Restcontra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(Restcontra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(Restcontra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(Restcontra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new Restcontra().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel grayPane;
