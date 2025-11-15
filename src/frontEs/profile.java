@@ -7,7 +7,7 @@ package frontEs;
 import back.Manager;
 import back.Usuario;
 import front.login;
-import frontMon.contraMon;
+import front.contraMon;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -514,16 +514,18 @@ public class profile extends javax.swing.JFrame {
 
     private void restablecerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseClicked
 
-        contraMon nuevaventana = new contraMon();
+        contraMon nuevaventana = new contraMon(550, 200);
         nuevaventana.setVisible(true);
         limpiarCampos();
-        JOptionPane.showMessageDialog(this, "❌ Cambios descartados.");
+    
     }//GEN-LAST:event_restablecerBtnMouseClicked
 
     private void restablecerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseClicked
         // TODO add your handling code here
-        contraMon nuevaventana = new contraMon();
+        contraMon nuevaventana = new contraMon(550, 200);
         nuevaventana.setVisible(true);
+        limpiarCampos();
+        
     }//GEN-LAST:event_restablecerTxtMouseClicked
 
     /**

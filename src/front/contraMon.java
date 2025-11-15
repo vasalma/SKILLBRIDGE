@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package frontMon;
+package front;
 
 /**
  *
@@ -15,6 +15,11 @@ public class contraMon extends javax.swing.JFrame {
      */
     public contraMon() {
         initComponents();
+    }
+
+    public contraMon(int x, int y) {
+        initComponents();
+        setLocation(x, y); // Posición personalizada
     }
 
     /**
@@ -37,6 +42,7 @@ public class contraMon extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         grayPane.setBackground(new java.awt.Color(145, 145, 145));
+        grayPane.setMaximumSize(null);
 
         passActualTitle.setFont(new java.awt.Font("Questrial", 1, 14)); // NOI18N
         passActualTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,7 +101,7 @@ public class contraMon extends javax.swing.JFrame {
                     .addComponent(passActualTitle)
                     .addComponent(passActualTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passNewTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         grayPaneLayout.setVerticalGroup(
             grayPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
