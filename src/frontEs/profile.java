@@ -32,6 +32,9 @@ public class profile extends javax.swing.JFrame {
             emailTxt.setText(usuarioActual.getCorreo());
             IDTxt.setText(usuarioActual.getId());
             phoneTxt.setText(usuarioActual.getTelefono());
+
+            // Actualiza el nombre en la parte superior del perfil
+            Username.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
         } else {
             JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
         }
@@ -91,7 +94,7 @@ public class profile extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Username = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JPanel();
         logoutTxt = new javax.swing.JLabel();
         logoutIcon = new javax.swing.JLabel();
@@ -341,10 +344,10 @@ public class profile extends javax.swing.JFrame {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profilePic.png"))); // NOI18N
         profileData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 123, 123));
 
-        jLabel4.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Martín Berrío");
-        profileData.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
+        Username.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
+        Username.setForeground(new java.awt.Color(0, 0, 0));
+        Username.setText("Martín Berrío");
+        profileData.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
 
         menuBar.add(profileData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 260, 250));
 
@@ -665,6 +668,7 @@ public class profile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDTitle;
     private javax.swing.JTextField IDTxt;
+    private javax.swing.JLabel Username;
     private javax.swing.JLabel appName;
     private javax.swing.JPanel deleteBtn;
     private javax.swing.JLabel deleteTxt;
@@ -680,7 +684,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

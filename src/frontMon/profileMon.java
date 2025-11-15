@@ -28,17 +28,20 @@ public class profileMon extends javax.swing.JFrame {
         cargarDatosUsuario();
     }
 
-    private void cargarDatosUsuario() {
-        if (usuarioActual != null) {
-            nameTxt.setText(usuarioActual.getNombre());
-            lastnameTxt.setText(usuarioActual.getApellido());
-            emailTxt.setText(usuarioActual.getCorreo());
-            IDTxt.setText(usuarioActual.getId());
-            phoneTxt.setText(usuarioActual.getTelefono());
-        } else {
-            JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
-        }
+  private void cargarDatosUsuario() {
+    if (usuarioActual != null) {
+        nameTxt.setText(usuarioActual.getNombre());
+        lastnameTxt.setText(usuarioActual.getApellido());
+        emailTxt.setText(usuarioActual.getCorreo());
+        IDTxt.setText(usuarioActual.getId());
+        phoneTxt.setText(usuarioActual.getTelefono());
+
+        // Actualiza el nombre en la parte superior del perfil
+        username.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
+    } else {
+        JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
     }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +84,7 @@ public class profileMon extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JPanel();
         logoutTxt = new javax.swing.JLabel();
         logoutIcon = new javax.swing.JLabel();
@@ -323,10 +326,10 @@ public class profileMon extends javax.swing.JFrame {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profilePic.png"))); // NOI18N
         profileData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 123, 123));
 
-        jLabel4.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Martín Berrío");
-        profileData.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
+        username.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
+        username.setForeground(new java.awt.Color(0, 0, 0));
+        username.setText("Martín Berrío");
+        profileData.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
 
         menuBar.add(profileData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 260, 250));
 
@@ -774,7 +777,6 @@ public class profileMon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -796,5 +798,6 @@ public class profileMon extends javax.swing.JFrame {
     private javax.swing.JLabel restablecerTxt;
     private javax.swing.JPanel saveBtn;
     private javax.swing.JLabel saveTxt;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }
