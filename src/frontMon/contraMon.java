@@ -52,7 +52,12 @@ public class contraMon extends javax.swing.JFrame {
 
         passActualTxt.setBackground(new java.awt.Color(247, 247, 247));
         passActualTxt.setForeground(new java.awt.Color(153, 153, 153));
-        passActualTxt.setText("jPasswordField1");
+        passActualTxt.setText("Password");
+        passActualTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passActualTxtMousePressed(evt);
+            }
+        });
         passActualTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passActualTxtActionPerformed(evt);
@@ -61,11 +66,21 @@ public class contraMon extends javax.swing.JFrame {
 
         passNewTxt.setBackground(new java.awt.Color(247, 247, 247));
         passNewTxt.setForeground(new java.awt.Color(153, 153, 153));
-        passNewTxt.setText("jPasswordField1");
+        passNewTxt.setText("Password");
+        passNewTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passNewTxtMousePressed(evt);
+            }
+        });
 
         passAgainTxt.setBackground(new java.awt.Color(247, 247, 247));
         passAgainTxt.setForeground(new java.awt.Color(153, 153, 153));
-        passAgainTxt.setText("jPasswordField1");
+        passAgainTxt.setText("Password");
+        passAgainTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passAgainTxtMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout grayPaneLayout = new javax.swing.GroupLayout(grayPane);
         grayPane.setLayout(grayPaneLayout);
@@ -117,6 +132,24 @@ public class contraMon extends javax.swing.JFrame {
     private void passActualTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActualTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passActualTxtActionPerformed
+
+    private void passActualTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passActualTxtMousePressed
+        if (String.valueOf(passActualTxt.getPassword()).equals("Password")) {
+            passActualTxt.setText("");
+        }
+    }//GEN-LAST:event_passActualTxtMousePressed
+
+    private void passNewTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passNewTxtMousePressed
+        if (String.valueOf(passNewTxt.getPassword()).equals("Password")) {
+            passNewTxt.setText("");
+        }
+    }//GEN-LAST:event_passNewTxtMousePressed
+
+    private void passAgainTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passAgainTxtMousePressed
+        if (String.valueOf(passAgainTxt.getPassword()).equals("Password")) {
+            passAgainTxt.setText("");
+        }
+    }//GEN-LAST:event_passAgainTxtMousePressed
 
     /**
      * @param args the command line arguments
