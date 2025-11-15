@@ -5,12 +5,16 @@
 package frontEs;
 
 import back.Manager;
+import back.Session;
 import back.Usuario;
 import front.login;
 import front.Restcontra;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import main.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -19,6 +23,7 @@ import javax.swing.UIManager;
 public class profile extends javax.swing.JFrame {
 
     private Usuario usuarioActual;
+    private Restcontra ventana;
 
     public profile() {
         initComponents();
@@ -45,8 +50,6 @@ public class profile extends javax.swing.JFrame {
         cargarDatosUsuario();
         JOptionPane.showMessageDialog(this, "🔁 Campos restablecidos.");
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -498,7 +501,51 @@ public class profile extends javax.swing.JFrame {
 
     private void guardarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBtnMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "🧩 Función de cambio de contraseña aún no implementada.");
+        if (ventana == null) {
+            JOptionPane.showMessageDialog(this, "⚠ Primero abre la ventana de restablecer contraseña.");
+            return;
+        }
+
+        ventana.recogerDatos();
+
+        String actual = ventana.getActual();
+        String nueva = ventana.getNueva();
+        String repetir = ventana.getRepetir();
+
+        Usuario u = Session.getUsuario();
+
+        // Validar contraseña actual
+        if (!u.getContraseña().equals(actual)) {
+            JOptionPane.showMessageDialog(this, "⚠ La contraseña actual es incorrecta.");
+            return;
+        }
+
+        // Validar coincidencia
+        if (!nueva.equals(repetir)) {
+            JOptionPane.showMessageDialog(this, "⚠ Las nuevas contraseñas no coinciden.");
+            return;
+        }
+
+        // Cambiar en el objeto
+        u.setContraseña(nueva);
+
+        // Guardar en BD
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "UPDATE usuarios SET contraseña = ? WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, nueva);
+            ps.setString(2, String.valueOf(u.getId()));
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar en la base de datos: " + e.getMessage());
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Contraseña actualizada correctamente.");
+
+        ventana.dispose();
+        ventana = null;
     }//GEN-LAST:event_guardarBtnMouseClicked
 
     private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
@@ -507,17 +554,18 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteBtnMouseClicked
 
     private void restablecerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseClicked
-
+        ventana = new Restcontra();  // ← GUARDA LA VENTANA AQUÍ
+        ventana.setVisible(true);
         //Restcontra nuevaventana = new Restcontra(550, 200);
         //nuevaventana.setVisible(true);
-    
+
     }//GEN-LAST:event_restablecerBtnMouseClicked
 
     private void restablecerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseClicked
         // TODO add your handling code here
         //Restcontra nuevaventana = new Restcontra(550, 200);
-       // nuevaventana.setVisible(true);
-        
+        // nuevaventana.setVisible(true);
+
     }//GEN-LAST:event_restablecerTxtMouseClicked
 
     /**
