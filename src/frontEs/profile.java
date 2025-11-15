@@ -86,7 +86,7 @@ public class profile extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         profileData = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
+        backBtn = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -337,18 +337,23 @@ public class profile extends javax.swing.JFrame {
         profileData.setBackground(new java.awt.Color(255, 255, 255));
         profileData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        backBtn.setBackground(new java.awt.Color(255, 255, 255));
+        backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backBtnMouseClicked(evt);
+            }
+        });
+        backBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel22.setFont(new java.awt.Font("Open Sans", 1, 10)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Retroceder");
-        jPanel8.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 10));
+        backBtn.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 10));
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backIcon.png"))); // NOI18N
-        jPanel8.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 30));
+        backBtn.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 30));
 
-        profileData.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 0, 150, 30));
+        profileData.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 0, 150, 30));
 
         jLabel5.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(145, 145, 145));
@@ -602,6 +607,10 @@ public class profile extends javax.swing.JFrame {
         guardarBtn.setBackground(new Color(4, 174, 178));
     }//GEN-LAST:event_guardarTxtMouseExited
 
+    private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -766,6 +775,7 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel IDTitle;
     private javax.swing.JTextField IDTxt;
     private javax.swing.JLabel appName;
+    private javax.swing.JPanel backBtn;
     private javax.swing.JPanel deleteBtn;
     private javax.swing.JLabel deleteTxt;
     private javax.swing.JLabel emailTitle;
@@ -783,7 +793,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel lastnameTitle;
     private javax.swing.JTextField lastnameTxt;
     private javax.swing.JPanel logoutBtn;
