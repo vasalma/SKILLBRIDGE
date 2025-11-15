@@ -172,7 +172,7 @@ public class profileMon extends javax.swing.JFrame {
                 restablecerTxtMouseExited(evt);
             }
         });
-        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 50));
+        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 50));
 
         mainCont.add(restablecerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 280, 50));
 
@@ -506,7 +506,8 @@ public class profileMon extends javax.swing.JFrame {
 
     private void restablecerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseClicked
         // TODO add your handling code here:
-        ventana = new Restcontra();  // ← GUARDA LA VENTANA AQUÍ
+        ventana = new Restcontra();
+        ventana.setLocation(550, 250);// ← GUARDA LA VENTANA AQUÍ
         ventana.setVisible(true);
     }//GEN-LAST:event_restablecerTxtMouseClicked
 
@@ -569,7 +570,7 @@ public class profileMon extends javax.swing.JFrame {
     private void guardarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTxtMouseExited
         guardarBtn.setBackground(new Color(4, 174, 178));
 
-        
+
     }//GEN-LAST:event_guardarTxtMouseExited
 
     /**

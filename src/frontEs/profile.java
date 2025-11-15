@@ -128,7 +128,23 @@ public class profile extends javax.swing.JFrame {
         guardarTxt.setForeground(new java.awt.Color(255, 255, 255));
         guardarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         guardarTxt.setText("Guardar contraseña");
-        guardarBtn.add(guardarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
+        guardarTxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                guardarTxtMouseMoved(evt);
+            }
+        });
+        guardarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarTxtMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                guardarTxtMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                guardarTxtMousePressed(evt);
+            }
+        });
+        guardarBtn.add(guardarTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 50));
 
         mainCont.add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 280, 50));
 
@@ -166,7 +182,7 @@ public class profile extends javax.swing.JFrame {
                 restablecerTxtMouseExited(evt);
             }
         });
-        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 250, 50));
+        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 50));
 
         mainCont.add(restablecerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 280, 50));
 
@@ -501,6 +517,33 @@ public class profile extends javax.swing.JFrame {
 
     private void guardarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBtnMouseClicked
         // TODO add your handling code here:
+
+    }//GEN-LAST:event_guardarBtnMouseClicked
+
+    private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
+        // TODO add your handling code here
+        restablecerCampos();
+    }//GEN-LAST:event_deleteBtnMouseClicked
+
+    private void restablecerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseClicked
+        ventana = new Restcontra();  // ← GUARDA LA VENTANA AQUÍ
+        ventana.setVisible(true);
+        //Restcontra nuevaventana = new Restcontra(550, 200);
+        //nuevaventana.setVisible(true);
+
+    }//GEN-LAST:event_restablecerBtnMouseClicked
+
+    private void restablecerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseClicked
+        // TODO add your handling code here
+        ventana = new Restcontra();
+        ventana.setLocation(550, 250);// ← GUARDA LA VENTANA AQUÍ
+        ventana.setVisible(true);
+        //Restcontra nuevaventana = new Restcontra(550, 200);
+        // nuevaventana.setVisible(true);
+
+    }//GEN-LAST:event_restablecerTxtMouseClicked
+
+    private void guardarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTxtMouseClicked
         if (ventana == null) {
             JOptionPane.showMessageDialog(this, "⚠ Primero abre la ventana de restablecer contraseña.");
             return;
@@ -546,27 +589,18 @@ public class profile extends javax.swing.JFrame {
 
         ventana.dispose();
         ventana = null;
-    }//GEN-LAST:event_guardarBtnMouseClicked
+    }//GEN-LAST:event_guardarTxtMouseClicked
 
-    private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
-        // TODO add your handling code here
-        restablecerCampos();
-    }//GEN-LAST:event_deleteBtnMouseClicked
+    private void guardarTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTxtMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guardarTxtMousePressed
 
-    private void restablecerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseClicked
-        ventana = new Restcontra();  // ← GUARDA LA VENTANA AQUÍ
-        ventana.setVisible(true);
-        //Restcontra nuevaventana = new Restcontra(550, 200);
-        //nuevaventana.setVisible(true);
+    private void guardarTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTxtMouseMoved
+        guardarBtn.setBackground(new Color(38, 114, 116));    }//GEN-LAST:event_guardarTxtMouseMoved
 
-    }//GEN-LAST:event_restablecerBtnMouseClicked
-
-    private void restablecerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseClicked
-        // TODO add your handling code here
-        //Restcontra nuevaventana = new Restcontra(550, 200);
-        // nuevaventana.setVisible(true);
-
-    }//GEN-LAST:event_restablecerTxtMouseClicked
+    private void guardarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTxtMouseExited
+        guardarBtn.setBackground(new Color(4, 174, 178));
+    }//GEN-LAST:event_guardarTxtMouseExited
 
     /**
      * @param args the command line arguments

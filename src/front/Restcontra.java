@@ -58,8 +58,10 @@ public class Restcontra extends javax.swing.JFrame {
         passActualTxt = new javax.swing.JPasswordField();
         passNewTxt = new javax.swing.JPasswordField();
         passAgainTxt = new javax.swing.JPasswordField();
+        exitBtn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         grayPane.setBackground(new java.awt.Color(145, 145, 145));
         grayPane.setMaximumSize(null);
@@ -108,6 +110,16 @@ public class Restcontra extends javax.swing.JFrame {
             }
         });
 
+        exitBtn.setFont(new java.awt.Font("Questrial", 1, 12)); // NOI18N
+        exitBtn.setForeground(new java.awt.Color(255, 255, 255));
+        exitBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitBtn.setText("X");
+        exitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout grayPaneLayout = new javax.swing.GroupLayout(grayPane);
         grayPane.setLayout(grayPaneLayout);
         grayPaneLayout.setHorizontalGroup(
@@ -122,11 +134,17 @@ public class Restcontra extends javax.swing.JFrame {
                     .addComponent(passActualTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passNewTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, grayPaneLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         grayPaneLayout.setVerticalGroup(
             grayPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(grayPaneLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
+                .addComponent(exitBtn)
+                .addGap(1, 1, 1)
                 .addComponent(passActualTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(passActualTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,7 +156,7 @@ public class Restcontra extends javax.swing.JFrame {
                 .addComponent(passAgainTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(passAgainTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,6 +194,10 @@ public class Restcontra extends javax.swing.JFrame {
             passAgainTxt.setText("");
         }
     }//GEN-LAST:event_passAgainTxtMousePressed
+
+    private void exitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_exitBtnMouseClicked
 
     public void recogerDatos() {
     actual = new String(passActualTxt.getPassword());
@@ -226,6 +248,7 @@ public class Restcontra extends javax.swing.JFrame {
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel exitBtn;
     private javax.swing.JPanel grayPane;
     private javax.swing.JLabel passActualTitle;
     private javax.swing.JPasswordField passActualTxt;
