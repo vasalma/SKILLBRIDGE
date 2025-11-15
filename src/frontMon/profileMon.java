@@ -4,6 +4,7 @@
  */
 package frontMon;
 
+import back.Actualizable;
 import back.Manager;
 import back.Session;
 import back.Usuario;
@@ -588,8 +589,25 @@ public class profileMon extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarTxtMouseExited
 
     private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
-        ventanaAnterior.setVisible(true);
-        this.dispose(); // Cierra el profile
+       if (ventanaAnterior != null) {
+
+            // 1. Verificamos si la ventana anterior implementa la interfaz Actualizable.
+            if (ventanaAnterior instanceof Actualizable) {
+
+                // 2. Si lo hace, hacemos el casting a la interfaz y llamamos al método.
+                ((Actualizable) ventanaAnterior).actualizarNombreEnUI();
+
+                System.out.println("✅ Ventana Anterior notificada para recargar el nombre.");
+            }
+
+            // 3. Hacemos visible la ventana anterior (ya actualizada).
+            ventanaAnterior.setVisible(true);
+        }
+
+        // 4. Cerrar la ventana de perfil (solo una vez).
+        this.dispose();
+     // ⬅️ Fin del método backBtnMouseClicked.
+    
     }//GEN-LAST:event_backBtnMouseClicked
 
     /**

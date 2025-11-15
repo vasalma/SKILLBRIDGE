@@ -11,18 +11,19 @@ import front.login;
 import frontEs.profile;
 import frontEs.dashboard;
 import javax.swing.UIManager;
+import back.Actualizable;
 
 /**
  *
  * @author Mi PC
  */
-public class cursosDashMon extends javax.swing.JFrame {
+public class cursosDashMon extends javax.swing.JFrame implements Actualizable {
 
     /**
      * Creates new form login
      */
     public cursosDashMon() {
-         initComponents();
+        initComponents();
         cargarUsuario(); // <-- IMPORTANTE
     }
 
@@ -35,7 +36,22 @@ public class cursosDashMon extends javax.swing.JFrame {
             userName.setText("Usuario");
         }
 
+    }
 
+    public void actualizarNombreEnUI() {
+        // Asegúrate de usar la misma lógica que usabas para cargar el nombre
+        Usuario u = back.Session.getUsuario();
+        // O Usuario u = back.Manager.getUsuarioActual(); (depende de tu clase de sesión)
+
+        if (u != null) {
+            // 'userName' debe ser el nombre de tu JLabel en la esquina superior
+            userName.setText(u.getNombre() + " " + u.getApellido());
+        } else {
+            userName.setText("Usuario");
+        }
+        this.revalidate();
+        this.repaint();
+        System.out.println("✅ Dashboard: Nombre de usuario recargado.");
     }
 
     /**
@@ -270,7 +286,7 @@ public class cursosDashMon extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-         // Abrir el perfil pasando la referencia de esta ventana (dashboard)
+        // Abrir el perfil pasando la referencia de esta ventana (dashboard)
         profileMon nuevaventana = new profileMon(this);
         nuevaventana.setVisible(true);
 
