@@ -35,6 +35,10 @@ public class cursosDash extends javax.swing.JFrame {
 
     }
 
+    public void actualizarUsuario() {
+        cargarUsuario();   // reutiliza lo que ya hiciste
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
