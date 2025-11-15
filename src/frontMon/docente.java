@@ -95,6 +95,11 @@ public class docente extends javax.swing.JFrame {
         menuBar.add(appName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         dashBtn.setBackground(new java.awt.Color(255, 255, 255));
+        dashBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashBtnMouseClicked(evt);
+            }
+        });
         dashBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dashTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -266,11 +271,11 @@ public class docente extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-         // Crear instancia del perfil pasando esta ventana como referencia
+        // Abrir el perfil pasando la referencia de esta ventana (dashboard)
         profileMon nuevaventana = new profileMon(this);
         nuevaventana.setVisible(true);
 
-        // Ocultar, no cerrar completamente, para poder regresar
+        // Ocultar dashboard (no cerrarlo) para poder volver cuando el perfil cierre
         this.setVisible(false);
     }//GEN-LAST:event_jPanel1MouseClicked
 
@@ -281,6 +286,14 @@ public class docente extends javax.swing.JFrame {
         docente nuevaventana = new docente();
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_docBtnMouseClicked
+
+    private void dashBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBtnMouseClicked
+        //Cierra la ventana actual (login)
+        this.dispose();
+        //Abre la ventana nueva 
+        dashboardMon nuevaventana = new dashboardMon();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_dashBtnMouseClicked
 
     /**
      * @param args the command line arguments

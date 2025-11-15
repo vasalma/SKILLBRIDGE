@@ -8,7 +8,6 @@ import back.Session;
 import back.Usuario;
 import javax.swing.UIManager;
 
-
 /**
  *
  * @author Mi PC
@@ -20,7 +19,7 @@ public class curso extends javax.swing.JFrame {
      */
     public curso() {
         initComponents();
-          initComponents();
+        initComponents();
         cargarUsuario(); // <-- IMPORTANTE
     }
 
@@ -33,7 +32,6 @@ public class curso extends javax.swing.JFrame {
             userName.setText("Usuario");
         }
 
-        
     }
 
     /**
@@ -229,11 +227,11 @@ public class curso extends javax.swing.JFrame {
     }//GEN-LAST:event_searchIconActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        // Crear instancia del perfil pasando esta ventana como referencia
+        // Abrir el perfil pasando la referencia de esta ventana (dashboard)
         profile nuevaventana = new profile(this);
         nuevaventana.setVisible(true);
 
-        // Ocultar, no cerrar completamente, para poder regresar
+        // Ocultar dashboard (no cerrarlo) para poder volver cuando el perfil cierre
         this.setVisible(false);
     }//GEN-LAST:event_jPanel1MouseClicked
 

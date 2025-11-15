@@ -36,6 +36,8 @@ public class profile extends javax.swing.JFrame {
     public profile(JFrame ventanaAnterior) {
         initComponents();
         this.ventanaAnterior = ventanaAnterior;
+        this.usuarioActual = Manager.getUsuarioActual();
+        cargarDatosUsuario();
     }
 
     private void cargarDatosUsuario() {

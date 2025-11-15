@@ -40,6 +40,8 @@ public class profileMon extends javax.swing.JFrame {
     public profileMon(JFrame ventanaAnterior) {
         initComponents();
         this.ventanaAnterior = ventanaAnterior;
+        this.usuarioActual = Manager.getUsuarioActual();
+        cargarDatosUsuario();
     }
 
     private void cargarDatosUsuario() {
