@@ -7,6 +7,7 @@ package frontEs;
 import back.Manager;
 import back.Usuario;
 import front.login;
+import frontMon.contraMon;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -161,11 +162,14 @@ public class profile extends javax.swing.JFrame {
             }
         });
         restablecerTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restablecerTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 restablecerTxtMouseExited(evt);
             }
         });
-        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
+        restablecerBtn.add(restablecerTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 250, 50));
 
         mainCont.add(restablecerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 280, 50));
 
@@ -509,9 +513,18 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteBtnMouseClicked
 
     private void restablecerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerBtnMouseClicked
+
+        contraMon nuevaventana = new contraMon();
+        nuevaventana.setVisible(true);
         limpiarCampos();
         JOptionPane.showMessageDialog(this, "❌ Cambios descartados.");
     }//GEN-LAST:event_restablecerBtnMouseClicked
+
+    private void restablecerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restablecerTxtMouseClicked
+        // TODO add your handling code here
+        contraMon nuevaventana = new contraMon();
+        nuevaventana.setVisible(true);
+    }//GEN-LAST:event_restablecerTxtMouseClicked
 
     /**
      * @param args the command line arguments
