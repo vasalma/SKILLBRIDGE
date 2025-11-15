@@ -28,20 +28,20 @@ public class profileMon extends javax.swing.JFrame {
         cargarDatosUsuario();
     }
 
-  private void cargarDatosUsuario() {
-    if (usuarioActual != null) {
-        nameTxt.setText(usuarioActual.getNombre());
-        lastnameTxt.setText(usuarioActual.getApellido());
-        emailTxt.setText(usuarioActual.getCorreo());
-        IDTxt.setText(usuarioActual.getId());
-        phoneTxt.setText(usuarioActual.getTelefono());
+    private void cargarDatosUsuario() {
+        if (usuarioActual != null) {
+            nameTxt.setText(usuarioActual.getNombre());
+            lastnameTxt.setText(usuarioActual.getApellido());
+            emailTxt.setText(usuarioActual.getCorreo());
+            IDTxt.setText(usuarioActual.getId());
+            phoneTxt.setText(usuarioActual.getTelefono());
 
-        // Actualiza el nombre en la parte superior del perfil
-        username.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
-    } else {
-        JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
+            // Actualiza el nombre en la parte superior del perfil
+            userName.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
+        } else {
+            JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
+        }
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,7 +84,7 @@ public class profileMon extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        username = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JPanel();
         logoutTxt = new javax.swing.JLabel();
         logoutIcon = new javax.swing.JLabel();
@@ -326,10 +326,10 @@ public class profileMon extends javax.swing.JFrame {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profilePic.png"))); // NOI18N
         profileData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 123, 123));
 
-        username.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
-        username.setForeground(new java.awt.Color(0, 0, 0));
-        username.setText("Martín Berrío");
-        profileData.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
+        userName.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
+        userName.setForeground(new java.awt.Color(0, 0, 0));
+        userName.setText("Martín Berrío");
+        profileData.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
 
         menuBar.add(profileData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 260, 250));
 
@@ -468,6 +468,16 @@ public class profileMon extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "⚠️ No hay usuario cargado.");
         }
+        // Actualiza el objeto usuarioActual con los nuevos datos
+        usuarioActual.setNombre(nameTxt.getText());
+        usuarioActual.setApellido(lastnameTxt.getText());
+        usuarioActual.setCorreo(emailTxt.getText());
+        usuarioActual.setId(IDTxt.getText());
+        usuarioActual.setTelefono(phoneTxt.getText());
+
+        // Actualiza el nombre debajo de la foto de perfil
+        userName.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
+
 
     }//GEN-LAST:event_saveBtnMouseClicked
 
@@ -798,6 +808,6 @@ public class profileMon extends javax.swing.JFrame {
     private javax.swing.JLabel restablecerTxt;
     private javax.swing.JPanel saveBtn;
     private javax.swing.JLabel saveTxt;
-    private javax.swing.JLabel username;
+    private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,7 +34,7 @@ public class profile extends javax.swing.JFrame {
             phoneTxt.setText(usuarioActual.getTelefono());
 
             // Actualiza el nombre en la parte superior del perfil
-            Username.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
+            userName.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
         } else {
             JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
         }
@@ -94,7 +94,7 @@ public class profile extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        Username = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JPanel();
         logoutTxt = new javax.swing.JLabel();
         logoutIcon = new javax.swing.JLabel();
@@ -344,10 +344,10 @@ public class profile extends javax.swing.JFrame {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profilePic.png"))); // NOI18N
         profileData.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 123, 123));
 
-        Username.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
-        Username.setForeground(new java.awt.Color(0, 0, 0));
-        Username.setText("Martín Berrío");
-        profileData.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
+        userName.setFont(new java.awt.Font("Questrial", 0, 16)); // NOI18N
+        userName.setForeground(new java.awt.Color(0, 0, 0));
+        userName.setText("Martín Berrío");
+        profileData.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 176, -1, -1));
 
         menuBar.add(profileData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 260, 250));
 
@@ -486,7 +486,15 @@ public class profile extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "⚠️ No hay usuario cargado.");
         }
+        // Actualiza el objeto usuarioActual con los nuevos datos
+        usuarioActual.setNombre(nameTxt.getText());
+        usuarioActual.setApellido(lastnameTxt.getText());
+        usuarioActual.setCorreo(emailTxt.getText());
+        usuarioActual.setId(IDTxt.getText());
+        usuarioActual.setTelefono(phoneTxt.getText());
 
+        // Actualiza el nombre debajo de la foto de perfil
+        userName.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
 
     }//GEN-LAST:event_saveBtnMouseClicked
 
@@ -668,7 +676,6 @@ public class profile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDTitle;
     private javax.swing.JTextField IDTxt;
-    private javax.swing.JLabel Username;
     private javax.swing.JLabel appName;
     private javax.swing.JPanel deleteBtn;
     private javax.swing.JLabel deleteTxt;
@@ -705,5 +712,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel restablecerTxt;
     private javax.swing.JPanel saveBtn;
     private javax.swing.JLabel saveTxt;
+    private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables
 }
