@@ -326,11 +326,12 @@ public class actDashMon extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        //Cierra la ventana actual (login)
-        this.dispose();
-        //Abre la ventana nueva
-        profileMon nuevaventana = new profileMon();
+         // Crear instancia del perfil pasando esta ventana como referencia
+        profileMon nuevaventana = new profileMon(this);
         nuevaventana.setVisible(true);
+
+        // Ocultar, no cerrar completamente, para poder regresar
+        this.setVisible(false);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void docBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docBtnMouseClicked

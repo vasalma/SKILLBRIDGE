@@ -70,6 +70,7 @@ public class curso extends javax.swing.JFrame {
         profilePic = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
         configArrow = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -198,7 +199,21 @@ public class curso extends javax.swing.JFrame {
         header.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(883, 36, 70, -1));
 
         configArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrowProfile.png"))); // NOI18N
+        configArrow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                configArrowMouseClicked(evt);
+            }
+        });
         header.add(configArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(946, 34, 40, 20));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 150, 40));
 
         getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
 
@@ -212,6 +227,19 @@ public class curso extends javax.swing.JFrame {
     private void searchIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchIconActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchIconActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // Crear instancia del perfil pasando esta ventana como referencia
+        profile nuevaventana = new profile(this);
+        nuevaventana.setVisible(true);
+
+        // Ocultar, no cerrar completamente, para poder regresar
+        this.setVisible(false);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void configArrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configArrowMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_configArrowMouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,6 +305,7 @@ public class curso extends javax.swing.JFrame {
     private javax.swing.JLabel dashIcon;
     private javax.swing.JLabel dashTxt;
     private javax.swing.JPanel header;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel logoutBtn;
     private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel logoutTxt;

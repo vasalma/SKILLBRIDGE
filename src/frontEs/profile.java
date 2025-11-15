@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 import main.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javax.swing.JFrame;
 
 /**
  *
@@ -24,11 +25,17 @@ public class profile extends javax.swing.JFrame {
 
     private Usuario usuarioActual;
     private Restcontra ventana;
+    private JFrame ventanaAnterior;
 
     public profile() {
         initComponents();
         this.usuarioActual = Manager.getUsuarioActual();
         cargarDatosUsuario();
+    }
+
+    public profile(JFrame ventanaAnterior) {
+        initComponents();
+        this.ventanaAnterior = ventanaAnterior;
     }
 
     private void cargarDatosUsuario() {
@@ -608,7 +615,8 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarTxtMouseExited
 
     private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
-        // TODO add your handling code here:
+        ventanaAnterior.setVisible(true);
+        this.dispose(); // Cierra el profile
     }//GEN-LAST:event_backBtnMouseClicked
 
     /**

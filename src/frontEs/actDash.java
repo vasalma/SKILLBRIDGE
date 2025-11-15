@@ -304,11 +304,12 @@ public class actDash extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        //Cierra la ventana actual (login)
-        this.dispose();
-        //Abre la ventana nueva
-        profile nuevaventana = new profile();
+       // Crear instancia del perfil pasando esta ventana como referencia
+        profile nuevaventana = new profile(this);
         nuevaventana.setVisible(true);
+
+        // Ocultar, no cerrar completamente, para poder regresar
+        this.setVisible(false);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
