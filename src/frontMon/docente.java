@@ -282,6 +282,9 @@ public class docente extends javax.swing.JFrame implements Actualizable {
             }
         });
         addAsigTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addAsigTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 addAsigTxtMouseExited(evt);
             }
@@ -411,6 +414,10 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     private void deleteAsigTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAsigTxtMouseExited
         deleteAsigBtn.setBackground(new Color(223, 91, 91));
     }//GEN-LAST:event_deleteAsigTxtMouseExited
+
+    private void addAsigTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addAsigTxtMouseClicked
+        // TODO add your handling code hereMAMAMAMAMAM
+    }//GEN-LAST:event_addAsigTxtMouseClicked
 
     /**
      * @param args the command line arguments
