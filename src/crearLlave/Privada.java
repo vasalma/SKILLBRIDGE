@@ -4,68 +4,125 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 public class Privada {
 
+    // ... (Método conectar() y generarLlaveUnica() permanecen igual) ...
+    
     // Método para obtener la conexión a la base de datos
     private static Connection conectar() throws Exception {
         String url = "jdbc:sqlite:database/skillbridge.db";
         return DriverManager.getConnection(url);
     }
 
-    // Método para insertar la llave en la base de datos
-    public static void insertarLlave(String id, String llave) {
-        String sqlVerificar = "SELECT * FROM llaves_acceso WHERE id = ? OR llave = ?";
-        String sqlInsertar = "INSERT INTO llaves_acceso (id, llave) VALUES (?, ?)";
+    // Método para generar una llave de acceso única de 6 dígitos
+    private static String generarLlaveUnica() throws Exception {
+        String llaveGenerada = "";
+        boolean esUnica = false;
+        Random random = new Random();
+        String sqlVerificarLlave = "SELECT 1 FROM llaves_acceso WHERE llave = ?";
+
+        try (Connection conn = conectar()) { 
+            for (int i = 0; i < 100; i++) {
+                int num = random.nextInt(900000) + 100000; 
+                llaveGenerada = String.valueOf(num); 
+
+                try (PreparedStatement verificar = conn.prepareStatement(sqlVerificarLlave)) {
+                    verificar.setString(1, llaveGenerada);
+                    ResultSet rs = verificar.executeQuery();
+                    
+                    if (!rs.next()) {
+                        esUnica = true;
+                        break; 
+                    }
+                }
+            }
+        }
+        if (!esUnica) {
+            throw new RuntimeException("No se pudo generar una llave única después de varios intentos.");
+        }
+        return llaveGenerada;
+    }
+
+    // Método para insertar la llave en la base de datos (AHORA RECIBE LA MATERIA)
+    public static void insertarLlave(String id, String llave, String materia) {
+        String sqlVerificarId = "SELECT 1 FROM llaves_acceso WHERE id = ?";
+        // ⚠ La sentencia INSERT ahora incluye el campo 'materia'
+        String sqlInsertar = "INSERT INTO llaves_acceso (id, llave, materia) VALUES (?, ?, ?)";
 
         try (Connection conn = conectar();
-             PreparedStatement verificar = conn.prepareStatement(sqlVerificar);
+             PreparedStatement verificarId = conn.prepareStatement(sqlVerificarId);
              PreparedStatement insertar = conn.prepareStatement(sqlInsertar)) {
 
-            // Verificar si ya existe el ID o la llave
-            verificar.setString(1, id);
-            verificar.setString(2, llave); // ✅ solo 2 parámetros, como en el SQL
-
-            ResultSet rs = verificar.executeQuery();
+            // 1. Verificar si ya existe el ID
+            verificarId.setString(1, id);
+            ResultSet rs = verificarId.executeQuery();
 
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null,
-                        "⚠️ Ya existe una llave o ID con esos datos. Intente con otros valores.");
+                        "⚠ Ya existe un registro con el ID '" + id + "'. Intente con otro ID.");
                 return;
             }
 
-            // Insertar si no hay duplicados
+            // 2. Insertar el registro (ID, LLAVE y MATERIA)
             insertar.setString(1, id);
             insertar.setString(2, llave);
-
+            insertar.setString(3, materia); // <-- Asignamos la materia
+            
             int filasAfectadas = insertar.executeUpdate();
             if (filasAfectadas > 0) {
-                JOptionPane.showMessageDialog(null, "✅ Llave de acceso insertada correctamente.");
+                // Mensaje final mostrando la llave y la materia
+                JOptionPane.showMessageDialog(null, 
+                        "✅ Llave de acceso insertada correctamente.\n\n"
+                        + "Materia: " + materia + "\n"
+                        + "Llave Generada: " + llave); 
             } else {
                 JOptionPane.showMessageDialog(null, "❌ Error al insertar la llave de acceso.");
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "❌ Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "❌ Error en la inserción: " + e.getMessage());
         }
     }
 
-    // Método principal para solicitar datos y ejecutar la inserción
+    // Método principal modificado
     public static void main(String[] args) {
+        // --- 1. Solicitar el ID ---
         String id = JOptionPane.showInputDialog("Ingrese el ID del profesor o monitor:");
         if (id == null || id.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "⚠️ El ID no puede estar vacío.");
+            JOptionPane.showMessageDialog(null, "⚠ El ID no puede estar vacío.");
+            return;
+        }
+        
+        // --- 2. Mostrar el Menú de Materias ---
+        String[] opcionesMaterias = {"Calculo", "Algebra"};
+        String materiaSeleccionada = (String) JOptionPane.showInputDialog(
+                null,
+                "Seleccione la materia asociada a esta llave:",
+                "Selección de Materia",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcionesMaterias,
+                opcionesMaterias[0] // Opción por defecto
+        );
+        
+        // Si el usuario cancela o cierra la ventana
+        if (materiaSeleccionada == null) {
+            JOptionPane.showMessageDialog(null, "⚠ Debe seleccionar una materia.");
             return;
         }
 
-
-        String llave = JOptionPane.showInputDialog("Ingrese la llave de acceso:");
-        if (llave == null || llave.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "⚠️ Llave no puede estar vacía.");
-            return;
+        // --- 3. Generar e Insertar ---
+        try {
+            String llaveGenerada = generarLlaveUnica();
+            
+            // Llamamos a la función con el tercer parámetro: la materia
+            insertarLlave(id, llaveGenerada, materiaSeleccionada);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "❌ Error al generar la llave: " + e.getMessage());
         }
-
-        insertarLlave(id, llave);
     }
 }
