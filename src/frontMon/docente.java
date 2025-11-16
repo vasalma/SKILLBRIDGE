@@ -13,6 +13,7 @@ import frontMon.dashboardMon;
 import frontMon.docente;
 import javax.swing.UIManager;
 import back.Actualizable;
+import java.awt.Color;
 
 /**
  *
@@ -92,9 +93,11 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         jPanel1 = new javax.swing.JPanel();
         mainCont = new javax.swing.JPanel();
         tabbed = new javax.swing.JTabbedPane();
-        activesTab = new javax.swing.JTabbedPane();
-        completeTab = new javax.swing.JTabbedPane();
-        allTab = new javax.swing.JTabbedPane();
+        menuTab = new javax.swing.JPanel();
+        addAsigBtn = new javax.swing.JPanel();
+        addAsigTxt = new javax.swing.JLabel();
+        deleteAsigBtn = new javax.swing.JPanel();
+        deleteAsigTxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -264,9 +267,70 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         mainCont.setBackground(new java.awt.Color(102, 102, 102));
         mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabbed.addTab("tab2", activesTab);
-        tabbed.addTab("tab3", completeTab);
-        tabbed.addTab("tab1", allTab);
+        menuTab.setBackground(new java.awt.Color(255, 255, 255));
+        menuTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        addAsigBtn.setBackground(new java.awt.Color(64, 174, 178));
+
+        addAsigTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
+        addAsigTxt.setForeground(new java.awt.Color(255, 255, 255));
+        addAsigTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addAsigTxt.setText("Agregar");
+        addAsigTxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                addAsigTxtMouseMoved(evt);
+            }
+        });
+        addAsigTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addAsigTxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addAsigBtnLayout = new javax.swing.GroupLayout(addAsigBtn);
+        addAsigBtn.setLayout(addAsigBtnLayout);
+        addAsigBtnLayout.setHorizontalGroup(
+            addAsigBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(addAsigTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        addAsigBtnLayout.setVerticalGroup(
+            addAsigBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(addAsigTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        menuTab.add(addAsigBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 140, 40));
+
+        deleteAsigBtn.setBackground(new java.awt.Color(223, 91, 91));
+
+        deleteAsigTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
+        deleteAsigTxt.setForeground(new java.awt.Color(255, 255, 255));
+        deleteAsigTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteAsigTxt.setText("Eliminar");
+        deleteAsigTxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                deleteAsigTxtMouseMoved(evt);
+            }
+        });
+        deleteAsigTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteAsigTxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout deleteAsigBtnLayout = new javax.swing.GroupLayout(deleteAsigBtn);
+        deleteAsigBtn.setLayout(deleteAsigBtnLayout);
+        deleteAsigBtnLayout.setHorizontalGroup(
+            deleteAsigBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(deleteAsigTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+        deleteAsigBtnLayout.setVerticalGroup(
+            deleteAsigBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(deleteAsigTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        menuTab.add(deleteAsigBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, 140, 40));
+
+        tabbed.addTab("tab1", menuTab);
 
         mainCont.add(tabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 550));
 
@@ -328,8 +392,25 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         this.dispose();
         //Abre la ventana nueva 
         actDashMon nuevaventana = new actDashMon();
-        nuevaventana.setVisible(true); 
+        nuevaventana.setVisible(true);
     }//GEN-LAST:event_actsBtnMouseClicked
+
+    private void addAsigTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addAsigTxtMouseMoved
+        addAsigBtn.setBackground(new Color(38, 114, 116));
+    }//GEN-LAST:event_addAsigTxtMouseMoved
+
+    private void addAsigTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addAsigTxtMouseExited
+        addAsigBtn.setBackground(new Color(4, 174, 178));
+    }//GEN-LAST:event_addAsigTxtMouseExited
+
+    private void deleteAsigTxtMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAsigTxtMouseMoved
+
+        deleteAsigBtn.setBackground(new Color(191, 40, 40));
+    }//GEN-LAST:event_deleteAsigTxtMouseMoved
+
+    private void deleteAsigTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAsigTxtMouseExited
+        deleteAsigBtn.setBackground(new Color(223, 91, 91));
+    }//GEN-LAST:event_deleteAsigTxtMouseExited
 
     /**
      * @param args the command line arguments
@@ -876,14 +957,13 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane activesTab;
     private javax.swing.JPanel actsBtn;
     private javax.swing.JLabel actsIcon;
     private javax.swing.JLabel actsTitle;
     private javax.swing.JLabel actsTxt;
-    private javax.swing.JTabbedPane allTab;
+    private javax.swing.JPanel addAsigBtn;
+    private javax.swing.JLabel addAsigTxt;
     private javax.swing.JLabel appName;
-    private javax.swing.JTabbedPane completeTab;
     private javax.swing.JLabel configArrow;
     private javax.swing.JPanel coursesBtn;
     private javax.swing.JLabel coursesIcon;
@@ -891,6 +971,8 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     private javax.swing.JPanel dashBtn;
     private javax.swing.JLabel dashIcon;
     private javax.swing.JLabel dashTxt;
+    private javax.swing.JPanel deleteAsigBtn;
+    private javax.swing.JLabel deleteAsigTxt;
     private javax.swing.JPanel docBtn;
     private javax.swing.JLabel docIcon;
     private javax.swing.JLabel docTxt;
@@ -901,6 +983,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     private javax.swing.JLabel logoutTxt;
     private javax.swing.JPanel mainCont;
     private javax.swing.JPanel menuBar;
+    private javax.swing.JPanel menuTab;
     private javax.swing.JLabel profilePic;
     private javax.swing.JTextField searchBar;
     private javax.swing.JButton searchIcon;
