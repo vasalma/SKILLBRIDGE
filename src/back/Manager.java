@@ -1,5 +1,7 @@
 package back;
 
+
+
 /**
  *
  * @author PC
@@ -19,4 +21,6 @@ public class Manager {
     public static void cerrarSesion() {
         usuarioActual = null;
     }
+   
+
 }

@@ -12,7 +12,6 @@ import front.Restcontra;
 import front.login;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import main.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,6 +34,18 @@ public class profileMon extends javax.swing.JFrame {
         initComponents();
         this.usuarioActual = Manager.getUsuarioActual();
         cargarDatosUsuario();
+        IDTxt.setEditable(false);
+        // Mostrar aviso cuando se intente interactuar
+        IDTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JOptionPane.showMessageDialog(null,
+                        "El ID no se puede editar.",
+                        "Message",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            }
+        });
 
     }
     
@@ -43,6 +54,18 @@ public class profileMon extends javax.swing.JFrame {
         this.ventanaAnterior = ventanaAnterior;
         this.usuarioActual = Manager.getUsuarioActual();
         cargarDatosUsuario();
+        IDTxt.setEditable(false);
+        // Mostrar aviso cuando se intente interactuar
+        IDTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JOptionPane.showMessageDialog(null,
+                        "El ID no se puede editar.",
+                        "Message",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+            }
+        });
     }
 
     private void cargarDatosUsuario() {
@@ -55,9 +78,7 @@ public class profileMon extends javax.swing.JFrame {
 
             // Actualiza el nombre en la parte superior del perfil
             userName.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
-        } else {
-            JOptionPane.showMessageDialog(this, "⚠️ No hay datos del usuario cargados.");
-        }
+        } 
     }
 
     /**
