@@ -10,12 +10,12 @@ import java.awt.Color;
  *
  * @author Mi PC
  */
-public class vistaPrevia extends javax.swing.JFrame {
+public class registrarAsig extends javax.swing.JFrame {
 
     /**
      * Creates new form vistaPrevia
      */
-    public vistaPrevia() {
+    public registrarAsig() {
         initComponents();
     }
 
@@ -30,15 +30,15 @@ public class vistaPrevia extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         img = new javax.swing.JPanel();
-        asigName = new javax.swing.JLabel();
-        descrpTxt = new javax.swing.JLabel();
         accBtn = new javax.swing.JPanel();
         accTxt = new javax.swing.JLabel();
+        asigName = new javax.swing.JTextField();
+        descrpTxt = new javax.swing.JTextField();
+        IDAsig = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(980, 180));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(928, 180));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         background.setBackground(new java.awt.Color(247, 247, 247));
@@ -56,20 +56,12 @@ public class vistaPrevia extends javax.swing.JFrame {
             .addGap(0, 147, Short.MAX_VALUE)
         );
 
-        asigName.setFont(new java.awt.Font("Poppins", 1, 25)); // NOI18N
-        asigName.setForeground(new java.awt.Color(0, 0, 0));
-        asigName.setText("Asignatura");
-
-        descrpTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        descrpTxt.setForeground(new java.awt.Color(0, 0, 0));
-        descrpTxt.setText("Descripción");
-
         accBtn.setBackground(new java.awt.Color(64, 174, 178));
 
         accTxt.setFont(new java.awt.Font("Questrial", 0, 18)); // NOI18N
         accTxt.setForeground(new java.awt.Color(255, 255, 255));
         accTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        accTxt.setText("Acceder");
+        accTxt.setText("Registrar");
         accTxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 accTxtMouseMoved(evt);
@@ -92,6 +84,18 @@ public class vistaPrevia extends javax.swing.JFrame {
             .addComponent(accTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
+        asigName.setBackground(new java.awt.Color(255, 255, 255));
+        asigName.setForeground(new java.awt.Color(0, 0, 0));
+        asigName.setText("Asignatura");
+
+        descrpTxt.setBackground(new java.awt.Color(255, 255, 255));
+        descrpTxt.setForeground(new java.awt.Color(0, 0, 0));
+        descrpTxt.setText("Descripción");
+
+        IDAsig.setBackground(new java.awt.Color(255, 255, 255));
+        IDAsig.setForeground(new java.awt.Color(0, 0, 0));
+        IDAsig.setText("ID de asignatura");
+
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
@@ -99,20 +103,16 @@ public class vistaPrevia extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(backgroundLayout.createSequentialGroup()
-                                .addComponent(asigName)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(backgroundLayout.createSequentialGroup()
-                                .addComponent(descrpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 441, Short.MAX_VALUE)
-                        .addComponent(accBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
+                        .addComponent(asigName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(IDAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(descrpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(accBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,12 +120,14 @@ public class vistaPrevia extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(accBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(backgroundLayout.createSequentialGroup()
-                            .addComponent(asigName)
+                            .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(asigName, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                                .addComponent(IDAsig))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(descrpTxt))
-                        .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(descrpTxt))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -159,30 +161,32 @@ public class vistaPrevia extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vistaPrevia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarAsig.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vistaPrevia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarAsig.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vistaPrevia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarAsig.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vistaPrevia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(registrarAsig.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaPrevia().setVisible(true);
+                new registrarAsig().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField IDAsig;
     private javax.swing.JPanel accBtn;
     private javax.swing.JLabel accTxt;
-    private javax.swing.JLabel asigName;
+    private javax.swing.JTextField asigName;
     private javax.swing.JPanel background;
-    private javax.swing.JLabel descrpTxt;
+    private javax.swing.JTextField descrpTxt;
     private javax.swing.JPanel img;
     // End of variables declaration//GEN-END:variables
 }
