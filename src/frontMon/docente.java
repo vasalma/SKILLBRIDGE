@@ -6,10 +6,7 @@ package frontMon;
 
 import back.Session;
 import back.Usuario;
-import frontEs.actDash;
-import frontEs.cursosDash;
 import front.login;
-import frontEs.profile;
 import back.Actualizable;
 
 /**
@@ -98,8 +95,8 @@ public class docente extends javax.swing.JFrame implements Actualizable {
 
         videosHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
         videosHead.setForeground(new java.awt.Color(0, 0, 0));
-        videosHead.setText("Docente");
-        mainCont.add(videosHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        videosHead.setText("Holi");
+        mainCont.add(videosHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         getContentPane().add(mainCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 1010, 630));
 
