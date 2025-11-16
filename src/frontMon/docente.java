@@ -59,6 +59,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        allTab = new javax.swing.JTabbedPane();
         mainCont = new javax.swing.JPanel();
         videosHead = new javax.swing.JLabel();
         menuBar = new javax.swing.JPanel();
@@ -85,18 +86,20 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         userName = new javax.swing.JLabel();
         configArrow = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(allTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         mainCont.setBackground(new java.awt.Color(153, 153, 153));
         mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         videosHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
         videosHead.setForeground(new java.awt.Color(0, 0, 0));
-        videosHead.setText("Holi");
-        mainCont.add(videosHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        videosHead.setText("Docente");
+        mainCont.add(videosHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         getContentPane().add(mainCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 1010, 630));
 
@@ -249,6 +252,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         header.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 150, 40));
 
         getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 80, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -361,6 +365,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     private javax.swing.JPanel actsBtn;
     private javax.swing.JLabel actsIcon;
     private javax.swing.JLabel actsTxt;
+    private javax.swing.JTabbedPane allTab;
     private javax.swing.JLabel appName;
     private javax.swing.JLabel configArrow;
     private javax.swing.JPanel coursesBtn;
@@ -374,6 +379,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     private javax.swing.JLabel docTxt;
     private javax.swing.JPanel header;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel logoutBtn;
     private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel logoutTxt;
