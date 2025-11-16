@@ -80,6 +80,16 @@ public class profile extends javax.swing.JFrame {
     }
 
     
+private void descartarCambiosActionPerformed(java.awt.event.ActionEvent evt) {
+    // Vuelve a cargar los valores originales del usuario actual
+    cargarDatosUsuario();
+
+    JOptionPane.showMessageDialog(this,
+            "Los cambios han sido descartados.",
+            "Message",
+            JOptionPane.INFORMATION_MESSAGE
+    );
+}
 
 
     /**
@@ -245,6 +255,9 @@ public class profile extends javax.swing.JFrame {
             }
         });
         deleteTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 deleteTxtMouseExited(evt);
             }
@@ -557,7 +570,7 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarBtnMouseClicked
 
     private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
-        // TODO add your handling code here
+        descartarCambiosActionPerformed(null);
         
     }//GEN-LAST:event_deleteBtnMouseClicked
 
@@ -660,6 +673,10 @@ public class profile extends javax.swing.JFrame {
         // ⬅️ Fin del método backBtnMouseClicked.
 
     }//GEN-LAST:event_backBtnMouseClicked
+
+    private void deleteTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTxtMouseClicked
+        descartarCambiosActionPerformed(null);
+    }//GEN-LAST:event_deleteTxtMouseClicked
 
     /**
      * @param args the command line arguments

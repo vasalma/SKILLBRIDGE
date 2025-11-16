@@ -80,6 +80,16 @@ public class profileMon extends javax.swing.JFrame {
             userName.setText(usuarioActual.getNombre() + " " + usuarioActual.getApellido());
         } 
     }
+    private void descartarCambiosActionPerformed(java.awt.event.ActionEvent evt) {
+    // Vuelve a cargar los valores originales del usuario actual
+    cargarDatosUsuario();
+
+    JOptionPane.showMessageDialog(this,
+            "Los cambios han sido descartados.",
+            "Message",
+            JOptionPane.INFORMATION_MESSAGE
+    );
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -215,6 +225,9 @@ public class profileMon extends javax.swing.JFrame {
             }
         });
         deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteBtnMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 deleteBtnMouseExited(evt);
             }
@@ -232,11 +245,14 @@ public class profileMon extends javax.swing.JFrame {
             }
         });
         deleteTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 deleteTxtMouseExited(evt);
             }
         });
-        deleteBtn.add(deleteTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 200, 50));
+        deleteBtn.add(deleteTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 50));
 
         mainCont.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 240, 50));
 
@@ -630,6 +646,14 @@ public class profileMon extends javax.swing.JFrame {
      // ⬅️ Fin del método backBtnMouseClicked.
     
     }//GEN-LAST:event_backBtnMouseClicked
+
+    private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteBtnMouseClicked
+
+    private void deleteTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTxtMouseClicked
+        descartarCambiosActionPerformed(null);
+    }//GEN-LAST:event_deleteTxtMouseClicked
 
     /**
      * @param args the command line arguments
