@@ -7,6 +7,11 @@ package frontMon;
 import back.Session;
 import back.Usuario;
 import front.login;
+import frontMon.profileMon;
+import frontMon.cursosDashMon;
+import frontMon.dashboardMon;
+import frontMon.docente;
+import javax.swing.UIManager;
 import back.Actualizable;
 
 /**
@@ -20,7 +25,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
      */
     public docente() {
         initComponents();
-        cargarUsuario(); // <-- IMPORTANTE HOLIIIII como vasssss
+        cargarUsuario(); // <-- IMPORTANTE
     }
 
     private void cargarUsuario() {
@@ -59,9 +64,8 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        allTab = new javax.swing.JTabbedPane();
-        mainCont = new javax.swing.JPanel();
-        videosHead = new javax.swing.JLabel();
+        sectionName = new javax.swing.JPanel();
+        actsTitle = new javax.swing.JLabel();
         menuBar = new javax.swing.JPanel();
         appName = new javax.swing.JLabel();
         dashBtn = new javax.swing.JPanel();
@@ -70,15 +74,15 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         coursesBtn = new javax.swing.JPanel();
         coursesTxt = new javax.swing.JLabel();
         coursesIcon = new javax.swing.JLabel();
+        logoutBtn = new javax.swing.JPanel();
+        logoutTxt = new javax.swing.JLabel();
+        logoutIcon = new javax.swing.JLabel();
         docBtn = new javax.swing.JPanel();
         docTxt = new javax.swing.JLabel();
         docIcon = new javax.swing.JLabel();
         actsBtn = new javax.swing.JPanel();
         actsTxt = new javax.swing.JLabel();
         actsIcon = new javax.swing.JLabel();
-        logoutBtn = new javax.swing.JPanel();
-        logoutTxt = new javax.swing.JLabel();
-        logoutIcon = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         searchIcon = new javax.swing.JButton();
         searchBar = new javax.swing.JTextField();
@@ -86,22 +90,25 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         userName = new javax.swing.JLabel();
         configArrow = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        mainCont = new javax.swing.JPanel();
+        tabbed = new javax.swing.JTabbedPane();
+        activesTab = new javax.swing.JTabbedPane();
+        completeTab = new javax.swing.JTabbedPane();
+        allTab = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(allTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        mainCont.setBackground(new java.awt.Color(153, 153, 153));
-        mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        sectionName.setBackground(new java.awt.Color(153, 153, 153));
+        sectionName.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        videosHead.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
-        videosHead.setForeground(new java.awt.Color(0, 0, 0));
-        videosHead.setText("Docente");
-        mainCont.add(videosHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        actsTitle.setFont(new java.awt.Font("Questrial", 0, 35)); // NOI18N
+        actsTitle.setForeground(new java.awt.Color(0, 0, 0));
+        actsTitle.setText("Docente");
+        sectionName.add(actsTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        getContentPane().add(mainCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 1010, 630));
+        getContentPane().add(sectionName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 1010, 80));
 
         menuBar.setBackground(new java.awt.Color(255, 255, 255));
         menuBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,6 +145,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         });
         coursesBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        coursesTxt.setBackground(new java.awt.Color(255, 255, 255));
         coursesTxt.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         coursesTxt.setForeground(new java.awt.Color(0, 0, 0));
         coursesTxt.setText("Cursos");
@@ -147,6 +155,24 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         coursesBtn.add(coursesIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
         menuBar.add(coursesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 260, 40));
+
+        logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+        logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logoutTxt.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
+        logoutTxt.setForeground(new java.awt.Color(0, 0, 0));
+        logoutTxt.setText("Log out");
+        logoutBtn.add(logoutTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, -1, -1));
+
+        logoutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoutIcon.png"))); // NOI18N
+        logoutBtn.add(logoutIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
+
+        menuBar.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 260, 40));
 
         docBtn.setBackground(new java.awt.Color(255, 255, 255));
         docBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -183,24 +209,6 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         actsBtn.add(actsIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
 
         menuBar.add(actsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 260, 40));
-
-        logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
-        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutBtnMouseClicked(evt);
-            }
-        });
-        logoutBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        logoutTxt.setFont(new java.awt.Font("Open Sans", 0, 11)); // NOI18N
-        logoutTxt.setForeground(new java.awt.Color(0, 0, 0));
-        logoutTxt.setText("Log out");
-        logoutBtn.add(logoutTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, -1, -1));
-
-        logoutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoutIcon.png"))); // NOI18N
-        logoutBtn.add(logoutIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 40, 40));
-
-        menuBar.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 260, 40));
 
         getContentPane().add(menuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 710));
 
@@ -252,7 +260,17 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         header.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 150, 40));
 
         getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1010, 80));
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 80, 90));
+
+        mainCont.setBackground(new java.awt.Color(102, 102, 102));
+        mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabbed.addTab("tab2", activesTab);
+        tabbed.addTab("tab3", completeTab);
+        tabbed.addTab("tab1", allTab);
+
+        mainCont.add(tabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 550));
+
+        getContentPane().add(mainCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 1010, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -273,12 +291,12 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_coursesBtnMouseClicked
 
-    private void actsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actsBtnMouseClicked
+    private void dashBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBtnMouseClicked
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        actDashMon nuevaventana = new actDashMon();
-        nuevaventana.setVisible(true);    }//GEN-LAST:event_actsBtnMouseClicked
+        dashboardMon nuevaventana = new dashboardMon();
+        nuevaventana.setVisible(true);    }//GEN-LAST:event_dashBtnMouseClicked
 
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
         //Cierra la ventana actual (login)
@@ -305,13 +323,13 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         nuevaventana.setVisible(true);
     }//GEN-LAST:event_docBtnMouseClicked
 
-    private void dashBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBtnMouseClicked
+    private void actsBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actsBtnMouseClicked
         //Cierra la ventana actual (login)
         this.dispose();
         //Abre la ventana nueva 
-        dashboardMon nuevaventana = new dashboardMon();
-        nuevaventana.setVisible(true);
-    }//GEN-LAST:event_dashBtnMouseClicked
+        actDashMon nuevaventana = new actDashMon();
+        nuevaventana.setVisible(true); 
+    }//GEN-LAST:event_actsBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -354,6 +372,502 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -362,11 +876,14 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane activesTab;
     private javax.swing.JPanel actsBtn;
     private javax.swing.JLabel actsIcon;
+    private javax.swing.JLabel actsTitle;
     private javax.swing.JLabel actsTxt;
     private javax.swing.JTabbedPane allTab;
     private javax.swing.JLabel appName;
+    private javax.swing.JTabbedPane completeTab;
     private javax.swing.JLabel configArrow;
     private javax.swing.JPanel coursesBtn;
     private javax.swing.JLabel coursesIcon;
@@ -379,7 +896,6 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     private javax.swing.JLabel docTxt;
     private javax.swing.JPanel header;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel logoutBtn;
     private javax.swing.JLabel logoutIcon;
     private javax.swing.JLabel logoutTxt;
@@ -388,7 +904,8 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     private javax.swing.JLabel profilePic;
     private javax.swing.JTextField searchBar;
     private javax.swing.JButton searchIcon;
+    private javax.swing.JPanel sectionName;
+    private javax.swing.JTabbedPane tabbed;
     private javax.swing.JLabel userName;
-    private javax.swing.JLabel videosHead;
     // End of variables declaration//GEN-END:variables
 }

@@ -100,9 +100,9 @@ public class actDashMon extends javax.swing.JFrame implements Actualizable {
         jPanel1 = new javax.swing.JPanel();
         mainCont = new javax.swing.JPanel();
         tabbed = new javax.swing.JTabbedPane();
-        allTab = new javax.swing.JTabbedPane();
         activesTab = new javax.swing.JTabbedPane();
         completeTab = new javax.swing.JTabbedPane();
+        allTab = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -300,9 +300,9 @@ public class actDashMon extends javax.swing.JFrame implements Actualizable {
         mainCont.setBackground(new java.awt.Color(102, 102, 102));
         mainCont.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabbed.addTab("tab1", allTab);
         tabbed.addTab("tab2", activesTab);
         tabbed.addTab("tab3", completeTab);
+        tabbed.addTab("tab1", allTab);
 
         mainCont.add(tabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 550));
 
