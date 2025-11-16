@@ -23,7 +23,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
      */
     public docente() {
         initComponents();
-        cargarUsuario(); // <-- IMPORTANTE HOLIIIII
+        cargarUsuario(); // <-- IMPORTANTE HOLIIIII como vasssss
     }
 
     private void cargarUsuario() {
