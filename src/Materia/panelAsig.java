@@ -228,7 +228,7 @@ public class panelAsig extends javax.swing.JPanel {
 
         background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 950, 150));
 
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 440));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
