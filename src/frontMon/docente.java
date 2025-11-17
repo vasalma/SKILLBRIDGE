@@ -26,13 +26,20 @@ import main.DBConnection;
 public class docente extends javax.swing.JFrame implements Actualizable {
 
     // Estos deben estar declarados en el diseñador con estos nombres exactos
-
     private final List<vistaPrevia> vistas = new ArrayList<>();
 
     public docente() {
         initComponents();
         cargarUsuario();
         cargarAsignaturasDesdeBD();
+        // Activar Scroll en contenedorVistas
+        JScrollPane scroll = new JScrollPane(contenedorVistas);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+// Reemplaza el añadido original
+        menuTab.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 440));
+
     }
 
     private void cargarUsuario() {
@@ -118,8 +125,6 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         this.repaint();
         System.out.println("✅ Dashboard: Nombre de usuario recargado.");
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -403,6 +408,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         menuTab.add(deleteAsigBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, 140, 40));
 
         contenedorVistas.setBackground(new java.awt.Color(255, 255, 255));
+        contenedorVistas.setLayout(new javax.swing.BoxLayout(contenedorVistas, javax.swing.BoxLayout.Y_AXIS));
         menuTab.add(contenedorVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 440));
 
         tabbed.addTab("tab1", menuTab);
