@@ -26,7 +26,7 @@ import main.DBConnection;
 
 public class docente extends javax.swing.JFrame implements Actualizable {
 
-    // Estos deben estar declarados en el diseñador con estos nombres exactos
+    // Estos deben estar declarados en el diseñador con estos nombres exactos holiiiiiiiiiiiiii
     private final List<vistaPrevia> vistas = new ArrayList<>();
 
     public docente() {
