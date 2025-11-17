@@ -11,7 +11,7 @@ public class vistaPrevia extends JPanel {
     private final Asignatura asignatura;
     private boolean seleccionada = false;
     private Runnable onClickeador;
-private Runnable onVolverMenu; // Variable para la acción "Volver al Menú" holiiii
+private Runnable onVolverMenu; // Variable para la acción "Volver al Menú" holiiii sis is si
     public vistaPrevia() {
         this(new Asignatura("0", "Sin nombre", "Sin descripción"));
     }
