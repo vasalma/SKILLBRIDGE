@@ -4,6 +4,8 @@
  */
 package Materia;
 
+import java.awt.Color;
+
 /**
  *
  * @author Mi PC
@@ -31,16 +33,16 @@ public class panelAsig extends javax.swing.JPanel {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         asigName = new javax.swing.JLabel();
-        videosSection = new javax.swing.JPanel();
-        videosTitle = new javax.swing.JLabel();
-        loadBtn = new javax.swing.JPanel();
-        loadIcon = new javax.swing.JLabel();
-        videos = new javax.swing.JPanel();
         actsSection = new javax.swing.JPanel();
         actsTitle = new javax.swing.JLabel();
-        loadBtn1 = new javax.swing.JPanel();
-        loadIcon1 = new javax.swing.JLabel();
+        loadactsBtn = new javax.swing.JPanel();
+        loadIcon = new javax.swing.JLabel();
         acts = new javax.swing.JPanel();
+        videosSection = new javax.swing.JPanel();
+        videosTitle = new javax.swing.JLabel();
+        loadvidBtn = new javax.swing.JPanel();
+        loadIcon1 = new javax.swing.JLabel();
+        videos = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -84,98 +86,38 @@ public class panelAsig extends javax.swing.JPanel {
         asigName.setFont(new java.awt.Font("Questrial", 0, 26)); // NOI18N
         asigName.setForeground(new java.awt.Color(221, 224, 229));
         asigName.setText("// Asignatura");
-        background.add(asigName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        background.add(asigName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        videosSection.setBackground(new java.awt.Color(204, 204, 204));
-
-        videosTitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        videosTitle.setForeground(new java.awt.Color(0, 0, 0));
-        videosTitle.setText("Actividades");
-
-        loadBtn.setBackground(new java.awt.Color(64, 174, 178));
-
-        loadIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/loadIcon.png"))); // NOI18N
-
-        javax.swing.GroupLayout loadBtnLayout = new javax.swing.GroupLayout(loadBtn);
-        loadBtn.setLayout(loadBtnLayout);
-        loadBtnLayout.setHorizontalGroup(
-            loadBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loadBtnLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(loadIcon)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        loadBtnLayout.setVerticalGroup(
-            loadBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loadBtnLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(loadIcon)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-
-        videos.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout videosLayout = new javax.swing.GroupLayout(videos);
-        videos.setLayout(videosLayout);
-        videosLayout.setHorizontalGroup(
-            videosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
-        );
-        videosLayout.setVerticalGroup(
-            videosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout videosSectionLayout = new javax.swing.GroupLayout(videosSection);
-        videosSection.setLayout(videosSectionLayout);
-        videosSectionLayout.setHorizontalGroup(
-            videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(videosSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(videosTitle)
-                    .addComponent(loadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(videos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        videosSectionLayout.setVerticalGroup(
-            videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(videosSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(videosTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(videos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 950, 150));
-
-        actsSection.setBackground(new java.awt.Color(204, 204, 204));
+        actsSection.setBackground(new java.awt.Color(255, 255, 255));
 
         actsTitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         actsTitle.setForeground(new java.awt.Color(0, 0, 0));
-        actsTitle.setText("Videos");
+        actsTitle.setText("Actividades");
 
-        loadBtn1.setBackground(new java.awt.Color(64, 174, 178));
+        loadactsBtn.setBackground(new java.awt.Color(64, 174, 178));
 
-        loadIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/loadIcon.png"))); // NOI18N
+        loadIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loadIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/loadIcon.png"))); // NOI18N
+        loadIcon.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                loadIconMouseMoved(evt);
+            }
+        });
+        loadIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loadIconMouseExited(evt);
+            }
+        });
 
-        javax.swing.GroupLayout loadBtn1Layout = new javax.swing.GroupLayout(loadBtn1);
-        loadBtn1.setLayout(loadBtn1Layout);
-        loadBtn1Layout.setHorizontalGroup(
-            loadBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loadBtn1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(loadIcon1)
-                .addContainerGap(46, Short.MAX_VALUE))
+        javax.swing.GroupLayout loadactsBtnLayout = new javax.swing.GroupLayout(loadactsBtn);
+        loadactsBtn.setLayout(loadactsBtnLayout);
+        loadactsBtnLayout.setHorizontalGroup(
+            loadactsBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loadIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
         );
-        loadBtn1Layout.setVerticalGroup(
-            loadBtn1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loadBtn1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(loadIcon1)
-                .addContainerGap(37, Short.MAX_VALUE))
+        loadactsBtnLayout.setVerticalGroup(
+            loadactsBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loadIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
         );
 
         acts.setBackground(new java.awt.Color(153, 153, 153));
@@ -199,7 +141,7 @@ public class panelAsig extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(actsSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(actsTitle)
-                    .addComponent(loadBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loadactsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(acts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -209,37 +151,106 @@ public class panelAsig extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(actsTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loadBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loadactsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(acts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        background.add(actsSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 950, 150));
+        background.add(actsSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 950, 150));
+
+        videosSection.setBackground(new java.awt.Color(255, 255, 255));
+
+        videosTitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        videosTitle.setForeground(new java.awt.Color(0, 0, 0));
+        videosTitle.setText("Videos");
+
+        loadvidBtn.setBackground(new java.awt.Color(64, 174, 178));
+
+        loadIcon1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loadIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/loadIcon.png"))); // NOI18N
+        loadIcon1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                loadIcon1MouseMoved(evt);
+            }
+        });
+        loadIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loadIcon1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout loadvidBtnLayout = new javax.swing.GroupLayout(loadvidBtn);
+        loadvidBtn.setLayout(loadvidBtnLayout);
+        loadvidBtnLayout.setHorizontalGroup(
+            loadvidBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loadIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        );
+        loadvidBtnLayout.setVerticalGroup(
+            loadvidBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loadIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+        );
+
+        videos.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout videosLayout = new javax.swing.GroupLayout(videos);
+        videos.setLayout(videosLayout);
+        videosLayout.setHorizontalGroup(
+            videosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 802, Short.MAX_VALUE)
+        );
+        videosLayout.setVerticalGroup(
+            videosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout videosSectionLayout = new javax.swing.GroupLayout(videosSection);
+        videosSection.setLayout(videosSectionLayout);
+        videosSectionLayout.setHorizontalGroup(
+            videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(videosSectionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(videosTitle)
+                    .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(videos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        videosSectionLayout.setVerticalGroup(
+            videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(videosSectionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(videosTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(videos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 950, 150));
 
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
-        if (ventanaAnterior != null) {
 
-            // 1. Verificamos si la ventana anterior implementa la interfaz Actualizable.
-            if (ventanaAnterior instanceof Actualizable) {
-
-                // 2. Si lo hace, hacemos el casting a la interfaz y llamamos al método.
-                ((Actualizable) ventanaAnterior).actualizarNombreEnUI();
-
-                System.out.println("✅ Ventana Anterior notificada para recargar el nombre.");
-            }
-
-            // 3. Hacemos visible la ventana anterior (ya actualizada).
-            ventanaAnterior.setVisible(true);
-        }
-
-        // 4. Cerrar la ventana de perfil (solo una vez).
-        this.dispose();
-        // ⬅️ Fin del método backBtnMouseClicked.
 
     }//GEN-LAST:event_backBtnMouseClicked
+
+    private void loadIcon1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIcon1MouseMoved
+        loadvidBtn.setBackground(new Color(38, 114, 116));
+    }//GEN-LAST:event_loadIcon1MouseMoved
+
+    private void loadIcon1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIcon1MouseExited
+        loadvidBtn.setBackground(new Color(4, 174, 178));
+    }//GEN-LAST:event_loadIcon1MouseExited
+
+    private void loadIconMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIconMouseMoved
+        loadactsBtn.setBackground(new Color(38, 114, 116));
+    }//GEN-LAST:event_loadIconMouseMoved
+
+    private void loadIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIconMouseExited
+        loadactsBtn.setBackground(new Color(4, 174, 178));
+    }//GEN-LAST:event_loadIconMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -251,10 +262,10 @@ public class panelAsig extends javax.swing.JPanel {
     private javax.swing.JPanel background;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JPanel loadBtn;
-    private javax.swing.JPanel loadBtn1;
     private javax.swing.JLabel loadIcon;
     private javax.swing.JLabel loadIcon1;
+    private javax.swing.JPanel loadactsBtn;
+    private javax.swing.JPanel loadvidBtn;
     private javax.swing.JPanel videos;
     private javax.swing.JPanel videosSection;
     private javax.swing.JLabel videosTitle;
