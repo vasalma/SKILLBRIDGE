@@ -1,52 +1,115 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package frontMon;
 
+import Materia.Asignatura;
+import Materia.registrarAsig;
+import Materia.vistaPrevia;
 import back.Session;
 import back.Usuario;
-import front.login;
-import frontMon.profileMon;
-import frontMon.cursosDashMon;
-import frontMon.dashboardMon;
-import frontMon.docente;
-import javax.swing.UIManager;
 import back.Actualizable;
+import front.login;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-/**
- *
- * @author Mi PC
- */
+import main.DBConnection;
+
 public class docente extends javax.swing.JFrame implements Actualizable {
 
-    /**
-     * Creates new form login
-     */
+    // Estos deben estar declarados en el diseñador con estos nombres exactos
+
+    private final List<vistaPrevia> vistas = new ArrayList<>();
+
     public docente() {
         initComponents();
-        cargarUsuario(); // <-- IMPORTANTE
+        cargarUsuario();
+        cargarAsignaturasDesdeBD();
     }
 
     private void cargarUsuario() {
         Usuario u = Session.getUsuario();
-
         if (u != null) {
             userName.setText(u.getNombre() + " " + u.getApellido());
         } else {
             userName.setText("Usuario");
         }
-
     }
 
-    public void actualizarNombreEnUI() {
-        // Asegúrate de usar la misma lógica que usabas para cargar el nombre
-        Usuario u = back.Session.getUsuario();
-        // O Usuario u = back.Manager.getUsuarioActual(); (depende de tu clase de sesión)
+    private void agregarAsignatura(Asignatura nueva) {
+        vistaPrevia vp = new vistaPrevia(nueva);
+        vp.setOnAcceder(() -> {
+            int idx = encontrarIndiceTabPorNombre(nueva.getNombre());
+            if (idx >= 0) {
+                tabbed.setSelectedIndex(idx);
+            }
+        });
 
+        vistas.add(vp);
+        contenedorVistas.add(vp);
+        contenedorVistas.revalidate();
+        contenedorVistas.repaint();
+
+        JPanel panel = crearPanelAsignatura(nueva);
+        tabbed.addTab(nueva.getNombre(), panel);
+    }
+
+    private JPanel crearPanelAsignatura(Asignatura a) {
+        JPanel p = new JPanel(new BorderLayout());
+        JLabel titulo = new JLabel("Asignatura: " + a.getNombre());
+        titulo.setFont(titulo.getFont().deriveFont(Font.BOLD, 16f));
+        JTextArea descripcion = new JTextArea(a.getDescripcion());
+        descripcion.setEditable(false);
+        descripcion.setLineWrap(true);
+        descripcion.setWrapStyleWord(true);
+        descripcion.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        p.add(titulo, BorderLayout.NORTH);
+        p.add(new JScrollPane(descripcion), BorderLayout.CENTER);
+        return p;
+    }
+
+    private int encontrarIndiceTabPorNombre(String nombre) {
+        for (int i = 0; i < tabbed.getTabCount(); i++) {
+            if (tabbed.getTitleAt(i).equals(nombre)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void cargarAsignaturasDesdeBD() {
+        try {
+            Connection conn = DBConnection.getConnection();
+            String sql = "SELECT id, nombre, descripcion FROM materias";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String nombre = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+
+                Asignatura a = new Asignatura(id, nombre, descripcion);
+                agregarAsignatura(a);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar asignaturas desde la base de datos.");
+        }
+    }
+
+    @Override
+    public void actualizarNombreEnUI() {
+        Usuario u = Session.getUsuario();
         if (u != null) {
-            // 'userName' debe ser el nombre de tu JLabel en la esquina superior
             userName.setText(u.getNombre() + " " + u.getApellido());
         } else {
             userName.setText("Usuario");
@@ -55,6 +118,8 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         this.repaint();
         System.out.println("✅ Dashboard: Nombre de usuario recargado.");
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,6 +163,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         addAsigTxt = new javax.swing.JLabel();
         deleteAsigBtn = new javax.swing.JPanel();
         deleteAsigTxt = new javax.swing.JLabel();
+        contenedorVistas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -315,6 +381,9 @@ public class docente extends javax.swing.JFrame implements Actualizable {
             }
         });
         deleteAsigTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteAsigTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 deleteAsigTxtMouseExited(evt);
             }
@@ -332,6 +401,9 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         );
 
         menuTab.add(deleteAsigBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, 140, 40));
+
+        contenedorVistas.setBackground(new java.awt.Color(255, 255, 255));
+        menuTab.add(contenedorVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 440));
 
         tabbed.addTab("tab1", menuTab);
 
@@ -416,8 +488,43 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     }//GEN-LAST:event_deleteAsigTxtMouseExited
 
     private void addAsigTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addAsigTxtMouseClicked
-        // TODO add your handling code hereMAMAMAMAMAM
+        registrarAsig ventana = new registrarAsig();
+        ventana.setLocationRelativeTo(this);
+        ventana.setVisible(true);
+
+        Asignatura nueva = ventana.getResultado();
+        if (nueva != null) {
+            agregarAsignatura(nueva); // ✅ aquí se crea la vistaPrevia
+        }
     }//GEN-LAST:event_addAsigTxtMouseClicked
+
+    private void deleteAsigTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAsigTxtMouseClicked
+        java.util.List<vistaPrevia> seleccionadas = new java.util.ArrayList<>();
+        for (vistaPrevia vp : vistas) {
+            if (vp.isSeleccionada()) {
+                seleccionadas.add(vp);
+            }
+        }
+
+        if (seleccionadas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Selecciona una asignatura para eliminar.");
+            return;
+        }
+
+        for (vistaPrevia vp : seleccionadas) {
+            Asignatura a = vp.getAsignatura();
+            contenedorVistas.remove(vp);
+            vistas.remove(vp);
+
+            int idx = encontrarIndiceTabPorNombre(a.getNombre());
+            if (idx >= 0) {
+                tabbed.removeTabAt(idx);
+            }
+        }
+
+        contenedorVistas.revalidate();
+        contenedorVistas.repaint();
+    }//GEN-LAST:event_deleteAsigTxtMouseClicked
 
     /**
      * @param args the command line arguments
@@ -972,6 +1079,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     private javax.swing.JLabel addAsigTxt;
     private javax.swing.JLabel appName;
     private javax.swing.JLabel configArrow;
+    private javax.swing.JPanel contenedorVistas;
     private javax.swing.JPanel coursesBtn;
     private javax.swing.JLabel coursesIcon;
     private javax.swing.JLabel coursesTxt;

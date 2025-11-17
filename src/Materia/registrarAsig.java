@@ -1,16 +1,25 @@
 package Materia;
 
 import java.awt.Color;
-
+import javax.swing.JOptionPane;
+import main.DBConnection;
 
 /**
  *
  * @author Mi PC
  */
 public class registrarAsig extends javax.swing.JFrame {
-    
-    
-    
+
+    public registrarAsig() {
+        initComponents();
+    }
+
+    private Asignatura resultado;
+
+    public Asignatura getResultado() {
+        return resultado;
+    }
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -137,7 +146,22 @@ public class registrarAsig extends javax.swing.JFrame {
     }//GEN-LAST:event_accTxtMouseExited
 
     private void accTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accTxtMouseClicked
+        String id = IDAsig.getText().trim();
+        String nombre = asigName.getText().trim();
+        String descripcion = descrpTxt.getText().trim();
 
+        if (id.isEmpty() || nombre.isEmpty() || descripcion.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.");
+            return;
+        }
+
+        resultado = DBConnection.registrarAsignaturaEnBD(id, nombre, descripcion);
+        if (resultado == null) {
+            JOptionPane.showMessageDialog(this, "No se pudo registrar la asignatura.");
+            return;
+        }
+
+        this.dispose(); // cerrar la ventana si todo salió bien
     }//GEN-LAST:event_accTxtMouseClicked
 
     private void accTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accTxtMouseEntered
@@ -148,7 +172,7 @@ public class registrarAsig extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       /* Set the Nimbus look and feel */
+        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
