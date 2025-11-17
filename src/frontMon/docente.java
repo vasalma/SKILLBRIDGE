@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
 
 import main.DBConnection;
 
@@ -71,15 +72,53 @@ public class docente extends javax.swing.JFrame implements Actualizable {
 
     private JPanel crearPanelAsignatura(Asignatura a) {
         JPanel p = new JPanel(new BorderLayout());
+
+        // --- 1. Panel Superior (Header) para contener Título y Botón ---
+        JPanel headerPanel = new JPanel(new BorderLayout());
+        headerPanel.setBackground(Color.WHITE);
+
+        // Título de la Asignatura
         JLabel titulo = new JLabel("Asignatura: " + a.getNombre());
         titulo.setFont(titulo.getFont().deriveFont(Font.BOLD, 16f));
+
+        // Añadir el título al lado izquierdo del header
+        headerPanel.add(titulo, BorderLayout.WEST);
+
+        // --- 2. Botón "VOLVER AL MENU" con funcionalidad ---
+        JLabel volverMenu = new JLabel("VOLVER AL MENU");
+        volverMenu.setForeground(new Color(4, 174, 178)); // Color que usas
+        volverMenu.setFont(new Font("Questrial", Font.BOLD, 12));
+
+        // Añadir la funcionalidad de clic
+        volverMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                // ✅ ACCIÓN CLAVE: Selecciona la pestaña "Menú" (índice 0)
+                tabbed.setSelectedIndex(0);
+            }
+        });
+
+        // Contenedor para el botón de menú y alineación a la derecha
+        JPanel menuBtnContainer = new JPanel(new BorderLayout());
+        menuBtnContainer.setBackground(Color.WHITE);
+        menuBtnContainer.add(volverMenu, BorderLayout.EAST);
+
+        // Añadir el contenedor de menú al lado derecho del header
+        headerPanel.add(menuBtnContainer, BorderLayout.EAST);
+
+        // Añadir el header al panel principal (en la posición NORTH)
+        p.add(headerPanel, BorderLayout.NORTH);
+
+        // --- 3. Área de Descripción (Tus componentes existentes) ---
         JTextArea descripcion = new JTextArea(a.getDescripcion());
         descripcion.setEditable(false);
         descripcion.setLineWrap(true);
         descripcion.setWrapStyleWord(true);
         descripcion.setFont(new Font("SansSerif", Font.PLAIN, 13));
-        p.add(titulo, BorderLayout.NORTH);
+
+        // Añadir el área de descripción al panel principal (en la posición CENTER)
         p.add(new JScrollPane(descripcion), BorderLayout.CENTER);
+
         return p;
     }
 
@@ -93,24 +132,40 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     }
 
     private void cargarAsignaturasDesdeBD() {
-        try {
-            Connection conn = DBConnection.getConnection();
-            String sql = "SELECT id, nombre, descripcion FROM materias";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                String id = rs.getString("id");
-                String nombre = rs.getString("nombre");
-                String descripcion = rs.getString("descripcion");
-
-                Asignatura a = new Asignatura(id, nombre, descripcion);
-                agregarAsignatura(a);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al cargar asignaturas desde la base de datos.");
+   // Asegúrate de que el usuario está logueado
+        Usuario u = Session.getUsuario();
+        if (u == null) {
+            System.out.println("Error: No hay sesión de usuario activa.");
+            return;
         }
+
+        // 1. Obtener el ID del docente actual
+        String idDocente = u.getId();
+
+        // 2. Obtener la lista de asignaturas del docente
+        List<Asignatura> listaAsignaturas = DBConnection.obtenerAsignaturasDocente(idDocente);
+
+        // 3. Limpiar y recargar los componentes visuales
+        // Limpiar el contenedor de vistas previas y la lista de vistas
+        contenedorVistas.removeAll();
+        vistas.clear();
+        
+        // Limpiar las pestañas de detalle (empezando desde el índice 1, ya que el 0 es 'menuTab')
+        // Bucle inverso para evitar problemas de índice al eliminar
+        for (int i = tabbed.getTabCount() - 1; i > 0; i--) {
+            tabbed.removeTabAt(i);
+        }
+
+        // 4. Recorrer la lista y agregar cada asignatura
+        for (Asignatura asig : listaAsignaturas) {
+            agregarAsignatura(asig);
+        }
+
+        // Forzar la actualización visual
+        contenedorVistas.revalidate();
+        contenedorVistas.repaint();
+        this.revalidate();
+        this.repaint();
     }
 
     @Override
@@ -494,17 +549,27 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     }//GEN-LAST:event_deleteAsigTxtMouseExited
 
     private void addAsigTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addAsigTxtMouseClicked
-        registrarAsig ventana = new registrarAsig();
-        ventana.setLocationRelativeTo(this);
-        ventana.setVisible(true);
 
-        Asignatura nueva = ventana.getResultado();
-        if (nueva != null) {
-            agregarAsignatura(nueva); // ✅ aquí se crea la vistaPrevia
-        }
+        // 1. Crear y mostrar la ventana de registro
+        registrarAsig regAsig = new registrarAsig();
+        regAsig.setLocationRelativeTo(null); // Centra la ventana
+        regAsig.setVisible(true);
+
+        // 2. Esperar a que la ventana de registro se cierre
+        regAsig.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                // 3. Una vez cerrada, actualiza la lista en la pantalla principal
+                cargarAsignaturasDesdeBD();
+                JOptionPane.showMessageDialog(null, "Lista de asignaturas actualizada.");
+            }
+        });
+
+
     }//GEN-LAST:event_addAsigTxtMouseClicked
 
     private void deleteAsigTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAsigTxtMouseClicked
+        // 1. Obtener las asignaturas seleccionadas
         java.util.List<vistaPrevia> seleccionadas = new java.util.ArrayList<>();
         for (vistaPrevia vp : vistas) {
             if (vp.isSeleccionada()) {
@@ -517,19 +582,42 @@ public class docente extends javax.swing.JFrame implements Actualizable {
             return;
         }
 
-        for (vistaPrevia vp : seleccionadas) {
-            Asignatura a = vp.getAsignatura();
-            contenedorVistas.remove(vp);
-            vistas.remove(vp);
-
-            int idx = encontrarIndiceTabPorNombre(a.getNombre());
-            if (idx >= 0) {
-                tabbed.removeTabAt(idx);
-            }
+        // Obtener ID del docente logueado
+        String idDocente = Session.getUsuario() != null ? Session.getUsuario().getId() : null;
+        if (idDocente == null) {
+            JOptionPane.showMessageDialog(this, "Error: Sesión de docente no encontrada.", "Error de Sesión", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
-        contenedorVistas.revalidate();
-        contenedorVistas.repaint();
+        try {
+            // Recorrer y eliminar cada asignatura seleccionada
+            for (vistaPrevia vp : seleccionadas) {
+                Asignatura a = vp.getAsignatura();
+
+                // ✅ CORRECCIÓN CLAVE: Llamar al método que borra SOLO de la tabla 'docente'
+                DBConnection.eliminarAsignaturaDocente(idDocente, a.getNombre(), a.getDescripcion());
+
+                // 2. Eliminar de la interfaz de usuario (Vista Previa)
+                contenedorVistas.remove(vp);
+                vistas.remove(vp);
+
+                // 3. Eliminar la pestaña de detalle
+                int idx = encontrarIndiceTabPorNombre(a.getNombre());
+                if (idx >= 0) {
+                    tabbed.removeTabAt(idx);
+                }
+            }
+
+            // Forzar la actualización visual
+            contenedorVistas.revalidate();
+            contenedorVistas.repaint();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al eliminar la asignación de asignatura: " + e.getMessage());
+        }
+
+        // Fin del método
     }//GEN-LAST:event_deleteAsigTxtMouseClicked
 
     /**

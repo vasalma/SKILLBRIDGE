@@ -11,7 +11,7 @@ public class vistaPrevia extends JPanel {
     private final Asignatura asignatura;
     private boolean seleccionada = false;
     private Runnable onClickeador;
-
+private Runnable onVolverMenu; // Variable para la acción "Volver al Menú"
     public vistaPrevia() {
         this(new Asignatura("0", "Sin nombre", "Sin descripción"));
     }
@@ -138,17 +138,16 @@ public class vistaPrevia extends JPanel {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(asigName)
-                            .addComponent(descrpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 441, Short.MAX_VALUE)
-                        .addComponent(accBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
+                        .addComponent(asigName)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(descrpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGap(0, 423, Short.MAX_VALUE)
+                        .addComponent(accBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
