@@ -1,8 +1,7 @@
 package Materia;
 
-import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
-import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent; // ¡Importante! Usaremos este componente simplificado.
+import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent; 
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +9,7 @@ import java.awt.*;
 public class PanelReproductor extends JPanel {
 
     // 1. Declarar el componente de reproductor de VLCJ
-    private EmbeddedMediaPlayerComponent mediaPlayerComponent;
+    private final EmbeddedMediaPlayerComponent mediaPlayerComponent;
 
     public PanelReproductor() {
         // Inicializar el componente VLCJ
@@ -23,9 +22,12 @@ public class PanelReproductor extends JPanel {
         // Opcional: Configuración inicial del panel (puede ser gris, etc.)
         setBackground(Color.BLACK);
         
-        // Llamada a initComponents (generado por el IDE), aunque ya lo hemos hecho
-        // manualmente con BorderLayout.
-        // initComponents(); // Comentar o borrar si se usa BorderLayout
+        // 🚨 MEJORA: Aseguramos que el panel no sea visible al inicio (se muestra al hacer clic en Play)
+        this.setVisible(false); 
+        
+        // El initComponents generado puede ser irrelevante si usamos BorderLayout,
+        // pero lo mantenemos por si el IDE lo necesita:
+        // initComponents(); 
     }
 
     // 2. Método público para reproducir el video
@@ -34,6 +36,9 @@ public class PanelReproductor extends JPanel {
             JOptionPane.showMessageDialog(this, "Error: La ruta del video es inválida.", "Error de Reproducción", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        // ✅ Hacemos visible el reproductor al iniciar la reproducción
+        this.setVisible(true); 
 
         // Obtener el reproductor interno y reproducir el medio
         EmbeddedMediaPlayer player = mediaPlayerComponent.mediaPlayer();
@@ -44,6 +49,7 @@ public class PanelReproductor extends JPanel {
         }
         
         // Reproducir el nuevo medio (la ruta del archivo)
+        System.out.println("Reproduciendo: " + mediaPath);
         player.media().play(mediaPath);
     }
     
@@ -51,6 +57,8 @@ public class PanelReproductor extends JPanel {
     public void detenerVideo() {
         if (mediaPlayerComponent != null && mediaPlayerComponent.mediaPlayer().status().isPlaying()) {
             mediaPlayerComponent.mediaPlayer().controls().stop();
+            // Opcional: ocultar el panel al detener
+            this.setVisible(false);
         }
     }
     

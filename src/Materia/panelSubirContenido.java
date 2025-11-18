@@ -16,7 +16,11 @@ import java.sql.SQLException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import javax.swing.JOptionPane;
 public class panelSubirContenido extends javax.swing.JPanel {
 
     private File videoFile;
@@ -79,13 +83,47 @@ public class panelSubirContenido extends javax.swing.JPanel {
 
     // Subir Video - MODIFICADO para refrescar panelAsig si está disponible
     private void subirVideo() {
-        if (videoFile == null || vidTitleTxt.getText().isEmpty() || vidDescripTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona el archivo del video.");
+    if (videoFile == null || vidTitleTxt.getText().isEmpty() || vidDescripTxt.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona el archivo del video.");
+        return;
+    }
+
+    if (idDocente == null) {
+        JOptionPane.showMessageDialog(this, "Error de Sesión: No se pudo obtener el ID del Docente.");
+        return;
+    }
+
+    // ⭐ PASO 1: DEFINIR LA RUTA DE DESTINO DEL ARCHIVO FÍSICO ⭐
+    // Usaremos una carpeta llamada 'uploads/videos' dentro de tu directorio de proyecto.
+    final String BASE_UPLOAD_PATH = "uploads" + File.separator + "videos";
+    
+    // Crear la carpeta si no existe
+    File uploadDir = new File(BASE_UPLOAD_PATH);
+    if (!uploadDir.exists()) {
+        // La función mkdirs() crea todos los directorios padre necesarios
+        if (!uploadDir.mkdirs()) {
+            JOptionPane.showMessageDialog(this, "Error: No se pudo crear el directorio de subida.");
             return;
         }
+    }
+    
+    // Crear un nombre de archivo único (usando timestamp + nombre original)
+    String uniqueFileName = System.currentTimeMillis() + "_" + videoFile.getName();
+    File targetFile = new File(uploadDir, uniqueFileName);
+    
+    // La RUTA ABSOLUTA que guardaremos como String en la DB
+    String dbVideoPath = targetFile.getAbsolutePath();
 
-        try (Connection conn = DBConnection.getConnection(); FileInputStream fis = new FileInputStream(videoFile)) {
-
+    try {
+        // ⭐ PASO 2: MOVER/COPIAR EL ARCHIVO FÍSICAMENTE AL DIRECTORIO DE SUBIDA ⭐
+        // Usamos Files.copy para un manejo eficiente de archivos
+        Files.copy(videoFile.toPath(), targetFile.toPath(), 
+                   StandardCopyOption.REPLACE_EXISTING);
+        
+        // ⭐ PASO 3: GUARDAR SÓLO LA RUTA (STRING) EN LA BASE DE DATOS ⭐
+        try (Connection conn = DBConnection.getConnection()) {
+            
+            // CAMBIAR LA SENTENCIA SQL: ya no se usa setBinaryStream
             String sql = "INSERT INTO videos (idDocente, titulo, descripcion, idMateria, videourl) VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -93,36 +131,60 @@ public class panelSubirContenido extends javax.swing.JPanel {
             pst.setString(2, vidTitleTxt.getText());
             pst.setString(3, vidDescripTxt.getText());
             pst.setString(4, idMateria);
-            pst.setBinaryStream(5, fis, (int) videoFile.length());
+            // PASAMOS LA RUTA DEL ARCHIVO COMO STRING
+            pst.setString(5, dbVideoPath); 
 
             int rows = pst.executeUpdate();
 
             if (rows > 0) {
-                JOptionPane.showMessageDialog(this, "Video subido correctamente.");
+                JOptionPane.showMessageDialog(this, "Video subido correctamente.\n" + "Ruta guardada: " + dbVideoPath);
                 limpiarCamposVideo();
                 
-                // 🔥 REFRESCAR EL PANEL ASIG si está disponible
+                // Refrescar panelAsig si está disponible
                 if (panelAsigRef != null) {
                     panelAsigRef.refrescarVideos();
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Error al subir video.");
+                JOptionPane.showMessageDialog(this, "Error al subir video a la base de datos.");
+                // Si la inserción en DB falla, eliminamos el archivo físico copiado
+                targetFile.delete(); 
             }
 
-        } catch (SQLException | IOException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error de base de datos: " + e.getMessage());
+            targetFile.delete(); // Asegura la limpieza si falla la DB
         }
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error de E/S al copiar el archivo: " + e.getMessage());
+        e.printStackTrace();
     }
+}
 
     // Subir Actividad
     private void subirActividad() {
-        if (actividadFile == null || actTitleTxt.getText().isEmpty() || actDescripTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona el archivo de actividad.");
-            return;
-        }
+    if (actividadFile == null || actTitleTxt.getText().isEmpty() || actDescripTxt.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona el archivo de actividad.");
+        return;
+    }
 
-        try (Connection conn = DBConnection.getConnection(); FileInputStream fis = new FileInputStream(actividadFile)) {
+    final String BASE_UPLOAD_PATH = "uploads" + File.separator + "actividades";
+    File uploadDir = new File(BASE_UPLOAD_PATH);
+    if (!uploadDir.exists() && !uploadDir.mkdirs()) {
+        JOptionPane.showMessageDialog(this, "Error: No se pudo crear el directorio de subida para actividades.");
+        return;
+    }
+    
+    String uniqueFileName = System.currentTimeMillis() + "_" + actividadFile.getName();
+    File targetFile = new File(uploadDir, uniqueFileName);
+    String dbActividadPath = targetFile.getAbsolutePath();
 
+    try {
+        Files.copy(actividadFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        try (Connection conn = DBConnection.getConnection()) {
+            
+            // EL CAMPO 'actividadurl' AHORA DEBE SER TEXT
             String sql = "INSERT INTO actividades (idDocente, titulo, descripcion, idMateria, actividadurl) VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -130,17 +192,25 @@ public class panelSubirContenido extends javax.swing.JPanel {
             pst.setString(2, actTitleTxt.getText());
             pst.setString(3, actDescripTxt.getText());
             pst.setString(4, idMateria);
-            pst.setBinaryStream(5, fis, (int) actividadFile.length());
+            pst.setString(5, dbActividadPath); // Guardamos la RUTA
 
             int rows = pst.executeUpdate();
 
             JOptionPane.showMessageDialog(this, rows > 0 ? "Actividad subida correctamente." : "Error al subir actividad.");
             limpiarCamposActividad();
+            
+            // Si hay una función para refrescar actividades, añádela aquí
 
-        } catch (SQLException | IOException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error de base de datos: " + e.getMessage());
+            targetFile.delete();
         }
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error de E/S al copiar el archivo: " + e.getMessage());
+        e.printStackTrace();
     }
+}
 
     private void limpiarCamposVideo() {
         vidTitleTxt.setText("");
