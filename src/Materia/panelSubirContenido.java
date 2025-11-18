@@ -1,10 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Materia;
 
 import java.awt.Color;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import main.DBConnection; // *** NOTA: Asegúrate que este sea el paquete correcto para tu clase DBConnection ***
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -12,12 +16,56 @@ import java.awt.Color;
  */
 public class panelSubirContenido extends javax.swing.JPanel {
 
+    // --- AGREGADO: Variables para guardar el contexto y los archivos ---
+    private String idDocente;
+    private String idMateria;
+    private File videoFile;
+    private File actividadFile;
+    // -----------------------------------------------------------------
+
     /**
      * Creates new form panelSubirContenido
      */
     public panelSubirContenido() {
         initComponents();
+        // Configuración inicial de colores si es necesario
+        bigloadvidBtn.setBackground(new Color(64, 174, 178));
+        subirVidBtn.setBackground(new Color(64, 174, 178));
+        bigloadactsBtn.setBackground(new Color(145, 145, 145));
+        subirActBtn.setBackground(new Color(145, 145, 145));
     }
+
+    // --- AGREGADO: Método para pasar los IDs necesarios ---
+    public void setContexto(String idDocente, String idMateria) {
+        this.idDocente = idDocente;
+        this.idMateria = idMateria;
+        System.out.println("Contexto establecido: Docente=" + idDocente + ", Materia=" + idMateria);
+
+        // Limpiamos campos por si acaso
+        limpiarCamposVideo();
+        limpiarCamposActividad();
+    }
+    // ------------------------------------------------------
+
+    // --- AGREGADO: Métodos de limpieza ---
+    private void limpiarCamposVideo() {
+        vidTitleTxt.setText("Título del video"); // Reset to placeholder
+        vidDescripTxt.setText("Descripción del video"); // Reset to placeholder
+        videoFile = null;
+        // Reiniciamos el label plusVideos
+        plusVideos.setText("+");
+        plusVideos.setFont(new java.awt.Font("Poppins", 0, 35));
+    }
+
+    private void limpiarCamposActividad() {
+        actTitleTxt.setText("Título de la actividad");
+        actDescripTxt.setText("Descripción de la actividad");
+        actividadFile = null;
+        // Reiniciamos el label plusActs
+        plusActs.setText("+");
+        plusActs.setFont(new java.awt.Font("Poppins", 0, 35));
+    }
+    // --------------------------------------
 
     public javax.swing.JLabel getTitulo() {
         return vidTitle;
@@ -27,6 +75,8 @@ public class panelSubirContenido extends javax.swing.JPanel {
     public void setOnBack(Runnable r) {
         this.onBack = r;
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -140,6 +190,9 @@ public class panelSubirContenido extends javax.swing.JPanel {
             }
         });
         plusActs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plusActsMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 plusActsMouseExited(evt);
             }
@@ -181,6 +234,9 @@ public class panelSubirContenido extends javax.swing.JPanel {
             }
         });
         subirActTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subirActTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 subirActTxtMouseExited(evt);
             }
@@ -255,6 +311,9 @@ public class panelSubirContenido extends javax.swing.JPanel {
             }
         });
         plusVideos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plusVideosMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 plusVideosMouseExited(evt);
             }
@@ -296,6 +355,9 @@ public class panelSubirContenido extends javax.swing.JPanel {
             }
         });
         subirVidTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subirVidTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 subirVidTxtMouseExited(evt);
             }
@@ -601,6 +663,137 @@ public class panelSubirContenido extends javax.swing.JPanel {
     private void subirActBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subirActBtnMouseExited
         subirActBtn.setBackground(new Color(145, 145, 145));
     }//GEN-LAST:event_subirActBtnMouseExited
+
+    private void plusVideosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusVideosMouseClicked
+ JFileChooser fileChooser = new JFileChooser();
+
+        // Filtro para archivos de video
+        FileNameExtensionFilter videoFilter = new FileNameExtensionFilter(
+                "Archivos de Video (MP4, MOV, AVI)", "mp4", "mov", "avi");
+        fileChooser.setFileFilter(videoFilter);
+
+        int resultado = fileChooser.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            this.videoFile = fileChooser.getSelectedFile();
+
+            // Actualizar el botón "+" para mostrar el nombre del archivo
+            String nombreCorto = this.videoFile.getName();
+            if (nombreCorto.length() > 20) {
+                nombreCorto = nombreCorto.substring(0, 17) + "...";
+            }
+
+            plusVideos.setFont(new java.awt.Font("Poppins", 0, 14)); // Reducir fuente
+            plusVideos.setText(nombreCorto);
+            JOptionPane.showMessageDialog(this, "Video seleccionado:\n" + this.videoFile.getName(), "Archivo Listo", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            this.videoFile = null;
+            limpiarCamposVideo(); // Limpiar si se cancela
+        }
+    }//GEN-LAST:event_plusVideosMouseClicked
+
+    private void plusActsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusActsMouseClicked
+JFileChooser fileChooser = new JFileChooser();
+
+        // Filtro para documentos
+        FileNameExtensionFilter docFilter = new FileNameExtensionFilter(
+                "Documentos (PDF, DOCX, ZIP)", "pdf", "docx", "zip");
+        fileChooser.setFileFilter(docFilter);
+
+        int resultado = fileChooser.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            this.actividadFile = fileChooser.getSelectedFile();
+
+            // Actualizar el botón "+" para mostrar el nombre del archivo
+            String nombreCorto = this.actividadFile.getName();
+            if (nombreCorto.length() > 20) {
+                nombreCorto = nombreCorto.substring(0, 17) + "...";
+            }
+
+            plusActs.setFont(new java.awt.Font("Poppins", 0, 14)); // Reducir fuente
+            plusActs.setText(nombreCorto);
+            JOptionPane.showMessageDialog(this, "Documento seleccionado:\n" + this.actividadFile.getName(), "Archivo Listo", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            this.actividadFile = null;
+            limpiarCamposActividad(); // Limpiar si se cancela
+        }
+
+    }//GEN-LAST:event_plusActsMouseClicked
+
+    private void subirVidTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subirVidTxtMouseClicked
+        // 1. Validar contexto
+        if (idDocente == null || idMateria == null) {
+            JOptionPane.showMessageDialog(this, "Error: No se ha cargado el contexto (Docente/Materia).\nIntente regresar y volver a entrar.", "Error de Contexto", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // 2. Recopilar datos
+        String titulo = vidTitleTxt.getText();
+        String descripcion = vidDescripTxt.getText();
+
+        // 3. Validar datos de texto y archivo
+        if (titulo.isEmpty() || titulo.equals("Título del video")
+                || descripcion.isEmpty() || descripcion.equals("Descripción del video")) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete el título y la descripción.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (videoFile == null) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un archivo de video haciendo clic en el '+'.", "Sin archivo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // 4. Obtener la "URL" (en este caso, el path local)
+        String videoUrl = videoFile.getAbsolutePath();
+
+        // 5. Llamar a DBConnection
+        boolean exito = DBConnection.insertarVideo(idDocente, titulo, descripcion, idMateria, videoUrl);
+
+        // 6. Feedback y limpieza
+        if (exito) {
+            JOptionPane.showMessageDialog(this, "Video subido exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposVideo();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al guardar el video en la base de datos.", "Error de BD", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_subirVidTxtMouseClicked
+
+    private void subirActTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subirActTxtMouseClicked
+        // 1. Validar contexto
+        if (idDocente == null || idMateria == null) {
+            JOptionPane.showMessageDialog(this, "Error: No se ha cargado el contexto (Docente/Materia).\nIntente regresar y volver a entrar.", "Error de Contexto", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // 2. Recopilar datos
+        String titulo = actTitleTxt.getText();
+        String descripcion = actDescripTxt.getText();
+
+        // 3. Validar datos de texto y archivo
+        if (titulo.isEmpty() || titulo.equals("Título de la actividad")
+                || descripcion.isEmpty() || descripcion.equals("Descripción de la actividad")) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete el título y la descripción.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (actividadFile == null) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un archivo de actividad haciendo clic en el '+'.", "Sin archivo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // 4. Obtener la "URL" (path local)
+        String actividadUrl = actividadFile.getAbsolutePath();
+
+        // 5. Llamar a DBConnection
+        boolean exito = DBConnection.insertarActividad(idDocente, titulo, descripcion, idMateria, actividadUrl);
+
+        // 6. Feedback y limpieza
+        if (exito) {
+            JOptionPane.showMessageDialog(this, "Actividad subida exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCamposActividad();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al guardar la actividad en la base de datos.", "Error de BD", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_subirActTxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -12,9 +12,25 @@ import java.util.List;
 
 public class DBConnection {
 
+    // ✅ AÑADIDO para el patrón Singleton (la instancia única)
+    private static DBConnection instance = null;
+
     private static Connection conn = null;
     private static final String DB_PATH = "database/skillbridge.db";
     private static final String URL = "jdbc:sqlite:" + DB_PATH;
+
+    // ✅ AÑADIDO: Constructor privado para evitar que la clase se instancie directamente.
+    private DBConnection() {
+        // La lógica de conexión ya se maneja en el método estático getConnection().
+    }
+
+    // ✅ AÑADIDO: El método estático que faltaba para obtener la instancia.
+    public static DBConnection getInstance() {
+        if (instance == null) {
+            instance = new DBConnection();
+        }
+        return instance;
+    }
 
     // ------------------------------
     // Conexión
@@ -52,6 +68,7 @@ public class DBConnection {
         }
     }
 
+    // ... (El resto de tus métodos se mantienen igual: registrarAsignaturaEnBD, guardarAsignaturaDocente, etc.)
     // ------------------------------
     // Registrar asignatura en tabla materias (CATÁLOGO)
     // ------------------------------
@@ -177,24 +194,21 @@ public class DBConnection {
         }
         return asignaturas;
     }
-    
-        // ... (MÉTODOS EXISTENTES SE MANTIENEN IGUAL) ...
 
     // ------------------------------
-    // ✅ NUEVO MÉTODO: Ejecutar UPDATE genérico
+    // ✅ MÉTODO: Ejecutar UPDATE genérico
     // ------------------------------
     public static boolean ejecutarUpdate(String sql, Object... params) {
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             // Establecer parámetros
             for (int i = 0; i < params.length; i++) {
                 stmt.setObject(i + 1, params[i]);
             }
-            
+
             int filasAfectadas = stmt.executeUpdate();
             return filasAfectadas > 0;
-            
+
         } catch (SQLException e) {
             System.out.println("❌ Error en ejecutarUpdate: " + e.getMessage());
             return false;
@@ -202,43 +216,73 @@ public class DBConnection {
     }
 
     // ------------------------------
-    // ✅ NUEVO MÉTODO: Insertar actividad
+    // ✅ NUEVO MÉTODO CORREGIDO: Insertar actividad
     // ------------------------------
-    public static boolean insertarActividad(String id, String titulo, String descripcion, String idMateria) {
-        String sql = "INSERT INTO actividades (id, titulo, descripcion, idMateria) VALUES (?, ?, ?, ?)";
-        return ejecutarUpdate(sql, id, titulo, descripcion, idMateria);
+    /**
+     * Inserta una nueva actividad en la base de datos. Coincide con la tabla
+     * 'actividades'.
+     */
+    public static boolean insertarActividad(String idDocente, String titulo, String descripcion, String idMateria, String actividadurl) {
+        String sql = "INSERT INTO actividades (idDocente, titulo, descripcion, idMateria, actividadurl) VALUES (?, ?, ?, ?, ?)";
+
+        // Usamos los 5 parámetros que requiere tu tabla
+        boolean exito = ejecutarUpdate(sql, idDocente, titulo, descripcion, idMateria, actividadurl);
+        if (exito) {
+            System.out.println("✔ Actividad '" + titulo + "' insertada.");
+        } else {
+            System.out.println("❌ Error al insertar actividad.");
+        }
+        return exito;
     }
 
     // ------------------------------
-    // ✅ NUEVO MÉTODO: Insertar video
+    // ✅ NUEVO MÉTODO CORREGIDO: Insertar video
     // ------------------------------
-    public static boolean insertarVideo(String id, String titulo, String descripcion, String idMateria) {
-        String sql = "INSERT INTO videos (id, titulo, description, idMateria) VALUES (?, ?, ?, ?)";
-        return ejecutarUpdate(sql, id, titulo, descripcion, idMateria);
+    /**
+     * Inserta un nuevo video en la base de datos. Coincide con la tabla
+     * 'videos'.
+     */
+    public static boolean insertarVideo(String idDocente, String titulo, String descripcion, String idMateria, String videourl) {
+        // Corregido: Tu tabla usa 'descripcion', no 'description'
+        String sql = "INSERT INTO videos (idDocente, titulo, descripcion, idMateria, videourl) VALUES (?, ?, ?, ?, ?)";
+
+        // Usamos los 5 parámetros que requiere tu tabla
+        boolean exito = ejecutarUpdate(sql, idDocente, titulo, descripcion, idMateria, videourl);
+        if (exito) {
+            System.out.println("✔ Video '" + titulo + "' insertado.");
+        } else {
+            System.out.println("❌ Error al insertar video.");
+        }
+        return exito;
     }
 
     // ------------------------------
-    // ✅ NUEVO MÉTODO: Obtener actividades por materia
+    // ✅ NUEVO MÉTODO CORREGIDO: Obtener actividades por materia
     // ------------------------------
+    /**
+     * Obtiene la lista de actividades (título, descripción y URL) para una
+     * materia. Devuelve un array de String por cada fila: [titulo, descripcion,
+     * actividadurl]
+     */
     public static List<String[]> obtenerActividadesPorMateria(String idMateria) {
         List<String[]> actividades = new ArrayList<>();
-        String sql = "SELECT id, titulo, descripcion FROM actividades WHERE idMateria = ?";
-        
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            
+        // Corregido: Seleccionamos los campos útiles, incluyendo la URL
+        String sql = "SELECT titulo, descripcion, actividadurl FROM actividades WHERE idMateria = ?";
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setString(1, idMateria);
             ResultSet rs = stmt.executeQuery();
-            
+
             while (rs.next()) {
                 String[] actividad = {
-                    rs.getString("id"),
                     rs.getString("titulo"),
-                    rs.getString("descripcion")
+                    rs.getString("descripcion"),
+                    rs.getString("actividadurl") // Se necesita la URL para mostrarla/descargarla
                 };
                 actividades.add(actividad);
             }
-            
+
         } catch (SQLException e) {
             System.out.println("❌ Error obteniendo actividades: " + e.getMessage());
         }
@@ -246,31 +290,35 @@ public class DBConnection {
     }
 
     // ------------------------------
-    // ✅ NUEVO MÉTODO: Obtener videos por materia
+    // ✅ NUEVO MÉTODO CORREGIDO: Obtener videos por materia
     // ------------------------------
+    /**
+     * Obtiene la lista de videos (título, descripción y URL) para una materia.
+     * Devuelve un array de String por cada fila: [titulo, descripcion,
+     * videourl]
+     */
     public static List<String[]> obtenerVideosPorMateria(String idMateria) {
         List<String[]> videos = new ArrayList<>();
-        String sql = "SELECT id, titulo, description FROM videos WHERE idMateria = ?";
-        
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            
+        // Corregido: Tu tabla usa 'descripcion' y necesitamos 'videourl'
+        String sql = "SELECT titulo, descripcion, videourl FROM videos WHERE idMateria = ?";
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setString(1, idMateria);
             ResultSet rs = stmt.executeQuery();
-            
+
             while (rs.next()) {
                 String[] video = {
-                    rs.getString("id"),
                     rs.getString("titulo"),
-                    rs.getString("description")
+                    rs.getString("descripcion"),
+                    rs.getString("videourl") // Se necesita la URL para ver el video
                 };
                 videos.add(video);
             }
-            
+
         } catch (SQLException e) {
             System.out.println("❌ Error obteniendo videos: " + e.getMessage());
         }
         return videos;
     }
 }
-
