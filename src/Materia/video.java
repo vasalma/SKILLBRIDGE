@@ -1,8 +1,11 @@
 package Materia;
 
 import java.awt.Color;
+import java.awt.Desktop; // ¡CAMBIOS AQUÍ! - Importar Desktop
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File; // ¡CAMBIOS AQUÍ! - Importar File
+import java.io.IOException; // ¡CAMBIOS AQUÍ! - Importar IOException
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +18,7 @@ public class video extends javax.swing.JPanel {
     private String videoDescripcion;
     private int videoNumero;
     private Runnable onEliminarListener;
+    private String videoFilePath; // ¡CAMBIOS AQUÍ! - Nuevo campo para la ruta
     
     // Constructor modificado para recibir datos
     public video(String titulo, String descripcion, int numero) {
@@ -22,10 +26,16 @@ public class video extends javax.swing.JPanel {
         this.videoTitulo = titulo;
         this.videoDescripcion = descripcion;
         this.videoNumero = numero;
+        this.videoFilePath = null; // Inicializar la ruta
         
         // Configurar los datos en la interfaz
         videoName.setText(titulo + " - " + String.format("%02d", numero));
         setListeners();
+    }
+    
+    // ¡CAMBIOS AQUÍ! - Método setter para la ruta del archivo
+    public void setVideoFilePath(String filePath) {
+        this.videoFilePath = filePath;
     }
     
     private void setListeners() {
@@ -44,13 +54,45 @@ public class video extends javax.swing.JPanel {
             }
         });
         
-        // Listener para el botón de play (puedes agregar funcionalidad después)
+        // Listener para el botón de play - ¡CAMBIOS AQUÍ! - Implementación de reproducción
         playBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
-                // Aquí puedes agregar la funcionalidad de reproducir video
-                JOptionPane.showMessageDialog(video.this, 
-                    "Reproduciendo: " + videoTitulo + "\nDescripción: " + videoDescripcion);
+                // Aquí se implementa la funcionalidad de reproducir video
+                
+                if (videoFilePath == null || videoFilePath.isEmpty()) {
+                    JOptionPane.showMessageDialog(video.this, 
+                        "Error: La ruta del archivo no ha sido configurada.", 
+                        "Error de Reproducción", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                try {
+                    File videoFile = new File(videoFilePath);
+                    
+                    if (Desktop.isDesktopSupported() && videoFile.exists()) {
+                        // Abrir el archivo con la aplicación predeterminada del sistema
+                        Desktop.getDesktop().open(videoFile);
+                        
+                        // Opcional: Mostrar el diálogo original *después* de intentar abrirlo
+                        JOptionPane.showMessageDialog(video.this, 
+                            "Intentando reproducir: " + videoTitulo + "\nDescripción: " + videoDescripcion);
+
+                    } else if (!videoFile.exists()) {
+                        JOptionPane.showMessageDialog(video.this, 
+                            "Error: Archivo de video no encontrado en la ruta:\n" + videoFilePath, 
+                            "Archivo No Encontrado", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                         JOptionPane.showMessageDialog(video.this, 
+                            "Error: La reproducción externa no está soportada en este sistema.", 
+                            "Error de Sistema", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(video.this, 
+                        "Ocurrió un error al intentar abrir el video. Asegúrese de tener un reproductor instalado.\nDetalle: " + ex.getMessage(), 
+                        "Error I/O", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+                }
             }
         });
     }

@@ -58,19 +58,7 @@ public class panelSubirContenido extends javax.swing.JPanel {
 
     private void setListeners() {
 
-        plusVideos.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent evt) {
-                JFileChooser chooser = new JFileChooser();
-                chooser.setFileFilter(new FileNameExtensionFilter("Videos", "mp4", "avi", "mov"));
-                int result = chooser.showOpenDialog(null);
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    videoFile = chooser.getSelectedFile();
-                    plusVideos.setText(videoFile.getName());
-                    plusVideos.setFont(new java.awt.Font("Poppins", 0, 14)); // Ajustar fuente
-                }
-            }
-        });
+        
 
         subirVidTxt.addMouseListener(new MouseAdapter() {
             @Override
@@ -79,19 +67,7 @@ public class panelSubirContenido extends javax.swing.JPanel {
             }
         });
 
-        plusActs.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent evt) {
-                JFileChooser chooser = new JFileChooser();
-                chooser.setFileFilter(new FileNameExtensionFilter("Documentos", "pdf", "docx"));
-                int result = chooser.showOpenDialog(null);
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    actividadFile = chooser.getSelectedFile();
-                    plusActs.setText(actividadFile.getName());
-                    plusActs.setFont(new java.awt.Font("Poppins", 0, 14)); // Ajustar fuente
-                }
-            }
-        });
+      
 
         subirActTxt.addMouseListener(new MouseAdapter() {
             @Override
