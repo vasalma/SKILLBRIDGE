@@ -13,20 +13,12 @@ import frontMon.actDashMon;
 import frontMon.cursosDashMon;
 import frontMon.dashboardMon;
 import frontMon.profileMon;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.table.DefaultTableModel;
 
 import main.DBConnection;
 
@@ -73,16 +65,16 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         contenedorVistas.repaint();
 
         // --------------------- TAB 1: Panel principal ---------------------
-        JPanel panel1 = crearPanelAsignatura(nueva);
+        panelAsig panel1 = crearPanelAsignatura(nueva); // Guardar referencia
         tabbed.addTab(nueva.getNombre(), panel1);
 
         // --------------------- TAB 2: Panel adicional ---------------------
-        JPanel panel2 = crearPanelExtra(nueva);
+        // 🔥 PASAR LA REFERENCIA AL PANEL PRINCIPAL
+        JPanel panel2 = crearPanelExtra(nueva, panel1);
         tabbed.addTab(nueva.getNombre() + " (Extra)", panel2);
     }
 
-    private JPanel crearPanelAsignatura(Asignatura a) {
-
+    private panelAsig crearPanelAsignatura(Asignatura a) { // ← Cambiar tipo de retorno
         panelAsig p = new panelAsig(a.getId());
 
         // Nombre de la asignatura en el panel
@@ -98,7 +90,6 @@ public class docente extends javax.swing.JFrame implements Actualizable {
 
         // 🔥 NUEVO: callback para que los botones (videos/actividades) pasen al Tab Extra
         p.setOnIrExtra(() -> {
-
             // Buscar el tab extra
             int idx = encontrarIndiceTabPorNombre(a.getNombre() + " (Extra)");
 
@@ -108,15 +99,15 @@ public class docente extends javax.swing.JFrame implements Actualizable {
             }
         });
 
-        return p;
+        return p; // ← Ahora retorna panelAsig en lugar de JPanel
     }
 
 // ----------------------------------------------------------
 //  NUEVO PANEL EXTRA PARA LA SEGUNDA TAB
 // ----------------------------------------------------------
-    private JPanel crearPanelExtra(Asignatura a) {
-        // Usamos el constructor que recibe la asignatura como parámetro
-        panelSubirContenido panel = new panelSubirContenido(a);
+    private JPanel crearPanelExtra(Asignatura a, panelAsig panelPrincipal) {
+        // 🔥 USAR EL CONSTRUCTOR CORRECTO - con referencia a panelAsig
+        panelSubirContenido panel = new panelSubirContenido(a, panelPrincipal);
 
         // 🔥 CALLBACK DE RETROCESO PARA EL PANEL EXTRA
         panel.setOnBack(() -> {
