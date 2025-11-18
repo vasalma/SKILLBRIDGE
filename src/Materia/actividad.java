@@ -3,18 +3,39 @@ package Materia;
 
 import java.awt.Color;
 
-/**
- *
- * @author Mi PC
- */
+
 public class actividad extends javax.swing.JPanel {
 
-    /**
-     * Creates new form actividad
-     */
+    // NUEVAS variables para almacenar los datos
+    private final String titulo;
+    private final String actividadUrl; 
+
+    // Constructor ORIGINAL (si lo necesitas para el editor de diseño, déjalo)
     public actividad() {
-        initComponents();
+        // Llama al constructor con datos nulos para evitar NullPointerException en el diseñador
+        this(new String[]{"Actividad sin título", "", ""}); 
     }
+
+    // ⭐ CONSTRUCTOR AJUSTADO: Recibe el String[] [titulo, descripcion, actividadurl]
+    public actividad(String[] actividadData) {
+        initComponents();
+        
+        // Asignación de datos
+        this.titulo = actividadData[0]; 
+        // actividadData[1] es la descripción (la ignoramos visualmente por ahora)
+        this.actividadUrl = actividadData[2]; 
+        
+        // Asignar el título al JLabel actName
+        actName.setText(this.titulo);
+    }
+    
+    // ... (El resto de tu código mouseMoved, etc.)
+    
+    // Puedes añadir un getter si el título o URL se necesitan fuera
+    public String getActividadUrl() {
+        return actividadUrl;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
