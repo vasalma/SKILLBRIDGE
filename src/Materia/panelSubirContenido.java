@@ -23,9 +23,17 @@ public class panelSubirContenido extends javax.swing.JPanel {
     private File actividadFile;
     private final String idDocente;
     private final String idMateria;
+    private panelAsig panelAsigRef; // Puede ser null
 
+    // Constructor ORIGINAL - para mantener compatibilidad
     public panelSubirContenido(Asignatura materiaActual) {
+        this(materiaActual, null); // Llama al nuevo constructor con null
+    }
+
+    // Constructor NUEVO - con referencia a panelAsig
+    public panelSubirContenido(Asignatura materiaActual, panelAsig panelAsigRef) {
         initComponents();
+        this.panelAsigRef = panelAsigRef;
 
         // Obtener datos de sesión
         Usuario usuarioActual = Session.getUsuario();
@@ -43,6 +51,11 @@ public class panelSubirContenido extends javax.swing.JPanel {
         setListeners();
     }
 
+    // Método para establecer la referencia después de la creación (opcional)
+    public void setPanelAsigRef(panelAsig panelAsigRef) {
+        this.panelAsigRef = panelAsigRef;
+    }
+
     private void setListeners() {
 
         plusVideos.addMouseListener(new MouseAdapter() {
@@ -54,6 +67,7 @@ public class panelSubirContenido extends javax.swing.JPanel {
                 if (result == JFileChooser.APPROVE_OPTION) {
                     videoFile = chooser.getSelectedFile();
                     plusVideos.setText(videoFile.getName());
+                    plusVideos.setFont(new java.awt.Font("Poppins", 0, 14)); // Ajustar fuente
                 }
             }
         });
@@ -74,6 +88,7 @@ public class panelSubirContenido extends javax.swing.JPanel {
                 if (result == JFileChooser.APPROVE_OPTION) {
                     actividadFile = chooser.getSelectedFile();
                     plusActs.setText(actividadFile.getName());
+                    plusActs.setFont(new java.awt.Font("Poppins", 0, 14)); // Ajustar fuente
                 }
             }
         });
@@ -86,7 +101,7 @@ public class panelSubirContenido extends javax.swing.JPanel {
         });
     }
 
-    // Subir Video
+    // Subir Video - MODIFICADO para refrescar panelAsig si está disponible
     private void subirVideo() {
         if (videoFile == null || vidTitleTxt.getText().isEmpty() || vidDescripTxt.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona el archivo del video.");
@@ -106,8 +121,17 @@ public class panelSubirContenido extends javax.swing.JPanel {
 
             int rows = pst.executeUpdate();
 
-            JOptionPane.showMessageDialog(this, rows > 0 ? "Video subido correctamente." : "Error al subir video.");
-            limpiarCamposVideo();
+            if (rows > 0) {
+                JOptionPane.showMessageDialog(this, "Video subido correctamente.");
+                limpiarCamposVideo();
+                
+                // 🔥 REFRESCAR EL PANEL ASIG si está disponible
+                if (panelAsigRef != null) {
+                    panelAsigRef.refrescarVideos();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al subir video.");
+            }
 
         } catch (SQLException | IOException e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
@@ -146,6 +170,7 @@ public class panelSubirContenido extends javax.swing.JPanel {
         vidTitleTxt.setText("");
         vidDescripTxt.setText("");
         plusVideos.setText("+");
+        plusVideos.setFont(new java.awt.Font("Poppins", 0, 35)); // Restaurar tamaño de fuente
         videoFile = null;
     }
 
@@ -153,13 +178,14 @@ public class panelSubirContenido extends javax.swing.JPanel {
         actTitleTxt.setText("");
         actDescripTxt.setText("");
         plusActs.setText("+");
+        plusActs.setFont(new java.awt.Font("Poppins", 0, 35)); // Restaurar tamaño de fuente
         actividadFile = null;
     }
 
-    // ... El resto del código generado por NetBeans y los componentes de la interfaz
     public javax.swing.JLabel getTitulo() {
         return vidTitle;
     }
+    
     private Runnable onBack;
 
     public void setOnBack(Runnable r) {
@@ -427,6 +453,9 @@ public class panelSubirContenido extends javax.swing.JPanel {
             }
         });
         subirVidBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subirVidBtnMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 subirVidBtnMouseExited(evt);
             }
@@ -766,14 +795,14 @@ public class panelSubirContenido extends javax.swing.JPanel {
 
     private void plusActsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusActsMouseClicked
         JFileChooser chooser = new JFileChooser();
-    chooser.setFileFilter(new FileNameExtensionFilter("PDF, DOCX", "pdf", "docx"));
-    int result = chooser.showOpenDialog(this);
+        chooser.setFileFilter(new FileNameExtensionFilter("PDF, DOCX", "pdf", "docx"));
+        int result = chooser.showOpenDialog(this);
 
-    if (result == JFileChooser.APPROVE_OPTION) {
-        actividadFile = chooser.getSelectedFile();
-        plusActs.setText(actividadFile.getName());
-        plusActs.setFont(new java.awt.Font("Poppins", 0, 14));
-    }
+        if (result == JFileChooser.APPROVE_OPTION) {
+            actividadFile = chooser.getSelectedFile();
+            plusActs.setText(actividadFile.getName());
+            plusActs.setFont(new java.awt.Font("Poppins", 0, 14));
+        }
 
     }//GEN-LAST:event_plusActsMouseClicked
 
@@ -784,6 +813,10 @@ public class panelSubirContenido extends javax.swing.JPanel {
     private void subirActTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subirActTxtMouseClicked
         subirActividad();
     }//GEN-LAST:event_subirActTxtMouseClicked
+
+    private void subirVidBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subirVidBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subirVidBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

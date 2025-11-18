@@ -1,23 +1,124 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package Materia;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import main.DBConnection;
+import Materia.video;
 
-/**
- *
- * @author Mi PC
- */
 public class panelAsig extends javax.swing.JPanel {
-
-    /**
-     * Creates new form panelAsig
-     */
+    private String idMateria;
+    
+    // Constructor ORIGINAL - para mantener compatibilidad
     public panelAsig() {
         initComponents();
+        configurarContenedorVideos();
     }
+    
+    // Constructor NUEVO - con ID de materia
+    public panelAsig(String idMateria) {
+        initComponents();
+        this.idMateria = idMateria;
+        configurarContenedorVideos();
+        if (idMateria != null) {
+            cargarVideos();
+        }
+    }
+    
+    // Método para establecer el ID después de la creación
+    public void setIdMateria(String idMateria) {
+        this.idMateria = idMateria;
+        if (idMateria != null) {
+            cargarVideos();
+        }
+    }
+
+    private void configurarContenedorVideos() {
+        videos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        videos.setBackground(new Color(240, 240, 240));
+    }
+
+    public void cargarVideos() {
+        if (idMateria == null) {
+            System.out.println("idMateria es null, no se cargan videos");
+            return;
+        }
+        
+        videos.removeAll();
+        
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "SELECT titulo, descripcion FROM videos WHERE idMateria = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, idMateria);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            int contador = 1;
+            while (rs.next()) {
+                String titulo = rs.getString("titulo");
+                String descripcion = rs.getString("descripcion");
+                
+                // Crear el componente video
+                video videoComponente = new video(titulo, descripcion, contador);
+                
+                final String tituloFinal = titulo;
+                videoComponente.setOnEliminarListener(() -> {
+                    eliminarVideo(tituloFinal);
+                });
+                
+                videos.add(videoComponente);
+                contador++;
+            }
+            
+            if (contador == 1) {
+                JLabel mensaje = new JLabel("No hay videos disponibles");
+                mensaje.setForeground(Color.GRAY);
+                mensaje.setFont(new Font("Poppins", Font.ITALIC, 14));
+                videos.add(mensaje);
+            }
+            
+            videos.revalidate();
+            videos.repaint();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar videos: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    private void eliminarVideo(String titulo) {
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "DELETE FROM videos WHERE titulo = ? AND idMateria = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, titulo);
+            pst.setString(2, idMateria);
+            
+            int rows = pst.executeUpdate();
+            
+            if (rows > 0) {
+                JOptionPane.showMessageDialog(this, "Video eliminado correctamente");
+                cargarVideos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar el video");
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar video: " + e.getMessage());
+        }
+    }
+    
+    public void refrescarVideos() {
+        cargarVideos();
+    }
+    
+    // ... el resto de tu código existente sin cambios
+
 
     public javax.swing.JLabel getAsigName() {
         return asigName;

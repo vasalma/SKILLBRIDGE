@@ -83,7 +83,7 @@ public class docente extends javax.swing.JFrame implements Actualizable {
 
     private JPanel crearPanelAsignatura(Asignatura a) {
 
-        panelAsig p = new panelAsig();
+        panelAsig p = new panelAsig(a.getId());
 
         // Nombre de la asignatura en el panel
         p.getAsigName().setText(a.getNombre());
