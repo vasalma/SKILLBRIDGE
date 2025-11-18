@@ -260,7 +260,6 @@ public class panelAsig extends javax.swing.JPanel {
         backBtn = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        asigName = new javax.swing.JLabel();
         actsSection = new javax.swing.JPanel();
         actsTitle = new javax.swing.JLabel();
         loadactsBtn = new javax.swing.JPanel();
@@ -272,6 +271,8 @@ public class panelAsig extends javax.swing.JPanel {
         loadIcon1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         videos = new javax.swing.JPanel();
+        asigName = new javax.swing.JLabel();
+        slash = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -312,16 +313,13 @@ public class panelAsig extends javax.swing.JPanel {
 
         background.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 30));
 
-        asigName.setFont(new java.awt.Font("Questrial", 0, 26)); // NOI18N
-        asigName.setForeground(new java.awt.Color(221, 224, 229));
-        asigName.setText("// Asignatura");
-        background.add(asigName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
-
         actsSection.setBackground(new java.awt.Color(255, 255, 255));
+        actsSection.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         actsTitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         actsTitle.setForeground(new java.awt.Color(0, 0, 0));
         actsTitle.setText("Actividades");
+        actsSection.add(actsTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         loadactsBtn.setBackground(new java.awt.Color(64, 174, 178));
 
@@ -352,49 +350,32 @@ public class panelAsig extends javax.swing.JPanel {
             .addComponent(loadIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
         );
 
+        actsSection.add(loadactsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 37, -1, -1));
+
         acts.setBackground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout actsLayout = new javax.swing.GroupLayout(acts);
         acts.setLayout(actsLayout);
         actsLayout.setHorizontalGroup(
             actsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
+            .addGap(0, 796, Short.MAX_VALUE)
         );
         actsLayout.setVerticalGroup(
             actsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 180, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout actsSectionLayout = new javax.swing.GroupLayout(actsSection);
-        actsSection.setLayout(actsSectionLayout);
-        actsSectionLayout.setHorizontalGroup(
-            actsSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(actsSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(actsSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(actsTitle)
-                    .addComponent(loadactsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(acts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        actsSectionLayout.setVerticalGroup(
-            actsSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(actsSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(actsTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loadactsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(acts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        actsSection.add(acts, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 6, 796, 180));
 
-        background.add(actsSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 950, 150));
+        background.add(actsSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 950, 210));
 
         videosSection.setBackground(new java.awt.Color(255, 255, 255));
+        videosSection.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         videosTitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         videosTitle.setForeground(new java.awt.Color(0, 0, 0));
         videosTitle.setText("Videos");
+        videosSection.add(videosTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         loadvidBtn.setBackground(new java.awt.Color(64, 174, 178));
 
@@ -425,42 +406,30 @@ public class panelAsig extends javax.swing.JPanel {
             .addComponent(loadIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
         );
 
+        videosSection.add(loadvidBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 37, -1, -1));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         videos.setBackground(new java.awt.Color(153, 153, 153));
         videos.setLayout(new javax.swing.BoxLayout(videos, javax.swing.BoxLayout.X_AXIS));
         jScrollPane1.setViewportView(videos);
 
-        javax.swing.GroupLayout videosSectionLayout = new javax.swing.GroupLayout(videosSection);
-        videosSection.setLayout(videosSectionLayout);
-        videosSectionLayout.setHorizontalGroup(
-            videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(videosSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(videosTitle)
-                    .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        videosSectionLayout.setVerticalGroup(
-            videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(videosSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(videosSectionLayout.createSequentialGroup()
-                        .addComponent(videosTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        videosSection.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 6, 796, 190));
 
-        background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 950, 150));
+        background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 950, 220));
 
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 440));
+        asigName.setFont(new java.awt.Font("Questrial", 0, 26)); // NOI18N
+        asigName.setForeground(new java.awt.Color(221, 224, 229));
+        asigName.setText("// Asignatura");
+        background.add(asigName, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 50, -1, -1));
+
+        slash.setFont(new java.awt.Font("Questrial", 0, 26)); // NOI18N
+        slash.setForeground(new java.awt.Color(221, 224, 229));
+        slash.setText("//");
+        background.add(slash, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
@@ -512,6 +481,7 @@ public class panelAsig extends javax.swing.JPanel {
     private javax.swing.JLabel loadIcon1;
     private javax.swing.JPanel loadactsBtn;
     private javax.swing.JPanel loadvidBtn;
+    private javax.swing.JLabel slash;
     private javax.swing.JPanel videos;
     private javax.swing.JPanel videosSection;
     private javax.swing.JLabel videosTitle;

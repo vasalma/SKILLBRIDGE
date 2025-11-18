@@ -141,7 +141,7 @@ public class panelSubirContenido extends javax.swing.JPanel {
 
             if (rows > 0) {
                 JOptionPane.showMessageDialog(this, "Video subido correctamente.\n" + "Ruta guardada: " + dbVideoPath);
-                limpiarCamposVideo();
+                
                 
                 // Refrescar panelAsig si está disponible
                 if (panelAsigRef != null) {
@@ -203,7 +203,7 @@ private void subirActividad() {
 
             if (rows > 0) {
                 JOptionPane.showMessageDialog(this, "Actividad subida correctamente.");
-                limpiarCamposActividad();
+                
                 
                 // ⭐ LÍNEA IMPLEMENTADA AQUÍ: LLAMADA DE REFRESH ⭐
                 if (panelAsigRef != null) {
@@ -228,21 +228,6 @@ private void subirActividad() {
 
 }
 
-    private void limpiarCamposVideo() {
-        vidTitleTxt.setText("");
-        vidDescripTxt.setText("");
-        plusVideos.setText("+");
-        plusVideos.setFont(new java.awt.Font("Poppins", 0, 35)); // Restaurar tamaño de fuente
-        videoFile = null;
-    }
-
-    private void limpiarCamposActividad() {
-        actTitleTxt.setText("");
-        actDescripTxt.setText("");
-        plusActs.setText("+");
-        plusActs.setFont(new java.awt.Font("Poppins", 0, 35)); // Restaurar tamaño de fuente
-        actividadFile = null;
-    }
 
     public javax.swing.JLabel getTitulo() {
         return vidTitle;
@@ -303,6 +288,7 @@ private void subirActividad() {
         inicioTxt = new javax.swing.JTextField();
         subirScheBtn = new javax.swing.JPanel();
         subirScheTxt = new javax.swing.JLabel();
+        watchIcon = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -344,7 +330,7 @@ private void subirActividad() {
         asigName.setFont(new java.awt.Font("Questrial", 0, 26)); // NOI18N
         asigName.setForeground(new java.awt.Color(221, 224, 229));
         asigName.setText("// Subir contenido");
-        background.add(asigName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        background.add(asigName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         actsSection.setBackground(new java.awt.Color(255, 255, 255));
         actsSection.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -442,6 +428,11 @@ private void subirActividad() {
         actTitleTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         actTitleTxt.setForeground(new java.awt.Color(145, 145, 145));
         actTitleTxt.setText("Título de la actividad");
+        actTitleTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actTitleTxtMouseClicked(evt);
+            }
+        });
         actTitleTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actTitleTxtActionPerformed(evt);
@@ -458,6 +449,11 @@ private void subirActividad() {
         actDescripTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         actDescripTxt.setForeground(new java.awt.Color(145, 145, 145));
         actDescripTxt.setText("Descripción de la actividad");
+        actDescripTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actDescripTxtMouseClicked(evt);
+            }
+        });
         actDescripTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actDescripTxtActionPerformed(evt);
@@ -465,7 +461,7 @@ private void subirActividad() {
         });
         actsSection.add(actDescripTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 240, 60));
 
-        background.add(actsSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 560, 180));
+        background.add(actsSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 560, 180));
 
         videosSection.setBackground(new java.awt.Color(255, 255, 255));
         videosSection.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -566,6 +562,11 @@ private void subirActividad() {
         vidTitleTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         vidTitleTxt.setForeground(new java.awt.Color(145, 145, 145));
         vidTitleTxt.setText("Título del video");
+        vidTitleTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vidTitleTxtMouseClicked(evt);
+            }
+        });
         vidTitleTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vidTitleTxtActionPerformed(evt);
@@ -582,6 +583,11 @@ private void subirActividad() {
         vidDescripTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         vidDescripTxt.setForeground(new java.awt.Color(145, 145, 145));
         vidDescripTxt.setText("Descripción del video");
+        vidDescripTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vidDescripTxtMouseClicked(evt);
+            }
+        });
         vidDescripTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vidDescripTxtActionPerformed(evt);
@@ -589,7 +595,7 @@ private void subirActividad() {
         });
         videosSection.add(vidDescripTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 240, 60));
 
-        background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 560, 170));
+        background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 560, 170));
 
         scheduleSection.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -626,6 +632,11 @@ private void subirActividad() {
         diaTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         diaTxt.setForeground(new java.awt.Color(145, 145, 145));
         diaTxt.setText("ej: Miércoles, 11/11/25");
+        diaTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                diaTxtMouseClicked(evt);
+            }
+        });
         diaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 diaTxtActionPerformed(evt);
@@ -637,6 +648,11 @@ private void subirActividad() {
         salidaTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         salidaTxt.setForeground(new java.awt.Color(145, 145, 145));
         salidaTxt.setText("ej: 4:00 pm");
+        salidaTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salidaTxtMouseClicked(evt);
+            }
+        });
         salidaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salidaTxtActionPerformed(evt);
@@ -659,7 +675,12 @@ private void subirActividad() {
         salonTxt.setBackground(new java.awt.Color(247, 247, 247));
         salonTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         salonTxt.setForeground(new java.awt.Color(145, 145, 145));
-        salonTxt.setText("ej: Salon 301, Bloque 7. ");
+        salonTxt.setText("ej: Salon 301, Bloque 7");
+        salonTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salonTxtMouseClicked(evt);
+            }
+        });
         salonTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salonTxtActionPerformed(evt);
@@ -671,6 +692,11 @@ private void subirActividad() {
         inicioTxt.setFont(new java.awt.Font("Questrial", 0, 14)); // NOI18N
         inicioTxt.setForeground(new java.awt.Color(145, 145, 145));
         inicioTxt.setText("ej: 2:00 pm");
+        inicioTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inicioTxtMouseClicked(evt);
+            }
+        });
         inicioTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inicioTxtActionPerformed(evt);
@@ -708,6 +734,9 @@ private void subirActividad() {
 
         whiteBack.add(subirScheBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 120, 30));
 
+        watchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/watchCheck.png"))); // NOI18N
+        whiteBack.add(watchIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, 40));
+
         javax.swing.GroupLayout scheduleSectionLayout = new javax.swing.GroupLayout(scheduleSection);
         scheduleSection.setLayout(scheduleSectionLayout);
         scheduleSectionLayout.setHorizontalGroup(
@@ -725,7 +754,7 @@ private void subirActividad() {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        background.add(scheduleSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 300, 360));
+        background.add(scheduleSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 300, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -740,11 +769,11 @@ private void subirActividad() {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -880,6 +909,54 @@ private void subirActividad() {
         // TODO add your handling code here:
     }//GEN-LAST:event_subirVidBtnMouseClicked
 
+    private void vidTitleTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vidTitleTxtMouseClicked
+        if (vidTitleTxt.getText().equals("Título del video")) {
+            vidTitleTxt.setText("");
+        }
+    }//GEN-LAST:event_vidTitleTxtMouseClicked
+
+    private void vidDescripTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vidDescripTxtMouseClicked
+        if (vidDescripTxt.getText().equals("Descripción del video")) {
+            vidDescripTxt.setText("");
+        }
+    }//GEN-LAST:event_vidDescripTxtMouseClicked
+
+    private void actTitleTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actTitleTxtMouseClicked
+        if (actTitleTxt.getText().equals("Título de la actividad")) {
+            actTitleTxt.setText("");
+        }
+    }//GEN-LAST:event_actTitleTxtMouseClicked
+
+    private void actDescripTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actDescripTxtMouseClicked
+        if (actDescripTxt.getText().equals("Descripción de la actividad")) {
+            actDescripTxt.setText("");
+        }
+    }//GEN-LAST:event_actDescripTxtMouseClicked
+
+    private void salonTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salonTxtMouseClicked
+        if (salonTxt.getText().equals("ej: Salon 301, Bloque 7")) {
+            salonTxt.setText("");
+        }
+    }//GEN-LAST:event_salonTxtMouseClicked
+
+    private void diaTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diaTxtMouseClicked
+        if (diaTxt.getText().equals("ej: Miércoles, 11/11/25")) {
+            diaTxt.setText("");
+        }
+    }//GEN-LAST:event_diaTxtMouseClicked
+
+    private void inicioTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioTxtMouseClicked
+        if (inicioTxt.getText().equals("ej: 2:00 pm")) {
+            inicioTxt.setText("");
+        }
+    }//GEN-LAST:event_inicioTxtMouseClicked
+
+    private void salidaTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salidaTxtMouseClicked
+        if (salidaTxt.getText().equals("ej: 4:00 pm")) {
+            salidaTxt.setText("");
+        }
+    }//GEN-LAST:event_salidaTxtMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel actDescrip;
@@ -921,6 +998,7 @@ private void subirActividad() {
     private javax.swing.JTextField vidTitleTxt;
     private javax.swing.JPanel videosSection;
     private javax.swing.JLabel videosTitle;
+    private javax.swing.JLabel watchIcon;
     private javax.swing.JPanel whiteBack;
     // End of variables declaration//GEN-END:variables
 }
