@@ -381,7 +381,7 @@ public class panelAsig extends javax.swing.JPanel {
             onIrExtra.run();
         }
     }//GEN-LAST:event_loadIconMouseClicked
-
+//sisisis
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acts;
