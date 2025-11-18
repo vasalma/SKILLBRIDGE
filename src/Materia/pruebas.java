@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Materia;
 
@@ -8,14 +8,14 @@ import java.awt.Color;
 
 /**
  *
- * @author Mi PC
+ * @author PC
  */
-public class panelAsig extends javax.swing.JPanel {
+public class pruebas extends javax.swing.JFrame {
 
     /**
-     * Creates new form panelAsig
+     * Creates new form pruebas
      */
-    public panelAsig() {
+    public pruebas() {
         initComponents();
         
     }
@@ -29,6 +29,7 @@ public class panelAsig extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         background = new javax.swing.JPanel();
         backBtn = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
@@ -38,14 +39,25 @@ public class panelAsig extends javax.swing.JPanel {
         actsTitle = new javax.swing.JLabel();
         loadactsBtn = new javax.swing.JPanel();
         loadIcon = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         acts = new javax.swing.JPanel();
         videosSection = new javax.swing.JPanel();
         videosTitle = new javax.swing.JLabel();
         loadvidBtn = new javax.swing.JPanel();
         loadIcon1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         videos = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,17 +134,10 @@ public class panelAsig extends javax.swing.JPanel {
         );
 
         acts.setBackground(new java.awt.Color(153, 153, 153));
+        acts.setLayout(new javax.swing.BoxLayout(acts, javax.swing.BoxLayout.X_AXIS));
+        jScrollPane2.setViewportView(acts);
 
-        javax.swing.GroupLayout actsLayout = new javax.swing.GroupLayout(acts);
-        acts.setLayout(actsLayout);
-        actsLayout.setHorizontalGroup(
-            actsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
-        );
-        actsLayout.setVerticalGroup(
-            actsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jScrollPane4.setViewportView(jScrollPane2);
 
         javax.swing.GroupLayout actsSectionLayout = new javax.swing.GroupLayout(actsSection);
         actsSection.setLayout(actsSectionLayout);
@@ -144,7 +149,8 @@ public class panelAsig extends javax.swing.JPanel {
                     .addComponent(actsTitle)
                     .addComponent(loadactsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(acts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane4)
+                .addContainerGap())
         );
         actsSectionLayout.setVerticalGroup(
             actsSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,8 +159,8 @@ public class panelAsig extends javax.swing.JPanel {
                 .addComponent(actsTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadactsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(acts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(8, Short.MAX_VALUE))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         background.add(actsSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 950, 150));
@@ -192,17 +198,26 @@ public class panelAsig extends javax.swing.JPanel {
         );
 
         videos.setBackground(new java.awt.Color(153, 153, 153));
+        videos.setLayout(new javax.swing.BoxLayout(videos, javax.swing.BoxLayout.X_AXIS));
 
-        javax.swing.GroupLayout videosLayout = new javax.swing.GroupLayout(videos);
-        videos.setLayout(videosLayout);
-        videosLayout.setHorizontalGroup(
-            videosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
-        );
-        videosLayout.setVerticalGroup(
-            videosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jButton1.setText("jButton1");
+        videos.add(jButton1);
+
+        jButton2.setText("jButton2");
+        videos.add(jButton2);
+
+        jButton3.setText("jButton3");
+        videos.add(jButton3);
+
+        jButton4.setText("jButton4");
+        videos.add(jButton4);
+
+        jButton5.setText("jButton5");
+        videos.add(jButton5);
+
+        jScrollPane1.setViewportView(videos);
+
+        jScrollPane3.setViewportView(jScrollPane1);
 
         javax.swing.GroupLayout videosSectionLayout = new javax.swing.GroupLayout(videosSection);
         videosSection.setLayout(videosSectionLayout);
@@ -214,7 +229,8 @@ public class panelAsig extends javax.swing.JPanel {
                     .addComponent(videosTitle)
                     .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(videos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3)
+                .addContainerGap())
         );
         videosSectionLayout.setVerticalGroup(
             videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,26 +240,40 @@ public class panelAsig extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(videos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 950, 150));
 
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 440));
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 440));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1010, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
 
-
     }//GEN-LAST:event_backBtnMouseClicked
-
-    private void loadIcon1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIcon1MouseMoved
-        loadvidBtn.setBackground(new Color(38, 114, 116));
-    }//GEN-LAST:event_loadIcon1MouseMoved
-
-    private void loadIcon1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIcon1MouseExited
-        loadvidBtn.setBackground(new Color(4, 174, 178));
-    }//GEN-LAST:event_loadIcon1MouseExited
 
     private void loadIconMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIconMouseMoved
         loadactsBtn.setBackground(new Color(38, 114, 116));
@@ -253,6 +283,48 @@ public class panelAsig extends javax.swing.JPanel {
         loadactsBtn.setBackground(new Color(4, 174, 178));
     }//GEN-LAST:event_loadIconMouseExited
 
+    private void loadIcon1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIcon1MouseMoved
+        loadvidBtn.setBackground(new Color(38, 114, 116));
+    }//GEN-LAST:event_loadIcon1MouseMoved
+
+    private void loadIcon1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIcon1MouseExited
+        loadvidBtn.setBackground(new Color(4, 174, 178));
+    }//GEN-LAST:event_loadIcon1MouseExited
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(pruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(pruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(pruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(pruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new pruebas().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acts;
@@ -261,8 +333,18 @@ public class panelAsig extends javax.swing.JPanel {
     private javax.swing.JLabel asigName;
     private javax.swing.JPanel backBtn;
     private javax.swing.JPanel background;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel loadIcon;
     private javax.swing.JLabel loadIcon1;
     private javax.swing.JPanel loadactsBtn;

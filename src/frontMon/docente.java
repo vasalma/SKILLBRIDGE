@@ -132,40 +132,42 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     }
 
     private void cargarAsignaturasDesdeBD() {
-   // Asegúrate de que el usuario está logueado
         Usuario u = Session.getUsuario();
-        if (u == null) {
-            System.out.println("Error: No hay sesión de usuario activa.");
-            return;
-        }
-
-        // 1. Obtener el ID del docente actual
         String idDocente = u.getId();
 
-        // 2. Obtener la lista de asignaturas del docente
-        List<Asignatura> listaAsignaturas = DBConnection.obtenerAsignaturasDocente(idDocente);
+        // 1. Obtener la lista de asignaturas COMPLETA (incluyendo duplicados de la DB)
+        List<Asignatura> listaAsignaturasConDuplicados = DBConnection.obtenerAsignaturasDocente(idDocente);
 
-        // 3. Limpiar y recargar los componentes visuales
-        // Limpiar el contenedor de vistas previas y la lista de vistas
+        // ----------------------------------------------------
+        // ✅ PASO CLAVE: Filtrar duplicados usando un HashSet
+        // ----------------------------------------------------
+        // Crear un conjunto (Set) para almacenar solo las asignaturas únicas.
+        // Asumo que tu clase Asignatura tiene implementados correctamente los métodos 
+        // hashCode() y equals() basados en el ID o Nombre de la asignatura.
+        java.util.Set<Asignatura> asignaturasUnicas = new java.util.HashSet<>(listaAsignaturasConDuplicados);
+
+        // Convertir de nuevo a una lista para el procesamiento secuencial
+        List<Asignatura> listaAsignaturas = new java.util.ArrayList<>(asignaturasUnicas);
+        // ----------------------------------------------------
+
+        // 2. Limpieza Absoluta de Contenedores (Mantenemos esta parte)
         contenedorVistas.removeAll();
         vistas.clear();
-        
-        // Limpiar las pestañas de detalle (empezando desde el índice 1, ya que el 0 es 'menuTab')
-        // Bucle inverso para evitar problemas de índice al eliminar
         for (int i = tabbed.getTabCount() - 1; i > 0; i--) {
             tabbed.removeTabAt(i);
         }
 
-        // 4. Recorrer la lista y agregar cada asignatura
-        for (Asignatura asig : listaAsignaturas) {
+        // 3. Recorrer la lista ÚNICA y agregar cada asignatura
+        for (Asignatura asig : listaAsignaturas) { // Usamos la lista filtrada
             agregarAsignatura(asig);
         }
 
-        // Forzar la actualización visual
+        // 4. Forzar la actualización visual
         contenedorVistas.revalidate();
         contenedorVistas.repaint();
         this.revalidate();
         this.repaint();
+
     }
 
     @Override

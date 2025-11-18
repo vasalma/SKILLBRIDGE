@@ -16,8 +16,6 @@ public class DBConnection {
     private static final String DB_PATH = "database/skillbridge.db";
     private static final String URL = "jdbc:sqlite:" + DB_PATH;
 
-    // La clase interna Materia fue eliminada para evitar conflictos con la importación Materia.Asignatura.
-
     // ------------------------------
     // Conexión
     // ------------------------------
@@ -58,10 +56,9 @@ public class DBConnection {
     // Registrar asignatura en tabla materias (CATÁLOGO)
     // ------------------------------
     public static Asignatura registrarAsignaturaEnBD(String id, String nombre, String descripcion) {
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(
-                 "INSERT INTO materias (id, nombre, descripcion) VALUES (?, ?, ?)"
-             )) {
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+                "INSERT INTO materias (id, nombre, descripcion) VALUES (?, ?, ?)"
+        )) {
 
             stmt.setString(1, id);
             stmt.setString(2, nombre);
@@ -74,10 +71,10 @@ public class DBConnection {
                 return new Asignatura(id, nombre, descripcion);
             }
         } catch (SQLException e) {
-             if (e.getMessage().contains("UNIQUE constraint failed")) {
-                 System.out.println("❌ Error: La asignatura con ID " + id + " ya existe en el catálogo.");
+            if (e.getMessage().contains("UNIQUE constraint failed")) {
+                System.out.println("❌ Error: La asignatura con ID " + id + " ya existe en el catálogo.");
             } else {
-                 System.out.println("❌ Error registrando asignatura: " + e.getMessage());
+                System.out.println("❌ Error registrando asignatura: " + e.getMessage());
             }
         }
         return null;
@@ -88,16 +85,16 @@ public class DBConnection {
     // ------------------------------
     /**
      * Inserta la asignación de una materia a un docente.
+     *
      * @param idDocente ID del docente.
      * @param nombre Nombre de la materia (usado como FK implícita).
      * @param descripcion Descripción de la materia.
      */
     public static void guardarAsignaturaDocente(String idDocente, String nombre, String descripcion) {
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(
-                 "INSERT INTO docente (idDocente, asignatura, descripcion) VALUES (?, ?, ?)"
-             )) { 
-            
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+                "INSERT INTO docente (idDocente, asignatura, descripcion) VALUES (?, ?, ?)"
+        )) {
+
             stmt.setString(1, idDocente);
             stmt.setString(2, nombre);
             stmt.setString(3, descripcion);
@@ -116,15 +113,15 @@ public class DBConnection {
     // ------------------------------
     /**
      * Elimina el vínculo de la asignatura de la tabla 'docente' (Asignación).
+     *
      * @param idDocente ID del docente.
      * @param nombre Nombre de la materia.
      * @param descripcion Descripción de la materia.
      */
     public static void eliminarAsignaturaDocente(String idDocente, String nombre, String descripcion) {
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(
-                 "DELETE FROM docente WHERE idDocente = ? AND asignatura = ? AND descripcion = ?" 
-             )) { 
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+                "DELETE FROM docente WHERE idDocente = ? AND asignatura = ? AND descripcion = ?"
+        )) {
 
             stmt.setString(1, idDocente);
             stmt.setString(2, nombre);
@@ -142,34 +139,37 @@ public class DBConnection {
             System.out.println("❌ Error eliminando asignatura del docente: " + e.getMessage());
         }
     }
-    
+
     // ------------------------------
-    // OBTENER ASIGNATURAS ASIGNADAS AL DOCENTE ACTUAL (¡FILTRADO!)
+    // OBTENER ASIGNATURAS ASIGNADAS AL DOCENTE ACTUAL (¡FILTRADO CORREGIDO!)
     // ------------------------------
     /**
-     * Recupera solo las asignaturas que han sido asignadas al ID de docente especificado.
+     * Recupera solo las asignaturas que han sido asignadas al ID de docente
+     * especificado. La consulta se corrige para unir por Nombre Y Descripción,
+     * resolviendo el problema de las asignaturas homónimas.
+     *
      * @param idDocente ID del docente logueado.
      * @return Lista de Asignaturas.
      */
-    public static List<Asignatura> obtenerAsignaturasDocente(String idDocente) { 
-        List<Asignatura> asignaturas = new ArrayList<>(); 
-        
-        // Consulta clave: JOIN por nombre y filtrado por idDocente.
-        String sql = "SELECT m.id, m.nombre, m.descripcion FROM materias m " +
-                     "INNER JOIN docente d ON m.nombre = d.asignatura " + // Se une por el NOMBRE
-                     "WHERE d.idDocente = ?"; // Se filtra por el DOCENTE LOGUEADO
+    public static List<Asignatura> obtenerAsignaturasDocente(String idDocente) {
+        List<Asignatura> asignaturas = new ArrayList<>();
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            
-            stmt.setString(1, idDocente); 
-            
+        // 🚀 CONSULTA CORREGIDA: Se añade la DESCRIPCIÓN a la cláusula ON para asegurar que solo una asignatura 
+        // de la tabla 'materias' coincida con la asignación del docente.
+        String sql = "SELECT m.id, m.nombre, m.descripcion FROM materias m "
+                + "INNER JOIN docente d ON m.nombre = d.asignatura AND m.descripcion = d.descripcion "
+                + "WHERE d.idDocente = ?";
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, idDocente);
+
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     String id = rs.getString("id");
                     String nombre = rs.getString("nombre");
                     String descripcion = rs.getString("descripcion");
-                    asignaturas.add(new Asignatura(id, nombre, descripcion)); 
+                    asignaturas.add(new Asignatura(id, nombre, descripcion));
                 }
             }
         } catch (SQLException e) {
