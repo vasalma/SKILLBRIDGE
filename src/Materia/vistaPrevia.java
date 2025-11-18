@@ -1,3 +1,4 @@
+
 package Materia;
 
 import Materia.Asignatura;
@@ -6,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
 
 public class vistaPrevia extends JPanel {
     private final Asignatura asignatura;
@@ -115,6 +117,9 @@ private Runnable onVolverMenu; // Variable para la acción "Volver al Menú" hol
             }
         });
         accTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                accTxtMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 accTxtMouseExited(evt);
             }
@@ -141,12 +146,13 @@ private Runnable onVolverMenu; // Variable para la acción "Volver al Menú" hol
                 .addGap(18, 18, 18)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundLayout.createSequentialGroup()
-                        .addComponent(asigName)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(descrpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(backgroundLayout.createSequentialGroup()
                         .addGap(0, 423, Short.MAX_VALUE)
-                        .addComponent(accBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(accBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(asigName)
+                            .addComponent(descrpTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(29, 29, 29))
         );
         backgroundLayout.setVerticalGroup(
@@ -174,6 +180,13 @@ private Runnable onVolverMenu; // Variable para la acción "Volver al Menú" hol
     private void accTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accTxtMouseExited
         accBtn.setBackground(new Color(4, 174, 178));
     }//GEN-LAST:event_accTxtMouseExited
+
+    private void accTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accTxtMouseClicked
+        if (onClickeador != null) {
+            onClickeador.run();
+        }
+    
+    }//GEN-LAST:event_accTxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

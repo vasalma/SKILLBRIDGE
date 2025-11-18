@@ -17,7 +17,14 @@ public class panelAsig extends javax.swing.JPanel {
      */
     public panelAsig() {
         initComponents();
-        
+    }
+
+    public javax.swing.JLabel getAsigName() {
+        return asigName;
+    }
+
+    public javax.swing.JPanel getBackBtn() {
+        return backBtn;
     }
 
     /**

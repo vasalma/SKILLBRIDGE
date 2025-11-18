@@ -1,6 +1,8 @@
 package frontMon;
 
 import Materia.Asignatura;
+import Materia.panelAsig;
+import Materia.panelSubirContenido;
 import Materia.registrarAsig;
 import Materia.vistaPrevia;
 import back.Session;
@@ -26,7 +28,6 @@ import main.DBConnection;
 
 public class docente extends javax.swing.JFrame implements Actualizable {
 
-    // Estos deben estar declarados en el diseñador con estos nombres exactos holiiiiiiiiiiiiii
     private final List<vistaPrevia> vistas = new ArrayList<>();
 
     public docente() {
@@ -38,9 +39,8 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-// Reemplaza el añadido original
+        // Reemplaza el añadido original
         menuTab.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 440));
-
     }
 
     private void cargarUsuario() {
@@ -53,6 +53,8 @@ public class docente extends javax.swing.JFrame implements Actualizable {
     }
 
     private void agregarAsignatura(Asignatura nueva) {
+
+        // --------------------- VISTA PREVIA ---------------------
         vistaPrevia vp = new vistaPrevia(nueva);
         vp.setOnAcceder(() -> {
             int idx = encontrarIndiceTabPorNombre(nueva.getNombre());
@@ -66,61 +68,44 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         contenedorVistas.revalidate();
         contenedorVistas.repaint();
 
-        JPanel panel = crearPanelAsignatura(nueva);
-        tabbed.addTab(nueva.getNombre(), panel);
+        // --------------------- TAB 1: Panel principal ---------------------
+        JPanel panel1 = crearPanelAsignatura(nueva);
+        tabbed.addTab(nueva.getNombre(), panel1);
+
+        // --------------------- TAB 2: Panel adicional ---------------------
+        JPanel panel2 = crearPanelExtra(nueva);
+        tabbed.addTab(nueva.getNombre() + " (Extra)", panel2);
     }
 
     private JPanel crearPanelAsignatura(Asignatura a) {
-        JPanel p = new JPanel(new BorderLayout());
 
-        // --- 1. Panel Superior (Header) para contener Título y Botón ---
-        JPanel headerPanel = new JPanel(new BorderLayout());
-        headerPanel.setBackground(Color.WHITE);
+        panelAsig p = new panelAsig();
 
-        // Título de la Asignatura
-        JLabel titulo = new JLabel("Asignatura: " + a.getNombre());
-        titulo.setFont(titulo.getFont().deriveFont(Font.BOLD, 16f));
+        p.getAsigName().setText(a.getNombre());
 
-        // Añadir el título al lado izquierdo del header
-        headerPanel.add(titulo, BorderLayout.WEST);
-
-        // --- 2. Botón "VOLVER AL MENU" con funcionalidad ---
-        JLabel volverMenu = new JLabel("VOLVER AL MENU");
-        volverMenu.setForeground(new Color(4, 174, 178)); // Color que usas
-        volverMenu.setFont(new Font("Questrial", Font.BOLD, 12));
-
-        // Añadir la funcionalidad de clic
-        volverMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+        p.getBackBtn().addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                // ✅ ACCIÓN CLAVE: Selecciona la pestaña "Menú" (índice 0)
                 tabbed.setSelectedIndex(0);
             }
         });
 
-        // Contenedor para el botón de menú y alineación a la derecha
-        JPanel menuBtnContainer = new JPanel(new BorderLayout());
-        menuBtnContainer.setBackground(Color.WHITE);
-        menuBtnContainer.add(volverMenu, BorderLayout.EAST);
-
-        // Añadir el contenedor de menú al lado derecho del header
-        headerPanel.add(menuBtnContainer, BorderLayout.EAST);
-
-        // Añadir el header al panel principal (en la posición NORTH)
-        p.add(headerPanel, BorderLayout.NORTH);
-
-        // --- 3. Área de Descripción (Tus componentes existentes) ---
-        JTextArea descripcion = new JTextArea(a.getDescripcion());
-        descripcion.setEditable(false);
-        descripcion.setLineWrap(true);
-        descripcion.setWrapStyleWord(true);
-        descripcion.setFont(new Font("SansSerif", Font.PLAIN, 13));
-
-        // Añadir el área de descripción al panel principal (en la posición CENTER)
-        p.add(new JScrollPane(descripcion), BorderLayout.CENTER);
-
         return p;
     }
+
+// ----------------------------------------------------------
+//  NUEVO PANEL EXTRA PARA LA SEGUNDA TAB
+// ----------------------------------------------------------
+   private JPanel crearPanelExtra(Asignatura a) {
+
+    panelSubirContenido panel = new panelSubirContenido();
+
+    // Si quieres cambiar el texto superior para mostrar el nombre de la asignatura:
+    panel.getTitulo().setText("Subir contenido para: " + a.getNombre());
+
+    return panel;
+}
+
 
     private int encontrarIndiceTabPorNombre(String nombre) {
         for (int i = 0; i < tabbed.getTabCount(); i++) {
@@ -135,39 +120,51 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         Usuario u = Session.getUsuario();
         String idDocente = u.getId();
 
-        // 1. Obtener la lista de asignaturas COMPLETA (incluyendo duplicados de la DB)
         List<Asignatura> listaAsignaturasConDuplicados = DBConnection.obtenerAsignaturasDocente(idDocente);
 
-        // ----------------------------------------------------
-        // ✅ PASO CLAVE: Filtrar duplicados usando un HashSet
-        // ----------------------------------------------------
-        // Crear un conjunto (Set) para almacenar solo las asignaturas únicas.
-        // Asumo que tu clase Asignatura tiene implementados correctamente los métodos 
-        // hashCode() y equals() basados en el ID o Nombre de la asignatura.
+        // --- FILTRO DE DUPLICADOS ---
         java.util.Set<Asignatura> asignaturasUnicas = new java.util.HashSet<>(listaAsignaturasConDuplicados);
-
-        // Convertir de nuevo a una lista para el procesamiento secuencial
         List<Asignatura> listaAsignaturas = new java.util.ArrayList<>(asignaturasUnicas);
-        // ----------------------------------------------------
 
-        // 2. Limpieza Absoluta de Contenedores (Mantenemos esta parte)
+        // --- LIMPIAR VISTAS Y TABS ---
         contenedorVistas.removeAll();
         vistas.clear();
         for (int i = tabbed.getTabCount() - 1; i > 0; i--) {
             tabbed.removeTabAt(i);
         }
 
-        // 3. Recorrer la lista ÚNICA y agregar cada asignatura
-        for (Asignatura asig : listaAsignaturas) { // Usamos la lista filtrada
+        // --- AGREGAR ASIGNATURAS ---
+        for (Asignatura asig : listaAsignaturas) {
             agregarAsignatura(asig);
         }
 
-        // 4. Forzar la actualización visual
         contenedorVistas.revalidate();
         contenedorVistas.repaint();
         this.revalidate();
         this.repaint();
+    }
 
+    private void abrirAsignatura(Asignatura asig) {
+
+        // Crear ventana
+        javax.swing.JFrame ventana = new javax.swing.JFrame("Asignatura: " + asig.getNombre());
+        ventana.setSize(1050, 500);
+        ventana.setLocationRelativeTo(null);
+        ventana.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+        // Crear tabs
+        javax.swing.JTabbedPane tabs = new javax.swing.JTabbedPane();
+
+        // Primer tab: VIDEOS
+        Materia.panelAsig panelVideos = new Materia.panelAsig();
+        tabs.addTab("Videos", panelVideos);
+
+        // Segundo tab: ACTIVIDADES
+        Materia.panelAsig panelActividades = new Materia.panelAsig();
+        tabs.addTab("Actividades", panelActividades);
+
+        ventana.add(tabs);
+        ventana.setVisible(true);
     }
 
     @Override
@@ -552,18 +549,14 @@ public class docente extends javax.swing.JFrame implements Actualizable {
 
     private void addAsigTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addAsigTxtMouseClicked
 
-        // 1. Crear y mostrar la ventana de registro
         registrarAsig regAsig = new registrarAsig();
-        regAsig.setLocationRelativeTo(null); // Centra la ventana
+        regAsig.setLocationRelativeTo(null);
         regAsig.setVisible(true);
 
-        // 2. Esperar a que la ventana de registro se cierre
         regAsig.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
-            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                // 3. Una vez cerrada, actualiza la lista en la pantalla principal
+            public void windowClosed(java.awt.event.WindowEvent e) {
                 cargarAsignaturasDesdeBD();
-                JOptionPane.showMessageDialog(null, "Lista de asignaturas actualizada.");
             }
         });
 
