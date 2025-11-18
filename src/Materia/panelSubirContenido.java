@@ -22,12 +22,12 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import javax.swing.JOptionPane;
 public class panelSubirContenido extends javax.swing.JPanel {
-
+    private panelAsig panelAsigRef; 
     private File videoFile;
     private File actividadFile;
     private final String idDocente;
     private final String idMateria;
-    private panelAsig panelAsigRef; // Puede ser null
+   
 
     // Constructor ORIGINAL - para mantener compatibilidad
     public panelSubirContenido(Asignatura materiaActual) {

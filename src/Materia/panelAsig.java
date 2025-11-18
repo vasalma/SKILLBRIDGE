@@ -156,6 +156,7 @@ public class panelAsig extends javax.swing.JPanel {
         videosTitle = new javax.swing.JLabel();
         loadvidBtn = new javax.swing.JPanel();
         loadIcon1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         videos = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -310,18 +311,11 @@ public class panelAsig extends javax.swing.JPanel {
             .addComponent(loadIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
         );
 
-        videos.setBackground(new java.awt.Color(153, 153, 153));
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        javax.swing.GroupLayout videosLayout = new javax.swing.GroupLayout(videos);
-        videos.setLayout(videosLayout);
-        videosLayout.setHorizontalGroup(
-            videosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
-        );
-        videosLayout.setVerticalGroup(
-            videosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        videos.setBackground(new java.awt.Color(153, 153, 153));
+        videos.setLayout(new javax.swing.BoxLayout(videos, javax.swing.BoxLayout.X_AXIS));
+        jScrollPane1.setViewportView(videos);
 
         javax.swing.GroupLayout videosSectionLayout = new javax.swing.GroupLayout(videosSection);
         videosSection.setLayout(videosSectionLayout);
@@ -333,17 +327,20 @@ public class panelAsig extends javax.swing.JPanel {
                     .addComponent(videosTitle)
                     .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(videos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                .addContainerGap())
         );
         videosSectionLayout.setVerticalGroup(
             videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(videosSectionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(videosTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(videosSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, videosSectionLayout.createSequentialGroup()
+                        .addComponent(videosTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loadvidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(videos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         background.add(videosSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 950, 150));
@@ -395,6 +392,7 @@ public class panelAsig extends javax.swing.JPanel {
     private javax.swing.JPanel background;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel loadIcon;
     private javax.swing.JLabel loadIcon1;
     private javax.swing.JPanel loadactsBtn;

@@ -1,3 +1,4 @@
+
 package frontMon;
 
 import Materia.Asignatura;
@@ -30,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 
 import main.DBConnection;
 
+
 public class docente extends javax.swing.JFrame implements Actualizable {
 
     private final List<vistaPrevia> vistas = new ArrayList<>();
@@ -56,6 +58,9 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         }
     }
 
+    // -------------------------------------------------------------
+    // 🔥 MODIFICACIÓN 3: AGREGARASIGNATURA - CONEXIÓN CLAVE
+    // -------------------------------------------------------------
     private void agregarAsignatura(Asignatura nueva) {
 
         // --------------------- VISTA PREVIA ---------------------
@@ -73,15 +78,23 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         contenedorVistas.repaint();
 
         // --------------------- TAB 1: Panel principal ---------------------
-        JPanel panel1 = crearPanelAsignatura(nueva);
-        tabbed.addTab(nueva.getNombre(), panel1);
+        // Capturamos el objeto específico panelAsig
+        panelAsig panelPrincipal = crearPanelAsignatura(nueva); 
+        tabbed.addTab(nueva.getNombre(), panelPrincipal);
 
         // --------------------- TAB 2: Panel adicional ---------------------
-        JPanel panel2 = crearPanelExtra(nueva);
-        tabbed.addTab(nueva.getNombre() + " (Extra)", panel2);
+        // Capturamos el objeto específico panelSubirContenido
+        panelSubirContenido panelExtra = crearPanelExtra(nueva);
+        tabbed.addTab(nueva.getNombre() + " (Extra)", panelExtra);
+        
+        // 🔑 CONEXIÓN CLAVE: Inyectamos la referencia del panel principal al panel extra
+        panelExtra.setPanelAsigRef(panelPrincipal);
     }
 
-    private JPanel crearPanelAsignatura(Asignatura a) {
+    // -------------------------------------------------------------
+    // 🔥 MODIFICACIÓN 1: crearPanelAsignatura - CAMBIO DE RETORNO
+    // -------------------------------------------------------------
+    private panelAsig crearPanelAsignatura(Asignatura a) { // 👈 CAMBIAR: de JPanel a panelAsig
 
         panelAsig p = new panelAsig(a.getId());
 
@@ -96,29 +109,26 @@ public class docente extends javax.swing.JFrame implements Actualizable {
             }
         });
 
-        // 🔥 NUEVO: callback para que los botones (videos/actividades) pasen al Tab Extra
+        // callback para que los botones (videos/actividades) pasen al Tab Extra
         p.setOnIrExtra(() -> {
-
-            // Buscar el tab extra
             int idx = encontrarIndiceTabPorNombre(a.getNombre() + " (Extra)");
-
-            // Cambiar al tab extra si existe
             if (idx >= 0) {
                 tabbed.setSelectedIndex(idx);
             }
         });
 
-        return p;
+        return p; // p es de tipo panelAsig
     }
 
-// ----------------------------------------------------------
-//  NUEVO PANEL EXTRA PARA LA SEGUNDA TAB
-// ----------------------------------------------------------
-    private JPanel crearPanelExtra(Asignatura a) {
+    // -------------------------------------------------------------
+    // 🔥 MODIFICACIÓN 2: crearPanelExtra - CAMBIO DE RETORNO
+    // -------------------------------------------------------------
+    private panelSubirContenido crearPanelExtra(Asignatura a) { // 👈 CAMBIAR: de JPanel a panelSubirContenido
+        
         // Usamos el constructor que recibe la asignatura como parámetro
         panelSubirContenido panel = new panelSubirContenido(a);
 
-        // 🔥 CALLBACK DE RETROCESO PARA EL PANEL EXTRA
+        // CALLBACK DE RETROCESO PARA EL PANEL EXTRA
         panel.setOnBack(() -> {
             // Volver al panel principal de la asignatura
             int idx = encontrarIndiceTabPorNombre(a.getNombre());
@@ -202,6 +212,9 @@ public class docente extends javax.swing.JFrame implements Actualizable {
         this.repaint();
         System.out.println("✅ Dashboard: Nombre de usuario recargado.");
     }
+    
+    // ... Código generado por NetBeans (initComponents, variables, etc.) ...
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -645,545 +658,545 @@ public class docente extends javax.swing.JFrame implements Actualizable {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(docente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(docente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(docente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(docente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new docente().setVisible(true);
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(docente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(docente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(docente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(docente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(() -> {
+        new docente().setVisible(true);
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel actsBtn;
