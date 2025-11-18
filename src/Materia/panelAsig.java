@@ -15,7 +15,7 @@ public class panelAsig extends javax.swing.JPanel {
 
     private String idMateria;
 
-    // Constructor ORIGINAL - para mantener compatibilidad
+    // Constructor ORIGINAL - para mantener compatibilidad holiiiiiiiiii
     public panelAsig() {
         initComponents();
         configurarContenedorVideos();
