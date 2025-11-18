@@ -39,7 +39,7 @@ public class video extends javax.swing.JPanel {
     }
     
     private void setListeners() {
-        // Listener para el botón de eliminar
+        // Listener para el botón de eliminar hellooooooo
         deletevidTxt.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
