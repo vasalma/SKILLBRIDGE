@@ -1,4 +1,3 @@
-
 package Materia;
 
 import java.awt.Color;
@@ -13,14 +12,15 @@ import main.DBConnection;
 import Materia.video;
 
 public class panelAsig extends javax.swing.JPanel {
+
     private String idMateria;
-    
+
     // Constructor ORIGINAL - para mantener compatibilidad
     public panelAsig() {
         initComponents();
         configurarContenedorVideos();
     }
-    
+
     // Constructor NUEVO - con ID de materia
     public panelAsig(String idMateria) {
         initComponents();
@@ -30,7 +30,7 @@ public class panelAsig extends javax.swing.JPanel {
             cargarVideos();
         }
     }
-    
+
     // Método para establecer el ID después de la creación
     public void setIdMateria(String idMateria) {
         this.idMateria = idMateria;
@@ -49,77 +49,77 @@ public class panelAsig extends javax.swing.JPanel {
             System.out.println("idMateria es null, no se cargan videos");
             return;
         }
-        
+
         videos.removeAll();
-        
+
         try (Connection conn = DBConnection.getConnection()) {
-            String sql = "SELECT titulo, descripcion FROM videos WHERE idMateria = ?";
+            String sql = "SELECT titulo, descripcion, videoUrl FROM videos WHERE idMateria = ?"; //nuevo
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, idMateria);
-            
+
             ResultSet rs = pst.executeQuery();
-            
+
             int contador = 1;
             while (rs.next()) {
                 String titulo = rs.getString("titulo");
                 String descripcion = rs.getString("descripcion");
-                
+                String videoUrl = rs.getString("videoUrl");
+
                 // Crear el componente video
                 video videoComponente = new video(titulo, descripcion, contador);
-                
+                videoComponente.setVideoFilePath(videoUrl);
+
                 final String tituloFinal = titulo;
                 videoComponente.setOnEliminarListener(() -> {
                     eliminarVideo(tituloFinal);
                 });
-                
+
                 videos.add(videoComponente);
                 contador++;
             }
-            
+
             if (contador == 1) {
                 JLabel mensaje = new JLabel("No hay videos disponibles");
                 mensaje.setForeground(Color.GRAY);
                 mensaje.setFont(new Font("Poppins", Font.ITALIC, 14));
                 videos.add(mensaje);
             }
-            
+
             videos.revalidate();
             videos.repaint();
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error al cargar videos: " + e.getMessage());
             e.printStackTrace();
         }
     }
-    
+
     private void eliminarVideo(String titulo) {
         try (Connection conn = DBConnection.getConnection()) {
             String sql = "DELETE FROM videos WHERE titulo = ? AND idMateria = ?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, titulo);
             pst.setString(2, idMateria);
-            
+
             int rows = pst.executeUpdate();
-            
+
             if (rows > 0) {
                 JOptionPane.showMessageDialog(this, "Video eliminado correctamente");
                 cargarVideos();
             } else {
                 JOptionPane.showMessageDialog(this, "Error al eliminar el video");
             }
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error al eliminar video: " + e.getMessage());
         }
     }
-    
+
     public void refrescarVideos() {
         cargarVideos();
     }
-    
+
     // ... el resto de tu código existente sin cambios
-
-
     public javax.swing.JLabel getAsigName() {
         return asigName;
     }
