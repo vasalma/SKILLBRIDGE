@@ -26,6 +26,11 @@ public class panelAsig extends javax.swing.JPanel {
     public javax.swing.JPanel getBackBtn() {
         return backBtn;
     }
+    private Runnable onIrExtra;
+
+    public void setOnIrExtra(Runnable r) {
+        this.onIrExtra = r;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,6 +117,9 @@ public class panelAsig extends javax.swing.JPanel {
             }
         });
         loadIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadIconMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 loadIconMouseExited(evt);
             }
@@ -182,6 +190,9 @@ public class panelAsig extends javax.swing.JPanel {
             }
         });
         loadIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadIcon1MouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 loadIcon1MouseExited(evt);
             }
@@ -259,6 +270,19 @@ public class panelAsig extends javax.swing.JPanel {
     private void loadIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIconMouseExited
         loadactsBtn.setBackground(new Color(4, 174, 178));
     }//GEN-LAST:event_loadIconMouseExited
+
+    private void loadIcon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIcon1MouseClicked
+        if (onIrExtra != null) {
+            onIrExtra.run();
+        }
+
+    }//GEN-LAST:event_loadIcon1MouseClicked
+
+    private void loadIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadIconMouseClicked
+        if (onIrExtra != null) {
+            onIrExtra.run();
+        }
+    }//GEN-LAST:event_loadIconMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

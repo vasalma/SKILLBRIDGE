@@ -81,12 +81,26 @@ public class docente extends javax.swing.JFrame implements Actualizable {
 
         panelAsig p = new panelAsig();
 
+        // Nombre de la asignatura en el panel
         p.getAsigName().setText(a.getNombre());
 
+        // Botón retroceder → vuelve al tab 0
         p.getBackBtn().addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabbed.setSelectedIndex(0);
+            }
+        });
+
+        // 🔥 NUEVO: callback para que los botones (videos/actividades) pasen al Tab Extra
+        p.setOnIrExtra(() -> {
+
+            // Buscar el tab extra
+            int idx = encontrarIndiceTabPorNombre(a.getNombre() + " (Extra)");
+
+            // Cambiar al tab extra si existe
+            if (idx >= 0) {
+                tabbed.setSelectedIndex(idx);
             }
         });
 
@@ -96,16 +110,23 @@ public class docente extends javax.swing.JFrame implements Actualizable {
 // ----------------------------------------------------------
 //  NUEVO PANEL EXTRA PARA LA SEGUNDA TAB
 // ----------------------------------------------------------
-   private JPanel crearPanelExtra(Asignatura a) {
+    private JPanel crearPanelExtra(Asignatura a) {
+panelSubirContenido panel = new panelSubirContenido();
 
-    panelSubirContenido panel = new panelSubirContenido();
-
-    // Si quieres cambiar el texto superior para mostrar el nombre de la asignatura:
     panel.getTitulo().setText("Subir contenido para: " + a.getNombre());
 
-    return panel;
-}
+    // 🔥 CALLBACK DE RETROCESO PARA EL PANEL EXTRA
+    panel.setOnBack(() -> {
+        // Volver al panel principal de la asignatura
+        int idx = encontrarIndiceTabPorNombre(a.getNombre());
+        if (idx >= 0) {
+            tabbed.setSelectedIndex(idx);
+        }
+    });
 
+    return panel;
+
+    }
 
     private int encontrarIndiceTabPorNombre(String nombre) {
         for (int i = 0; i < tabbed.getTabCount(); i++) {
