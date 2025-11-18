@@ -1,3 +1,4 @@
+
 package Materia;
 
 import back.Session;
@@ -21,6 +22,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import javax.swing.JOptionPane;
+
+
 public class panelSubirContenido extends javax.swing.JPanel {
     private panelAsig panelAsigRef; 
     private File videoFile;
@@ -162,7 +165,9 @@ public class panelSubirContenido extends javax.swing.JPanel {
 }
 
     // Subir Actividad
-    private void subirActividad() {
+  // Archivo: Materia/panelSubirContenido.java
+
+private void subirActividad() {
     if (actividadFile == null || actTitleTxt.getText().isEmpty() || actDescripTxt.getText().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona el archivo de actividad.");
         return;
@@ -196,10 +201,20 @@ public class panelSubirContenido extends javax.swing.JPanel {
 
             int rows = pst.executeUpdate();
 
-            JOptionPane.showMessageDialog(this, rows > 0 ? "Actividad subida correctamente." : "Error al subir actividad.");
-            limpiarCamposActividad();
+            if (rows > 0) {
+                JOptionPane.showMessageDialog(this, "Actividad subida correctamente.");
+                limpiarCamposActividad();
+                
+                // ⭐ LÍNEA IMPLEMENTADA AQUÍ: LLAMADA DE REFRESH ⭐
+                if (panelAsigRef != null) {
+                    panelAsigRef.refrescarActividades(); 
+                }
+                
+            } else {
+                 JOptionPane.showMessageDialog(this, "Error al subir actividad.");
+                 targetFile.delete(); // Limpia si falla la DB
+            }
             
-            // Si hay una función para refrescar actividades, añádela aquí
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error de base de datos: " + e.getMessage());
@@ -210,6 +225,7 @@ public class panelSubirContenido extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Error de E/S al copiar el archivo: " + e.getMessage());
         e.printStackTrace();
     }
+
 }
 
     private void limpiarCamposVideo() {

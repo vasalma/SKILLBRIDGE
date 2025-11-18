@@ -10,38 +10,67 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import main.DBConnection;
 import Materia.video;
+import Materia.actividad;
 
 public class panelAsig extends javax.swing.JPanel {
 
     private String idMateria;
 
-    // Constructor ORIGINAL - para mantener compatibilidad holiiiiiiiiii
+    // Declaraciones de JPanels (asumo que coinciden con initComponents)
+    // Constructor ORIGINAL - para mantener compatibilidad
     public panelAsig() {
         initComponents();
+
+        // ⭐ SOLUCIÓN NPE: Inicialización Forzada
+        if (videos == null) {
+            videos = new javax.swing.JPanel();
+        }
+        if (acts == null) {
+            acts = new javax.swing.JPanel();
+        }
+
         configurarContenedorVideos();
+        configurarContenedorActividades();
     }
 
-    // Constructor NUEVO - con ID de materia
+    // Constructor con ID (usado por docente.java)
     public panelAsig(String idMateria) {
         initComponents();
         this.idMateria = idMateria;
+
+        // ⭐ SOLUCIÓN NPE: Inicialización Forzada
+        if (videos == null) {
+            videos = new javax.swing.JPanel();
+        }
+        if (acts == null) {
+            acts = new javax.swing.JPanel();
+        }
+
         configurarContenedorVideos();
+        configurarContenedorActividades();
+
         if (idMateria != null) {
             cargarVideos();
+            cargarActividades();
         }
     }
 
-    // Método para establecer el ID después de la creación
     public void setIdMateria(String idMateria) {
         this.idMateria = idMateria;
         if (idMateria != null) {
             cargarVideos();
+            cargarActividades();
         }
     }
 
     private void configurarContenedorVideos() {
         videos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
         videos.setBackground(new Color(240, 240, 240));
+    }
+
+    private void configurarContenedorActividades() {
+        acts.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        acts.setBackground(new Color(240, 240, 240));
     }
 
     public void cargarVideos() {
@@ -53,7 +82,7 @@ public class panelAsig extends javax.swing.JPanel {
         videos.removeAll();
 
         try (Connection conn = DBConnection.getConnection()) {
-            String sql = "SELECT titulo, descripcion, videoUrl FROM videos WHERE idMateria = ?"; //nuevo
+            String sql = "SELECT titulo, descripcion, videoUrl FROM videos WHERE idMateria = ?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, idMateria);
 
@@ -65,7 +94,6 @@ public class panelAsig extends javax.swing.JPanel {
                 String descripcion = rs.getString("descripcion");
                 String videoUrl = rs.getString("videoUrl");
 
-                // Crear el componente video
                 video videoComponente = new video(titulo, descripcion, contador);
                 videoComponente.setVideoFilePath(videoUrl);
 
@@ -94,6 +122,58 @@ public class panelAsig extends javax.swing.JPanel {
         }
     }
 
+    public void cargarActividades() {
+        if (idMateria == null) {
+            System.out.println("idMateria es null, no se cargan actividades");
+            return;
+        }
+
+        acts.removeAll();
+
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "SELECT titulo, descripcion, actividadurl FROM actividades WHERE idMateria = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, idMateria);
+
+            ResultSet rs = pst.executeQuery();
+
+            int contador = 1;
+            while (rs.next()) {
+                String titulo = rs.getString("titulo");
+                String descripcion = rs.getString("descripcion");
+                String actividadUrl = rs.getString("actividadurl");
+
+                String[] actividadData = {titulo, descripcion, actividadUrl};
+
+                actividad actividadComponente = new actividad(actividadData);
+
+                final String tituloFinal = titulo;
+                // Nota: Asumo que tienes un método setOnEliminarListener en tu clase actividad
+                // Si no existe, esta línea dará un error de compilación.
+                actividadComponente.setOnEliminarListener(() -> {
+                    eliminarActividad(tituloFinal);
+                });
+
+                acts.add(actividadComponente);
+                contador++;
+            }
+
+            if (contador == 1) {
+                JLabel mensaje = new JLabel("No hay actividades disponibles");
+                mensaje.setForeground(Color.GRAY);
+                mensaje.setFont(new Font("Poppins", Font.ITALIC, 14));
+                acts.add(mensaje);
+            }
+
+            acts.revalidate();
+            acts.repaint();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar actividades: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     private void eliminarVideo(String titulo) {
         try (Connection conn = DBConnection.getConnection()) {
             String sql = "DELETE FROM videos WHERE titulo = ? AND idMateria = ?";
@@ -115,24 +195,58 @@ public class panelAsig extends javax.swing.JPanel {
         }
     }
 
+    private void eliminarActividad(String titulo) {
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "DELETE FROM actividades WHERE titulo = ? AND idMateria = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, titulo);
+            pst.setString(2, idMateria);
+
+            int rows = pst.executeUpdate();
+
+            if (rows > 0) {
+                JOptionPane.showMessageDialog(this, "Actividad eliminada correctamente");
+                cargarActividades();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar la actividad");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar actividad: " + e.getMessage());
+        }
+    }
+
     public void refrescarVideos() {
         cargarVideos();
     }
 
-    // ... el resto de tu código existente sin cambios
-    public javax.swing.JLabel getAsigName() {
-        return asigName;
+    public void refrescarActividades() {
+        cargarActividades();
     }
 
-    public javax.swing.JPanel getBackBtn() {
-        return backBtn;
-    }
+    // Aquí deben ir tus métodos getAsigName() y getBackBtn() para que docente.java funcione
+    // public javax.swing.JLabel getAsigName() { return asigName; }
+    // public javax.swing.JPanel getBackBtn() { return backBtn; }
     private Runnable onIrExtra;
 
     public void setOnIrExtra(Runnable r) {
         this.onIrExtra = r;
     }
+// // Coloca estos métodos al final de la clase panelAsig.java:
 
+    public javax.swing.JLabel getAsigName() {
+        return asigName;
+    }
+
+// Asumo que tienes un JPanel o JLabel para el botón 'Retroceder' llamado 'backBtn'
+
+
+    public javax.swing.JPanel getBackBtn() {
+        return backBtn;
+    }
+
+    // El código initComponents() generado por NetBeans debe ir aquí.
+    // ...
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
