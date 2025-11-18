@@ -47,10 +47,10 @@ public class Privada {
     }
 
     // Método para insertar la llave en la base de datos (AHORA RECIBE LA MATERIA)
-    public static void insertarLlave(String id, String llave, String materia) {
+    public static void insertarLlave(String id, String llave) {
         String sqlVerificarId = "SELECT 1 FROM llaves_acceso WHERE id = ?";
         // ⚠ La sentencia INSERT ahora incluye el campo 'materia'
-        String sqlInsertar = "INSERT INTO llaves_acceso (id, llave, materia) VALUES (?, ?, ?)";
+        String sqlInsertar = "INSERT INTO llaves_acceso (id, llave) VALUES (?, ?)";
 
         try (Connection conn = conectar();
              PreparedStatement verificarId = conn.prepareStatement(sqlVerificarId);
@@ -69,14 +69,14 @@ public class Privada {
             // 2. Insertar el registro (ID, LLAVE y MATERIA)
             insertar.setString(1, id);
             insertar.setString(2, llave);
-            insertar.setString(3, materia); // <-- Asignamos la materia
+      
             
             int filasAfectadas = insertar.executeUpdate();
             if (filasAfectadas > 0) {
                 // Mensaje final mostrando la llave y la materia
                 JOptionPane.showMessageDialog(null, 
                         "✅ Llave de acceso insertada correctamente.\n\n"
-                        + "Materia: " + materia + "\n"
+                        + "Id " + id + "\n"
                         + "Llave Generada: " + llave); 
             } else {
                 JOptionPane.showMessageDialog(null, "❌ Error al insertar la llave de acceso.");
@@ -97,29 +97,17 @@ public class Privada {
         }
         
         // --- 2. Mostrar el Menú de Materias ---
-        String[] opcionesMaterias = {"Calculo", "Algebra"};
-        String materiaSeleccionada = (String) JOptionPane.showInputDialog(
-                null,
-                "Seleccione la materia asociada a esta llave:",
-                "Selección de Materia",
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                opcionesMaterias,
-                opcionesMaterias[0] // Opción por defecto
-        );
+        
         
         // Si el usuario cancela o cierra la ventana
-        if (materiaSeleccionada == null) {
-            JOptionPane.showMessageDialog(null, "⚠ Debe seleccionar una materia.");
-            return;
-        }
+        
 
         // --- 3. Generar e Insertar ---
         try {
             String llaveGenerada = generarLlaveUnica();
             
             // Llamamos a la función con el tercer parámetro: la materia
-            insertarLlave(id, llaveGenerada, materiaSeleccionada);
+            insertarLlave(id, llaveGenerada);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "❌ Error al generar la llave: " + e.getMessage());

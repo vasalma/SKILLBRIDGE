@@ -177,4 +177,100 @@ public class DBConnection {
         }
         return asignaturas;
     }
+    
+        // ... (MÉTODOS EXISTENTES SE MANTIENEN IGUAL) ...
+
+    // ------------------------------
+    // ✅ NUEVO MÉTODO: Ejecutar UPDATE genérico
+    // ------------------------------
+    public static boolean ejecutarUpdate(String sql, Object... params) {
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            // Establecer parámetros
+            for (int i = 0; i < params.length; i++) {
+                stmt.setObject(i + 1, params[i]);
+            }
+            
+            int filasAfectadas = stmt.executeUpdate();
+            return filasAfectadas > 0;
+            
+        } catch (SQLException e) {
+            System.out.println("❌ Error en ejecutarUpdate: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // ------------------------------
+    // ✅ NUEVO MÉTODO: Insertar actividad
+    // ------------------------------
+    public static boolean insertarActividad(String id, String titulo, String descripcion, String idMateria) {
+        String sql = "INSERT INTO actividades (id, titulo, descripcion, idMateria) VALUES (?, ?, ?, ?)";
+        return ejecutarUpdate(sql, id, titulo, descripcion, idMateria);
+    }
+
+    // ------------------------------
+    // ✅ NUEVO MÉTODO: Insertar video
+    // ------------------------------
+    public static boolean insertarVideo(String id, String titulo, String descripcion, String idMateria) {
+        String sql = "INSERT INTO videos (id, titulo, description, idMateria) VALUES (?, ?, ?, ?)";
+        return ejecutarUpdate(sql, id, titulo, descripcion, idMateria);
+    }
+
+    // ------------------------------
+    // ✅ NUEVO MÉTODO: Obtener actividades por materia
+    // ------------------------------
+    public static List<String[]> obtenerActividadesPorMateria(String idMateria) {
+        List<String[]> actividades = new ArrayList<>();
+        String sql = "SELECT id, titulo, descripcion FROM actividades WHERE idMateria = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, idMateria);
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                String[] actividad = {
+                    rs.getString("id"),
+                    rs.getString("titulo"),
+                    rs.getString("descripcion")
+                };
+                actividades.add(actividad);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("❌ Error obteniendo actividades: " + e.getMessage());
+        }
+        return actividades;
+    }
+
+    // ------------------------------
+    // ✅ NUEVO MÉTODO: Obtener videos por materia
+    // ------------------------------
+    public static List<String[]> obtenerVideosPorMateria(String idMateria) {
+        List<String[]> videos = new ArrayList<>();
+        String sql = "SELECT id, titulo, description FROM videos WHERE idMateria = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, idMateria);
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                String[] video = {
+                    rs.getString("id"),
+                    rs.getString("titulo"),
+                    rs.getString("description")
+                };
+                videos.add(video);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("❌ Error obteniendo videos: " + e.getMessage());
+        }
+        return videos;
+    }
 }
+

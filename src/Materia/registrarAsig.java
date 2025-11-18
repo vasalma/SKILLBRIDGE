@@ -13,6 +13,7 @@ public class registrarAsig extends javax.swing.JFrame {
 
     public registrarAsig() {
         initComponents();
+        
     }
 
     private Asignatura resultado;
