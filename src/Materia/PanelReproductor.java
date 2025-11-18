@@ -83,8 +83,7 @@ public class PanelReproductor extends JPanel {
             .addGap(0, 449, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-
+//mamama
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
